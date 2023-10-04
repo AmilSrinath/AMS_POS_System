@@ -1,6 +1,6 @@
-package lk.ijse;
+import lk.ijse.LoginFormController;
 
-public class Main {
+public class Demo {
     public static void main(String[] args) {
         LoginFormController.main(args);
     }

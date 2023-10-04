@@ -172,7 +172,7 @@
             <Font name="Poppins Regular" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblTime" layoutX="1111.0" layoutY="25.0" prefHeight="27.0" prefWidth="154.0" text="00-00">
+      <Label fx:id="lblTime" layoutX="1111.0" layoutY="25.0" prefHeight="27.0" prefWidth="154.0">
          <font>
             <Font name="Poppins Regular" size="19.0" />
          </font>
