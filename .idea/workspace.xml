@@ -9,16 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="first Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/HomeFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/2903544.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/CA7523FE-E65B-4DA7-A644-46759721A68C_1_105_c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-close-50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
+    <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="LoginForm.fxml Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-add-48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-delete-48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-minimize-48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-minimize-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-purchase-order-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-update-64.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/AMS_POS_System_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/AMS_POS_System_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/AMS_POS_System_jar/AMS_POS_System.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/AMS_POS_System_jar/AMS_POS_System.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/HomeFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/LoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/LoginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LoginForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -47,25 +51,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/apple/IdeaProjects/AMS_POS_System/src/main/resources/assest",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/apple/IdeaProjects/AMS_POS_System/src/main/resources/assest&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/assest" />
@@ -117,7 +121,18 @@
       <option name="presentableId" value="Default" />
       <updated>1695829056107</updated>
       <workItem from="1695829057265" duration="1823000" />
-      <workItem from="1695910311259" duration="6700000" />
+      <workItem from="1695910311259" duration="6929000" />
+      <workItem from="1695957737898" duration="2444000" />
+      <workItem from="1695974411533" duration="2977000" />
+      <workItem from="1695999808743" duration="309000" />
+      <workItem from="1696000244206" duration="666000" />
+      <workItem from="1696001133927" duration="103000" />
+      <workItem from="1696001310941" duration="4732000" />
+      <workItem from="1696040442235" duration="517000" />
+      <workItem from="1696042783118" duration="378000" />
+      <workItem from="1696046058319" duration="1751000" />
+      <workItem from="1696072466765" duration="146000" />
+      <workItem from="1696298997906" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -135,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695911021452</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="LoginForm.fxml Commit">
+      <option name="closed" value="true" />
+      <created>1695920136710</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695920136710</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +166,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first Commit" />
+    <MESSAGE value="LoginForm.fxml Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginForm.fxml Commit" />
   </component>
 </project>

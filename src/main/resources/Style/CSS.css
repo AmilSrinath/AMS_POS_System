@@ -20,3 +20,52 @@
     -fx-background-color: black;
     -fx-border: 20px solid;
 }
+
+.addButton{
+    -fx-background-color: #219C90;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.addButton:hover{
+    -fx-background-color: grey;
+}
+
+.updateButton{
+    -fx-background-color: #E9B824;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.updateButton:hover{
+    -fx-background-color: grey;
+}
+
+.deleteButton{
+    -fx-background-color: #D83F31;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.deleteButton:hover{
+    -fx-background-color: grey;
+}
+
+.placeOrderButton{
+    -fx-background-color: #0079FF;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.placeOrderButton:hover{
+    -fx-background-color: grey;
+}
+
+
+.pane{
+    -fx-border-color: #0079FF;
+    -fx-background-color: #E4F1FF;
+    -fx-border-width: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}

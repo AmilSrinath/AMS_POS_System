@@ -1,20 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HomeFormController">
+<AnchorPane fx:id="HomeForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HomeFormController">
    <children>
-      <ImageView fitHeight="38.0" fitWidth="33.0" layoutX="1232.0" layoutY="14.0" onMouseClicked="#btnCloseOnMouseClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assest/icons8-close-50.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
+      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="33.0" layoutY="149.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="142.0" styleClass="addButton" stylesheets="@../Style/CSS.css" text="Add Item" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="63.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-add-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button contentDisplay="TOP" graphicTextGap="9.0" layoutX="33.0" layoutY="253.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="142.0" styleClass="updateButton" stylesheets="@../Style/CSS.css" text="Update Item" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-update-64.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="358.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="142.0" styleClass="deleteButton" stylesheets="@../Style/CSS.css" text="Delete Item" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-delete-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="506.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="142.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-purchase-order-60.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane layoutX="317.0" layoutY="97.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="76.0" layoutY="10.0" prefHeight="208.0" prefWidth="95.0" text="wo ,dNh">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="112.0" layoutY="55.0" prefHeight="250.0" prefWidth="0.0" text="re'">
+               <font>
+                  <Font name="FMAbhaya x" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="91.0" text="000">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="617.0" layoutY="97.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="40.0" layoutY="10.0" prefHeight="285.0" prefWidth="167.0" text="wo úl=KQ whs;u">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="91.0" text="000">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="40.0" prefHeight="285.0" prefWidth="61.0" text=".Kk">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="919.0" layoutY="97.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="31.0" layoutY="10.0" prefHeight="285.0" prefWidth="185.0" text="wo weKjqï .Kk">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="91.0" text="000">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="318.0" layoutY="298.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="47.0" layoutY="10.0" prefHeight="285.0" prefWidth="154.0" text="fmr È​k ,dNh">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="112.0" layoutY="55.0" prefHeight="250.0" prefWidth="0.0" text="re'">
+               <font>
+                  <Font name="FMAbhaya x" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="91.0" text="000">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="618.0" layoutY="298.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="285.0" prefWidth="228.0" text="fmr È​k úl=KQ whs;u">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="103.0" layoutY="91.0" text="000">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="93.0" layoutY="40.0" prefHeight="285.0" prefWidth="61.0" text=".Kk">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="920.0" layoutY="298.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="103.0" layoutY="91.0" text="000">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="10.0" prefHeight="285.0" prefWidth="174.0" text="fmr È​k weKjqï">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="94.0" layoutY="40.0" prefHeight="285.0" prefWidth="61.0" text=".Kk">
+               <font>
+                  <Font name="FMAbhaya x" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label fx:id="lblDate" layoutX="978.0" layoutY="25.0" prefHeight="27.0" prefWidth="142.0" text="0000-00-00">
+         <font>
+            <Font name="Poppins Regular" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="1111.0" layoutY="25.0" prefHeight="27.0" prefWidth="154.0" text="00-00">
+         <font>
+            <Font name="Poppins Regular" size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
