@@ -9,21 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="LoginForm.fxml Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-add-48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-delete-48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-minimize-48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-minimize-50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-purchase-order-60.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-update-64.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/AMS_POS_System_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/AMS_POS_System_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/AMS_POS_System_jar/AMS_POS_System.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/AMS_POS_System_jar/AMS_POS_System.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/HomeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/LoginFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LoginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LoginForm.fxml" afterDir="false" />
+    <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Adding Font">
+      <change beforePath="$PROJECT_DIR$/out/artifacts/AMS_POS_System_jar/AMS_POS_System.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,14 +64,30 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/assest" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Demo">
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo" />
+      <module name="AMS_POS_System" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginFormController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lk.ijse.LoginFormController" />
       <module name="AMS_POS_System" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="lk.ijse.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -92,22 +95,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lk.ijse.Main" />
-      <module name="AMS_POS_System" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lk.ijse.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="AMS_POS_System-1.0-SNAPSHOT-shaded.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/AMS_POS_System-1.0-SNAPSHOT-shaded.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AMS_POS_System-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/AMS_POS_System-1.0-SNAPSHOT.jar" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Demo" />
+        <item itemvalue="JAR Application.AMS_POS_System-1.0-SNAPSHOT-shaded.jar" />
+        <item itemvalue="JAR Application.AMS_POS_System-1.0-SNAPSHOT.jar" />
         <item itemvalue="Application.LoginFormController" />
       </list>
     </recent_temporary>
@@ -133,6 +133,7 @@
       <workItem from="1696046058319" duration="1751000" />
       <workItem from="1696072466765" duration="146000" />
       <workItem from="1696298997906" duration="11000" />
+      <workItem from="1696393151332" duration="7534000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -158,7 +159,31 @@
       <option name="project" value="LOCAL" />
       <updated>1695920136710</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="LoginForm.fxml Commit">
+      <option name="closed" value="true" />
+      <created>1696394138184</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696394138184</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Adding Font">
+      <option name="closed" value="true" />
+      <created>1696394486757</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696394486757</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Adding Font">
+      <option name="closed" value="true" />
+      <created>1696409389127</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696409389127</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +192,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first Commit" />
     <MESSAGE value="LoginForm.fxml Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="LoginForm.fxml Commit" />
+    <MESSAGE value="Adding Font" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Font" />
   </component>
 </project>
