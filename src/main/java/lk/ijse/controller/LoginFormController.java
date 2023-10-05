@@ -1,4 +1,4 @@
-package lk.ijse;
+package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -10,6 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.util.FactoryConfiguration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 
@@ -26,6 +29,16 @@ public class LoginFormController extends Application {
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
+
+        Session session = null;
+        try {
+            session = FactoryConfiguration.getInstance().getSession();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Transaction transaction = session.beginTransaction();
+        transaction.commit();
+        session.close();
     }
 
     public static void main(String[] args) {

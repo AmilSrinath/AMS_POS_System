@@ -1,10 +1,15 @@
-package lk.ijse;
+package lk.ijse.controller;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -39,6 +44,28 @@ public class HomeFormController implements Initializable {
             }
         });
         thread.start();
+    }
+
+    public void AddItemOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddItemForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void UpdateItemOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void DeleteItemOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void PlaceOrderOnAction(ActionEvent actionEvent) {
+
     }
 }
 

@@ -69,3 +69,12 @@
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
 }
+
+.PromtText{
+    -fx-prompt-text-fill: grey;
+}
+
+.PromtTextOfComboBox{
+    -fx-font-size: 16px;
+    -fx-prompt-text-fill: grey;
+}

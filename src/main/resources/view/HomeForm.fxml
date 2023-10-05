@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="HomeForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HomeFormController">
+<AnchorPane fx:id="HomeForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeFormController">
    <children>
-      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="33.0" layoutY="149.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="142.0" styleClass="addButton" stylesheets="@../Style/CSS.css" text="Add Item" textFill="WHITE">
+      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="33.0" layoutY="149.0" mnemonicParsing="false" onAction="#AddItemOnAction" prefHeight="22.0" prefWidth="142.0" styleClass="addButton" stylesheets="@../Style/CSS.css" text="Add Item" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
          </font>
@@ -22,7 +22,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="TOP" graphicTextGap="9.0" layoutX="33.0" layoutY="253.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="142.0" styleClass="updateButton" stylesheets="@../Style/CSS.css" text="Update Item" textFill="WHITE">
+      <Button contentDisplay="TOP" graphicTextGap="9.0" layoutX="33.0" layoutY="253.0" mnemonicParsing="false" onAction="#UpdateItemOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="updateButton" stylesheets="@../Style/CSS.css" text="Update Item" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
          </font>
@@ -34,7 +34,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="358.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="142.0" styleClass="deleteButton" stylesheets="@../Style/CSS.css" text="Delete Item" textFill="WHITE">
+      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="358.0" mnemonicParsing="false" onAction="#DeleteItemOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="deleteButton" stylesheets="@../Style/CSS.css" text="Delete Item" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
          </font>
@@ -46,7 +46,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="506.0" mnemonicParsing="false" prefHeight="96.0" prefWidth="142.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="506.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
          </font>
