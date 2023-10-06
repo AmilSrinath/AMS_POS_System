@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="PlaceOrderForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PlaceOrderFormController">
+   <children>
+      <StackPane prefHeight="78.0" prefWidth="1279.0" style="-fx-background-color: #0079FF;">
+         <children>
+            <Label text="Place Order" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <ImageView fitHeight="43.0" fitWidth="45.0" layoutX="20.0" layoutY="15.0" onMouseClicked="#btnBackOnMouceClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assest/imgBack.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>
