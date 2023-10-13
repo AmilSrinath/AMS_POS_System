@@ -78,3 +78,13 @@
     -fx-font-size: 16px;
     -fx-prompt-text-fill: grey;
 }
+
+.btnViewItem{
+    -fx-background-color: #95a5a6;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.btnViewItem:hover{
+    -fx-background-color: grey;
+}

@@ -91,5 +91,14 @@ public class HomeFormController implements Initializable {
     public void setStage(Stage stage) {
         this.MainStage=stage;
     }
+
+    public void ViewItemOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewItemForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 }
 
