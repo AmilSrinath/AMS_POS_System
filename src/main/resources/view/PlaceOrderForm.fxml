@@ -31,7 +31,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <JFXTextField fx:id="txtItemID" layoutX="174.0" layoutY="179.0" onAction="#txtItemIDOnAction" prefHeight="32.0" prefWidth="218.0" promptText="Item ID" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
+      <JFXTextField fx:id="txtItemName" layoutX="174.0" layoutY="179.0" onAction="#txtItemNameOnAction" prefHeight="32.0" prefWidth="218.0" promptText="Item Name" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
       <TableView layoutX="174.0" layoutY="265.0" prefHeight="200.0" prefWidth="931.0">
         <columns>
           <TableColumn prefWidth="149.99996948242188" text="ItemID" />

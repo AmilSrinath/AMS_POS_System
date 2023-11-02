@@ -1,6 +1,8 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,18 +10,30 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dao.Custom.ItemDAO;
+import lk.ijse.dao.DAOFactory;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
-
+    ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     public AnchorPane PlaceOrderForm;
-    public JFXTextField txtItemID;
     public JFXTextField txtQuantity;
+    public JFXTextField txtItemName;
     Stage MainStage = new Stage();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            loadItemName();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void btnBackOnMouceClicked(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeForm.fxml"));
@@ -33,16 +47,20 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     public void setStage(Stage mainStage) {
-        this.MainStage=mainStage;
+        this.MainStage = mainStage;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] s = {"I001","I002","I003"};
-        TextFields.bindAutoCompletion(txtItemID,s);
-    }
-
-    public void txtItemIDOnAction(ActionEvent actionEvent) {
+    public void txtItemNameOnAction(ActionEvent actionEvent) {
         txtQuantity.requestFocus();
+    }
+
+    private void loadItemName() throws IOException {
+        List<String> id = itemDAO.loadItemName();
+        ObservableList<String> obList = FXCollections.observableArrayList();
+
+        for (String un : id) {
+            obList.add(un);
+        }
+        TextFields.bindAutoCompletion(txtItemName,obList);
     }
 }

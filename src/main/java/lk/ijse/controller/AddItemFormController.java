@@ -5,9 +5,15 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.Custom.ItemBO;
+import lk.ijse.dto.ItemDTO;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AddItemFormController implements Initializable {
@@ -28,14 +34,35 @@ public class AddItemFormController implements Initializable {
 
     @FXML
     private JFXTextField txtUnitCost;
+    ItemBO studentBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) {
+    public void cleanTextField(){
+        txtItemID.clear();
+        txtItemName.clear();
+        txtItemQuantity.clear();
+        txtUnitSellingPrice.clear();
+        txtUnitCost.clear();
+    }
 
+    public void btnAddOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
+        String itemID = txtItemID.getText();
+        String itemName = txtItemName.getText();
+        int itemQut = Integer.parseInt(txtItemQuantity.getText());
+        double itemUnitSellingPrice = Double.parseDouble(txtUnitSellingPrice.getText());
+        double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
+
+        if (studentBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost))) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Saved!!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Error!!").show();
+        }
+
+        cleanTextField();
     }
 
 }
