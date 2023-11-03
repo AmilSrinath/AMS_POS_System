@@ -41,6 +41,6 @@ public class ItemBOImpl implements ItemBO {
 
     @Override
     public String generateNewItemID() throws SQLException, ClassNotFoundException, IOException {
-        return null;
+        return itemDAO.generateNewID();
     }
 }

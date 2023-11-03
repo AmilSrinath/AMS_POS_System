@@ -18,7 +18,7 @@
             </Label>
          </children>
       </StackPane>
-      <JFXTextField fx:id="txtItemID" layoutX="119.0" layoutY="154.0" prefHeight="32.0" prefWidth="281.0" promptText="Item ID" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtItemID" disable="true" layoutX="119.0" layoutY="154.0" prefHeight="32.0" prefWidth="281.0" promptText="Item ID" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>

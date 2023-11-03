@@ -34,11 +34,15 @@ public class AddItemFormController implements Initializable {
 
     @FXML
     private JFXTextField txtUnitCost;
-    ItemBO studentBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
+    ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try {
+            generateNextItemId();
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void cleanTextField(){
@@ -56,13 +60,16 @@ public class AddItemFormController implements Initializable {
         double itemUnitSellingPrice = Double.parseDouble(txtUnitSellingPrice.getText());
         double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
 
-        if (studentBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost))) {
+        if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost))) {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved!!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error!!").show();
         }
-
         cleanTextField();
+    }
+    private void generateNextItemId() throws SQLException, IOException, ClassNotFoundException {
+        String nextId = itemBO.generateNewItemID();
+        txtItemID.setText(nextId);
     }
 
 }

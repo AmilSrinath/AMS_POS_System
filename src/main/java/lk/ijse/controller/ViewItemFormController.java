@@ -36,7 +36,6 @@ public class ViewItemFormController implements Initializable {
     public TableColumn<?, ?> colUnitPrice;
     @FXML
     public TableColumn<?, ?> colUnitCost;
-
     ObservableList<Item> observableList;
     ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
     Stage stage = new Stage();

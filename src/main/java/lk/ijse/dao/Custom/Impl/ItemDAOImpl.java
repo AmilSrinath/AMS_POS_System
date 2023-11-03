@@ -61,7 +61,31 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException, IOException {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT itemid FROM item ORDER BY itemid DESC LIMIT 1");
+        String id = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        if(id != null){
+            String[] strings = id.split("I0");
+            int newID = Integer.parseInt(strings[1]);
+            newID++;
+            String ID = String.valueOf(newID);
+            int length = ID.length();
+            if (length < 2){
+                return "I00"+newID;
+            }else {
+                if (length < 3){
+                    return "I0"+newID;
+                }else {
+                    return "I"+newID;
+                }
+            }
+        }else {
+            return "I001";
+        }
     }
 
     @Override
