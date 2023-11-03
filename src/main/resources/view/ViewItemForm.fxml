@@ -9,14 +9,14 @@
 
 <AnchorPane prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewItemFormController">
    <children>
-      <TableView fx:id="tblItem" layoutX="37.0" layoutY="103.0" onMouseClicked="#rowOnMouseClicked" prefHeight="353.0" prefWidth="742.0">
+      <TableView fx:id="tblItem" layoutX="45.0" layoutY="102.0" onMouseClicked="#rowOnMouseClicked" prefHeight="353.0" prefWidth="725.0">
         <columns>
           <TableColumn fx:id="colItemID" text="ItemID" />
           <TableColumn fx:id="colItemName" prefWidth="186.0" text="ItemName" />
             <TableColumn fx:id="colItemQuantity" prefWidth="100.0" text="ItemQuantity" />
             <TableColumn fx:id="colUnitPrice" prefWidth="136.0" text="UnitPrice" />
-            <TableColumn fx:id="colUnitCost" prefWidth="117.0" text="UnitCost" />
-            <TableColumn fx:id="colStatus" prefWidth="120.0" text="Status" />
+            <TableColumn fx:id="colUnitCost" prefWidth="128.0" text="UnitCost" />
+            <TableColumn fx:id="colStatus" prefWidth="100.0" text="Status" />
         </columns>
       </TableView>
       <StackPane prefHeight="78.0" prefWidth="815.0" style="-fx-background-color: #95a5a6;">

@@ -41,15 +41,7 @@ public class DeleteItemFormController implements Initializable {
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
-        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
-        if (result.orElse(no) == yes) {
-            if (!itemBO.deleteItem(txtItemID.getText())) {
-                new Alert(Alert.AlertType.ERROR, "Error!!").show();
-            }
-        }
         txtItemID.clear();
         txtItemName.clear();
     }

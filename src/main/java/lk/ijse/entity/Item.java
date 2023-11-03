@@ -2,6 +2,7 @@ package lk.ijse.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import javafx.scene.control.Button;
 import lombok.*;
 
 @AllArgsConstructor

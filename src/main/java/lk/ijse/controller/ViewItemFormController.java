@@ -5,10 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -21,11 +25,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ViewItemFormController implements Initializable {
     public TableView<Item> tblItem;
-    public TableColumn<?, ?> colStatus;
+    public TableColumn<Item, Void> colStatus;
     @FXML
     private TableColumn<?, ?> colItemID;
     @FXML
@@ -48,6 +53,7 @@ public class ViewItemFormController implements Initializable {
             throw new RuntimeException(e);
         }
         setCellValueFactory();
+        setupDeleteButtonColumn();
     }
 
     private void getAll() throws SQLException, IOException, ClassNotFoundException {
@@ -94,5 +100,57 @@ public class ViewItemFormController implements Initializable {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    private void removeItem(Item item) throws SQLException, IOException, ClassNotFoundException {
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+        if (result.orElse(no) == yes) {
+
+            if (itemBO.deleteItem(item.getItemID())) {
+                observableList.remove(item);
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Error!!").show();
+            }
+        }
+    }
+
+    private void setupDeleteButtonColumn() {
+        colStatus.setCellFactory(param -> new TableCell<Item, Void>() {
+            private final Button deleteButton = new Button();
+
+            {
+                Image image = new Image(getClass().getResourceAsStream("/assest/bin.png"));
+                ImageView imageView = new ImageView(image);
+
+                imageView.setFitWidth(16);
+                imageView.setFitHeight(16);
+
+                setAlignment(Pos.CENTER);
+
+                deleteButton.setGraphic(imageView);
+
+                deleteButton.setOnAction(event -> {
+                    Item item = getTableView().getItems().get(getIndex());
+                    try {
+                        removeItem(item);
+                    } catch (SQLException | IOException | ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(deleteButton);
+                }
+            }
+        });
     }
 }
