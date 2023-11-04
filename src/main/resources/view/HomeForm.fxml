@@ -22,18 +22,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="202.0" mnemonicParsing="false" onAction="#DeleteItemOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="deleteButton" stylesheets="@../Style/CSS.css" text="Delete Item" textFill="WHITE">
-         <font>
-            <Font name="Poppins Regular" size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assest/icons8-delete-48.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="566.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
@@ -165,7 +153,7 @@
             <Font name="Poppins Regular" size="19.0" />
          </font>
       </Label>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="320.0" mnemonicParsing="false" onAction="#ViewItemOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="btnViewItem" stylesheets="@../Style/CSS.css" text="View Item" textFill="WHITE">
+      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="200.0" mnemonicParsing="false" onAction="#ViewItemOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="btnViewItem" stylesheets="@../Style/CSS.css" text="View Item" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
          </font>

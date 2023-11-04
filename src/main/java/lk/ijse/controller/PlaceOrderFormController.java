@@ -7,11 +7,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.dto.ItemDTO;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
@@ -20,6 +24,12 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
+    public Label lblItemQut;
+    public TableColumn<?,?> colItemID;
+    public TableColumn<?,?> colItemName;
+    public TableColumn<?,?> colQuantity;
+    public TableColumn<?,?> colTotal;
+    public TableColumn<?,?> colAction;
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     public AnchorPane PlaceOrderForm;
     public JFXTextField txtQuantity;
@@ -50,7 +60,11 @@ public class PlaceOrderFormController implements Initializable {
         this.MainStage = mainStage;
     }
 
-    public void txtItemNameOnAction(ActionEvent actionEvent) {
+    public void txtItemNameOnAction(ActionEvent actionEvent) throws IOException {
+        //Get Item Quantity
+        ItemDTO itemDetails = itemDAO.getItemDetailsWithName(txtItemName.getText());
+        lblItemQut.setText(String.valueOf(itemDetails.getItemQuantity()));
+
         txtQuantity.requestFocus();
     }
 
@@ -61,6 +75,22 @@ public class PlaceOrderFormController implements Initializable {
         for (String un : id) {
             obList.add(un);
         }
-        TextFields.bindAutoCompletion(txtItemName,obList);
+        TextFields.bindAutoCompletion(txtItemName, obList);
+    }
+
+    public void txtQuantityOnKeyReleased(KeyEvent keyEvent) {
+        try{
+            int qut = Integer.parseInt(txtQuantity.getText());
+            int lblQut = Integer.parseInt(lblItemQut.getText());
+            if (qut > lblQut | qut <= 0) {
+                txtQuantity.setStyle("-fx-background-color: red;");
+            }else {
+                txtQuantity.setStyle("-fx-background-color: none;");
+            }
+        }catch (NumberFormatException e){}
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) {
+
     }
 }

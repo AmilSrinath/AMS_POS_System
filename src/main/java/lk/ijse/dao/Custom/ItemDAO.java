@@ -13,4 +13,6 @@ public interface ItemDAO extends CrudDAO<Item> {
     List<String> loadItemName() throws IOException;
 
     ItemDTO getItemDetails(String itemID) throws IOException;
+
+    ItemDTO getItemDetailsWithName(String text) throws IOException;
 }

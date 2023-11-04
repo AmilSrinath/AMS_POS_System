@@ -59,15 +59,6 @@ public class HomeFormController implements Initializable {
         stage.show();
     }
 
-    public void DeleteItemOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DeleteItemForm.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
-
     public void PlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PlaceOrderForm.fxml"));
         AnchorPane anchorPane = loader.load();
@@ -75,6 +66,7 @@ public class HomeFormController implements Initializable {
         PlaceOrderFormController controller = loader.getController();
         controller.setStage(MainStage);
         MainStage.setScene(scene);
+        MainStage.centerOnScreen();
         MainStage.setResizable(false);
         MainStage.show();
     }
@@ -90,6 +82,7 @@ public class HomeFormController implements Initializable {
         ViewItemFormController controller = loader.getController();
         controller.setStage(stage);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
     }

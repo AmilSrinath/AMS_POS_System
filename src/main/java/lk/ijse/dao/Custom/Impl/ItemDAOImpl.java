@@ -132,4 +132,25 @@ public class ItemDAOImpl implements ItemDAO {
             return null;
         }
     }
+
+    @Override
+    public ItemDTO getItemDetailsWithName(String id) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM item WHERE itemName = :itemName");
+        nativeQuery.setParameter("itemName", id);
+        Object[] result = (Object[]) nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        if (result != null && result.length > 0) {
+            ItemDTO itemDTO = new ItemDTO();
+            itemDTO.setItemName((String) result[1]);
+            itemDTO.setItemQuantity((int) result[2]);
+
+            return itemDTO;
+        } else {
+            return null;
+        }
+    }
 }
