@@ -90,7 +90,7 @@ public class PlaceOrderFormController implements Initializable {
             int remainingQuantity = itemDetails.getItemQuantity() - totalOrderedQuantity;
             lblItemQut.setText(String.valueOf(remainingQuantity));
         } else {
-            lblItemQut.setText("Item not found");
+            lblItemQut.setText("0");
         }
     }
 
@@ -123,9 +123,11 @@ public class PlaceOrderFormController implements Initializable {
             int remainingQuantity = itemDetails.getItemQuantity() - totalOrderedQuantity;
             lblItemQut.setText(String.valueOf(remainingQuantity));
         } else {
-            lblItemQut.setText("Item not found");
+            lblItemQut.setText("0");
         }
 
+        txtQuantity.setStyle("-fx-background-color: none;");
+        txtQuantity.setText("");
         txtQuantity.requestFocus();
     }
 
@@ -152,7 +154,7 @@ public class PlaceOrderFormController implements Initializable {
         }
     }
 
-    public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
+    public void addItem() throws IOException {
         ItemDTO itemDetails = itemDAO.getItemDetailsWithName(txtItemName.getText());
 
         try {
@@ -203,9 +205,18 @@ public class PlaceOrderFormController implements Initializable {
             }
         } catch (NumberFormatException e) {}
 
+        lblItemQut.setText("0");
         txtQuantity.clear();
         txtItemName.clear();
         txtItemName.requestFocus();
+    }
+
+    public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
+        addItem();
+    }
+
+    public void txtQuantityOnAction(ActionEvent actionEvent) throws IOException {
+        addItem();
     }
 
     public void setNetTotal(){

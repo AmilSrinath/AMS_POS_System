@@ -15,7 +15,7 @@
 <AnchorPane fx:id="PlaceOrderForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PlaceOrderFormController">
    <children>
       <JFXTextField fx:id="txtItemName" layoutX="174.0" layoutY="179.0" onAction="#txtItemNameOnAction" prefHeight="32.0" prefWidth="218.0" promptText="Item Name" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
-      <JFXTextField fx:id="txtQuantity" layoutX="438.0" layoutY="179.0" onKeyReleased="#txtQuantityOnKeyReleased" prefHeight="32.0" prefWidth="218.0" promptText="Quantity" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
+      <JFXTextField fx:id="txtQuantity" layoutX="438.0" layoutY="179.0" onAction="#txtQuantityOnAction" onKeyReleased="#txtQuantityOnKeyReleased" prefHeight="32.0" prefWidth="218.0" promptText="Quantity" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
       <Button layoutX="1001.0" layoutY="179.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="32.0" prefWidth="93.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Add" textFill="WHITE">
          <font>
             <Font size="17.0" />
