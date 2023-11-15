@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.Custom.Impl.DataRefreshListener;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
@@ -26,7 +27,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ViewItemFormController implements Initializable {
+public class ViewItemFormController implements Initializable, DataRefreshListener {
     public TableView<Item> tblItem;
     public TableColumn<Item, Void> colStatus;
     @FXML
@@ -72,6 +73,14 @@ public class ViewItemFormController implements Initializable {
         colUnitCost.setCellValueFactory(new PropertyValueFactory<>("unitCost"));
     }
 
+    public void refreshTable() {
+        try {
+            getAll();
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     String id = "";
 
     public void rowOnMouseClicked(MouseEvent mouseEvent) throws IOException {
@@ -89,15 +98,15 @@ public class ViewItemFormController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateItemForm.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
+
         UpdateItemFormController controller = loader.getController();
         controller.setValues(id,itemName,itemQut,itemUnitPrice,itemUnitCost,stage);
+        controller.setDataRefreshListener(this);
+
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
     }
 
     private void removeItem(Item item) throws SQLException, IOException, ClassNotFoundException {
@@ -150,5 +159,14 @@ public class ViewItemFormController implements Initializable {
                 }
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        try {
+            getAll();
+        } catch (SQLException | IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

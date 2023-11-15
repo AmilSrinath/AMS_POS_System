@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.Custom.Impl.DataRefreshListener;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.DAOFactory;
@@ -30,11 +31,16 @@ public class UpdateItemFormController {
     private JFXTextField txtUnitCost;
 
     public void cleanTextField(){
-        txtItemID.clear();
         txtItemName.clear();
         txtItemQuantity.clear();
         txtUnitSellingPrice.clear();
         txtUnitCost.clear();
+    }
+
+    private DataRefreshListener dataRefreshListener;
+
+    public void setDataRefreshListener(DataRefreshListener dataRefreshListener) {
+        this.dataRefreshListener = dataRefreshListener;
     }
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
@@ -47,6 +53,11 @@ public class UpdateItemFormController {
         if (!itemBO.updateItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost))) {
             new Alert(Alert.AlertType.ERROR, "Error!!").show();
         }
+
+        if (dataRefreshListener != null) {
+            dataRefreshListener.onRefresh();
+        }
+
         cleanTextField();
         stage.getScene().getWindow().hide();
     }

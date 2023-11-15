@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,8 +21,9 @@ public class HomeFormController implements Initializable {
     public Label lblTime;
     public AnchorPane HomeForm;
 
-    Stage stage = new Stage();
-    Stage MainStage = new Stage();
+    Stage homeFormStage; // Separate stage for HomeForm
+    Stage placeOrderFormStage = new Stage(); // Separate stage for PlaceOrderForm
+    Stage viewItemFormStage = new Stage(); // Separate stage for ViewItemForm
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,37 +56,63 @@ public class HomeFormController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddItemForm.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+
+        // Create a new stage for the AddItemForm
+        Stage addItemFormStage = new Stage();
+        addItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
+        addItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
+
+        addItemFormStage.setScene(scene);
+        addItemFormStage.setResizable(false);
+        addItemFormStage.centerOnScreen();
+
+        // Disable HomeForm when AddItemForm is open
+        HomeForm.setDisable(true);
+
+        // Handle close event to enable HomeForm when AddItemForm is closed
+        addItemFormStage.setOnCloseRequest(windowEvent -> HomeForm.setDisable(false));
+
+        addItemFormStage.show();
     }
 
     public void PlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PlaceOrderForm.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
+
         PlaceOrderFormController controller = loader.getController();
-        controller.setStage(MainStage);
-        MainStage.setScene(scene);
-        MainStage.centerOnScreen();
-        MainStage.setResizable(false);
-        MainStage.show();
+        controller.setStage(homeFormStage);
+
+        homeFormStage.setScene(scene);
+        homeFormStage.setResizable(false);
+        homeFormStage.centerOnScreen();
+        homeFormStage.show();
     }
 
-    public void setStage(Stage stage) {
-        this.MainStage=stage;
+    public void setStage(Stage homeFormStage) {
+        this.homeFormStage = homeFormStage;
     }
 
     public void ViewItemOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewItemForm.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
-        ViewItemFormController controller = loader.getController();
-        controller.setStage(stage);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setResizable(false);
-        stage.show();
+
+        // Create a new stage for the ViewItemForm
+        Stage viewItemFormStage = new Stage();
+        viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
+        viewItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
+
+        viewItemFormStage.setScene(scene);
+        viewItemFormStage.setResizable(false);
+        viewItemFormStage.centerOnScreen();
+
+        // Disable HomeForm when ViewItemForm is open
+        HomeForm.setDisable(true);
+
+        // Handle close event to enable HomeForm when ViewItemForm is closed
+        viewItemFormStage.setOnCloseRequest(windowEvent -> HomeForm.setDisable(false));
+
+        viewItemFormStage.show();
     }
 }
-

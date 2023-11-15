@@ -145,8 +145,10 @@ public class ItemDAOImpl implements ItemDAO {
 
         if (result != null && result.length > 0) {
             ItemDTO itemDTO = new ItemDTO();
+            itemDTO.setItemID((String) result[0]);
             itemDTO.setItemName((String) result[1]);
             itemDTO.setItemQuantity((int) result[2]);
+            itemDTO.setUnitSellingPrice((double) result[4]);
 
             return itemDTO;
         } else {
