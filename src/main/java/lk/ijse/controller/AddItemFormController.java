@@ -11,11 +11,14 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
+import lk.ijse.entity.Order;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 public class AddItemFormController implements Initializable {
@@ -62,12 +65,13 @@ public class AddItemFormController implements Initializable {
         double itemUnitSellingPrice = Double.parseDouble(txtUnitSellingPrice.getText());
         double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
 
-        if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost))) {
+        if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<Order>()))) {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved!!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error!!").show();
         }
         cleanTextField();
+        generateNextItemId();
     }
     private void generateNextItemId() throws SQLException, IOException, ClassNotFoundException {
         String nextId = itemBO.generateNewItemID();

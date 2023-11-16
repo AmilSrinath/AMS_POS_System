@@ -1,8 +1,10 @@
 package lk.ijse.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,4 +20,7 @@ public class Item {
     private int itemQuantity;
     private double unitSellingPrice;
     private double unitCost;
+
+    @ManyToMany(mappedBy = "items")
+    private Set<Order> orders = new HashSet<>();
 }

@@ -1,7 +1,6 @@
 package lk.ijse.controller;
 
 import com.jfoenix.controls.JFXTextField;
-import jakarta.persistence.criteria.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -19,13 +18,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dao.Custom.ItemDAO;
+import lk.ijse.dao.Custom.OrderDAO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
-import lk.ijse.entity.OrderItem;
+import lk.ijse.entity.Item;
+import lk.ijse.entity.Order;
+import lk.ijse.entity.TM.OrderTM;
+import lk.ijse.util.FactoryConfiguration;
 import org.controlsfx.control.textfield.TextFields;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,22 +45,25 @@ public class PlaceOrderFormController implements Initializable {
     public TableColumn<?, ?> colItemName;
     public TableColumn<?, ?> colQuantity;
     public TableColumn<?, ?> colTotal;
-    public TableColumn<OrderItem, Void> colAction;
-    public TableView<OrderItem> tblOrder;
+    public TableColumn<OrderTM, Void> colAction;
+    public TableView<OrderTM> tblOrder;
     public TableColumn<?,?> colUnitPrice;
     public Label lblNetTotal;
+    public Label lblOrderID;
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
+    OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
     public AnchorPane PlaceOrderForm;
     public JFXTextField txtQuantity;
     public JFXTextField txtItemName;
     Stage MainStage = new Stage();
-    private ObservableList<OrderItem> orderItems = FXCollections.observableArrayList();
+    private ObservableList<OrderTM> orderTMS = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             loadItemName();
-        } catch (IOException e) {
+            generateNextOrderId();
+        } catch (IOException | ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -63,11 +76,11 @@ public class PlaceOrderFormController implements Initializable {
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
 
         // Set the items for the table view
-        tblOrder.setItems(orderItems);
+        tblOrder.setItems(orderTMS);
 
         setupDeleteButtonColumn();
 
-        orderItems.addListener((ListChangeListener<OrderItem>) change -> {
+        orderTMS.addListener((ListChangeListener<OrderTM>) change -> {
             while (change.next()) {
                 if (change.wasRemoved()) {
                     // Handle item removal here
@@ -163,11 +176,11 @@ public class PlaceOrderFormController implements Initializable {
             double total = quantity * unitPrice;
 
             if (quantity > 0 && quantity <= itemDetails.getItemQuantity()) {
-                OrderItem existingItem = null;
+                OrderTM existingItem = null;
 
-                for (OrderItem orderItem : orderItems) {
-                    if (orderItem.getItemName().equals(txtItemName.getText())) {
-                        existingItem = orderItem;
+                for (OrderTM orderTM : orderTMS) {
+                    if (orderTM.getItemName().equals(txtItemName.getText())) {
+                        existingItem = orderTM;
                         break;
                     }
                 }
@@ -195,8 +208,8 @@ public class PlaceOrderFormController implements Initializable {
                         int remainingQuantity = itemDetails.getItemQuantity() - (totalOrderedQuantity + quantity);
                         lblItemQut.setText(String.valueOf(remainingQuantity));
 
-                        OrderItem orderItem = new OrderItem(itemDetails.getItemID(), txtItemName.getText(), unitPrice, quantity, total);
-                        orderItems.add(orderItem);
+                        OrderTM orderTM = new OrderTM(itemDetails.getItemID(), txtItemName.getText(), unitPrice, quantity, total);
+                        orderTMS.add(orderTM);
                         setNetTotal();
                     } else {
                         new Alert(Alert.AlertType.ERROR, "Please Check Quantity").show();
@@ -221,7 +234,7 @@ public class PlaceOrderFormController implements Initializable {
 
     public void setNetTotal(){
         double netTotal = 0;
-        for(OrderItem item:orderItems){
+        for(OrderTM item: orderTMS){
             netTotal+=item.getTotal();
         }
         System.out.println(netTotal);
@@ -230,14 +243,14 @@ public class PlaceOrderFormController implements Initializable {
 
     private double calculateTotalNetAmount() {
         double netTotal = 0.0;
-        for (OrderItem orderItem : orderItems) {
-            netTotal += orderItem.getTotal();
+        for (OrderTM orderTM : orderTMS) {
+            netTotal += orderTM.getTotal();
         }
         return netTotal;
     }
 
     private void setupDeleteButtonColumn() {
-        colAction.setCellFactory(param -> new TableCell<OrderItem, Void>() {
+        colAction.setCellFactory(param -> new TableCell<OrderTM, Void>() {
             private final Button deleteButton = new Button();
 
             {
@@ -251,8 +264,8 @@ public class PlaceOrderFormController implements Initializable {
                 deleteButton.setGraphic(imageView);
 
                 deleteButton.setOnAction(event -> {
-                    OrderItem orderItem = getTableView().getItems().get(getIndex());
-                    orderItems.remove(orderItem);
+                    OrderTM orderTM = getTableView().getItems().get(getIndex());
+                    orderTMS.remove(orderTM);
 
                     double netTotal = calculateTotalNetAmount();
                     lblNetTotal.setText(String.valueOf(netTotal));
@@ -273,11 +286,56 @@ public class PlaceOrderFormController implements Initializable {
 
     private int calculateTotalOrderedQuantity(String itemName) {
         int totalOrderedQuantity = 0;
-        for (OrderItem orderItem : orderItems) {
-            if (orderItem.getItemName().equals(itemName)) {
-                totalOrderedQuantity += orderItem.getQuantity();
+        for (OrderTM orderTM : orderTMS) {
+            if (orderTM.getItemName().equals(itemName)) {
+                totalOrderedQuantity += orderTM.getQuantity();
             }
         }
         return totalOrderedQuantity;
+    }
+
+    private void generateNextOrderId() throws SQLException, IOException, ClassNotFoundException {
+        String nextId = orderDAO.generateNewID();
+        lblOrderID.setText(nextId);
+    }
+
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
+        String date = String.valueOf(LocalDate.now());
+        double netTotal = Double.parseDouble(lblNetTotal.getText());
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime localTime = LocalTime.now();
+        String time = dtf.format(localTime);
+
+        //--------------------------------------
+
+        Order order = new Order();
+        order.setOrderID(lblOrderID.getText());
+        order.setDate(date);
+        order.setTime(time);
+        order.setNetTotal(netTotal);
+
+        HashSet<Item> items = new HashSet<>();
+
+        for (OrderTM orderTM : orderTMS) {
+            Item item = new Item();
+            item.setItemID(orderTM.getItemID());
+            items.add(item);
+        }
+
+        order.setItems(items);
+
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.save(order);
+
+        transaction.commit();
+        session.close();
+
+        //---------------------------------------
+        lblNetTotal.setText("0");
+        tblOrder.getItems().clear();
+        generateNextOrderId();
     }
 }

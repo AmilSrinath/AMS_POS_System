@@ -1,6 +1,7 @@
 package lk.ijse.util;
 
 import lk.ijse.entity.Item;
+import lk.ijse.entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,6 +18,7 @@ public class FactoryConfiguration {
         properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate.properties"));
         configuration.setProperties(properties);
         configuration.addAnnotatedClass(Item.class);
+        configuration.addAnnotatedClass(Order.class);
         sessionFactory = configuration.buildSessionFactory();
     }
 

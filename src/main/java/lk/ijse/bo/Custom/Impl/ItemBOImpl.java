@@ -19,19 +19,19 @@ public class ItemBOImpl implements ItemBO {
         List<ItemDTO> itemDTOList= new ArrayList<>();
         List<Item> itemList = itemDAO.getAll();
         for (Item item : itemList) {
-            itemDTOList.add(new ItemDTO(item.getItemID(), item.getItemName(), item.getItemQuantity(), item.getUnitSellingPrice(), item.getUnitCost()));
+            itemDTOList.add(new ItemDTO(item.getItemID(), item.getItemName(), item.getItemQuantity(), item.getUnitSellingPrice(), item.getUnitCost(), item.getOrders()));
         }
         return itemDTOList;
     }
 
     @Override
     public boolean addItem(ItemDTO dto) throws SQLException, ClassNotFoundException, IOException {
-        return itemDAO.add(new Item(dto.getItemID(), dto.getItemName(), dto.getItemQuantity(), dto.getUnitSellingPrice(), dto.getUnitCost()));
+        return itemDAO.add(new Item(dto.getItemID(), dto.getItemName(), dto.getItemQuantity(), dto.getUnitSellingPrice(), dto.getUnitCost(), dto.getOrders()));
     }
 
     @Override
     public boolean updateItem(ItemDTO dto) throws SQLException, ClassNotFoundException, IOException {
-        return itemDAO.update(new Item(dto.getItemID(),dto.getItemName(), dto.getItemQuantity(), dto.getUnitSellingPrice(), dto.getUnitCost()));
+        return itemDAO.update(new Item(dto.getItemID(),dto.getItemName(), dto.getItemQuantity(), dto.getUnitSellingPrice(), dto.getUnitCost(), dto.getOrders()));
     }
 
     @Override

@@ -11,9 +11,12 @@ import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
+import lk.ijse.entity.Order;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class UpdateItemFormController {
     ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
@@ -50,7 +53,7 @@ public class UpdateItemFormController {
         double itemUnitSellingPrice = Double.parseDouble(txtUnitSellingPrice.getText());
         double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
 
-        if (!itemBO.updateItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost))) {
+        if (!itemBO.updateItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<Order>()))) {
             new Alert(Alert.AlertType.ERROR, "Error!!").show();
         }
 

@@ -19,13 +19,12 @@ import lk.ijse.bo.Custom.Impl.DataRefreshListener;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
+import lk.ijse.entity.Order;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ViewItemFormController implements Initializable, DataRefreshListener {
     public TableView<Item> tblItem;
@@ -60,7 +59,7 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
         List<ItemDTO> allitem = itemBO.getAllItems();
 
         for (ItemDTO itemDTO : allitem){
-            observableList.add(new Item(itemDTO.getItemID(), itemDTO.getItemName(), itemDTO.getItemQuantity(), itemDTO.getUnitSellingPrice(), itemDTO.getUnitCost()));
+            observableList.add(new Item(itemDTO.getItemID(), itemDTO.getItemName(), itemDTO.getItemQuantity(), itemDTO.getUnitSellingPrice(), itemDTO.getUnitCost(), new HashSet<Order>()));
         }
         tblItem.setItems(observableList);
     }

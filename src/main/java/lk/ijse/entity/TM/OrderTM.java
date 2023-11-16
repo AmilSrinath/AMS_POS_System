@@ -1,6 +1,7 @@
-package lk.ijse.entity;
+package lk.ijse.entity.TM;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @AllArgsConstructor
@@ -10,7 +11,8 @@ import lombok.*;
 @Getter
 
 @Entity
-public class OrderItem {
+public class OrderTM {
+    @Id
     private String itemID;
     private String itemName;
     private double unitSellingPrice;
