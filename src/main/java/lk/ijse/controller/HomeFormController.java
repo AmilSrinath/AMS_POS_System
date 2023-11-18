@@ -116,7 +116,25 @@ public class HomeFormController implements Initializable {
         viewItemFormStage.show();
     }
 
-    public void OrderHistoryOnAction(ActionEvent actionEvent) {
+    public void OrderHistoryOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewOrderHistoryForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
 
+        // Create a new stage for the ViewItemForm
+        Stage viewItemFormStage = new Stage();
+        viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
+        viewItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
+
+        // Disable HomeForm when ViewItemForm is open
+        HomeForm.setDisable(true);
+
+        // Handle close event to enable HomeForm when ViewItemForm is closed
+        viewItemFormStage.setOnCloseRequest(windowEvent -> HomeForm.setDisable(false));
+        viewItemFormStage.setScene(scene);
+        viewItemFormStage.setResizable(false);
+        viewItemFormStage.centerOnScreen();
+
+        viewItemFormStage.show();
     }
 }

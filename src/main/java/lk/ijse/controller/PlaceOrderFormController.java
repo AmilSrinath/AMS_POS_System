@@ -349,5 +349,6 @@ public class PlaceOrderFormController implements Initializable {
         generateNextOrderId();
         tblOrder.getItems().clear();
         lblNetTotal.setText("0");
+        lblItemQut.setText("0");
     }
 }

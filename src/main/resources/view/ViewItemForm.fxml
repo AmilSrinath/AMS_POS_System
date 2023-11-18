@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,7 +10,7 @@
 
 <AnchorPane prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewItemFormController">
    <children>
-      <TableView fx:id="tblItem" layoutX="45.0" layoutY="102.0" onMouseClicked="#rowOnMouseClicked" prefHeight="353.0" prefWidth="725.0">
+      <TableView fx:id="tblItem" layoutX="45.0" layoutY="140.0" onMouseClicked="#rowOnMouseClicked" prefHeight="315.0" prefWidth="725.0">
         <columns>
           <TableColumn fx:id="colItemID" text="ItemID" />
           <TableColumn fx:id="colItemName" prefWidth="186.0" text="ItemName" />
@@ -28,5 +29,6 @@
             </Label>
          </children>
       </StackPane>
+      <JFXTextField fx:id="txtSearch" layoutX="547.0" layoutY="95.0" prefHeight="33.0" prefWidth="223.0" promptText="Search" />
    </children>
 </AnchorPane>

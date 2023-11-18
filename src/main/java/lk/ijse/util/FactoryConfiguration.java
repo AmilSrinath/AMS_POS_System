@@ -3,6 +3,7 @@ package lk.ijse.util;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderDetail;
+import lk.ijse.entity.TM.OrderDetailTM;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

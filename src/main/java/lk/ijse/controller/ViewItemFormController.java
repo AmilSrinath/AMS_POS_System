@@ -1,7 +1,10 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,15 +24,18 @@ import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderDetail;
+import lk.ijse.entity.TM.ItemTM;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class ViewItemFormController implements Initializable, DataRefreshListener {
     public TableView<Item> tblItem;
     public TableColumn<Item, Void> colStatus;
+    public JFXTextField txtSearch;
     @FXML
     private TableColumn<?, ?> colItemID;
     @FXML
@@ -48,6 +54,7 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             getAll();
+            searchFilter();
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -168,5 +175,35 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void searchFilter(){
+        FilteredList<Item> filterData = new FilteredList<>(observableList, e -> true);
+        txtSearch.setOnKeyReleased(e->{
+            txtSearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
+                filterData.setPredicate((Predicate<? super Item>) item->{
+                    if (newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                        return true;
+                    }
+                    String searchKeyword = newValue.toLowerCase();
+                    if (item.getItemID().toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else if(item.getItemName().toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else if(String.valueOf(item.getItemQuantity()).toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else if(String.valueOf(item.getUnitCost()).toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }else if(String.valueOf(item.getUnitSellingPrice()).toLowerCase().indexOf(searchKeyword) > -1){
+                        return true;
+                    }
+                    return false;
+                });
+            });
+
+            SortedList<Item> buyer = new SortedList<>(filterData);
+            buyer.comparatorProperty().bind(tblItem.comparatorProperty());
+            tblItem.setItems(buyer);
+        });
     }
 }

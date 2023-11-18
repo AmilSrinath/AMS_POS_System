@@ -2,6 +2,7 @@ package lk.ijse.dao.Custom.Impl;
 
 import lk.ijse.dao.Custom.OrderDetailDAO;
 import lk.ijse.entity.OrderDetail;
+import lk.ijse.entity.TM.OrderDetailTM;
 import lk.ijse.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -55,5 +56,17 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         }else {
             return "OD-100000";
         }
+    }
+
+    @Override
+    public List<OrderDetail> getAllOrderDetails() throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM order_details");
+        nativeQuery.addEntity(OrderDetail.class);
+        List<OrderDetail> orderDetailEntities = nativeQuery.getResultList();
+        transaction.commit();
+        session.close();
+        return orderDetailEntities;
     }
 }
