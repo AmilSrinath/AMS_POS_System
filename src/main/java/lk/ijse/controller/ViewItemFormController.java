@@ -20,6 +20,7 @@ import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.Order;
+import lk.ijse.entity.OrderDetail;
 
 import java.io.IOException;
 import java.net.URL;
@@ -59,7 +60,7 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
         List<ItemDTO> allitem = itemBO.getAllItems();
 
         for (ItemDTO itemDTO : allitem){
-            observableList.add(new Item(itemDTO.getItemID(), itemDTO.getItemName(), itemDTO.getItemQuantity(), itemDTO.getUnitSellingPrice(), itemDTO.getUnitCost(), new HashSet<Order>()));
+            observableList.add(new Item(itemDTO.getItemID(), itemDTO.getItemName(), itemDTO.getItemQuantity(), itemDTO.getUnitSellingPrice(), itemDTO.getUnitCost(), new HashSet<OrderDetail>()));
         }
         tblItem.setItems(observableList);
     }

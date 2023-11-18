@@ -19,10 +19,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.Custom.OrderDAO;
+import lk.ijse.dao.Custom.OrderDetailDAO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.Order;
+import lk.ijse.entity.OrderDetail;
 import lk.ijse.entity.TM.OrderTM;
 import lk.ijse.util.FactoryConfiguration;
 import org.controlsfx.control.textfield.TextFields;
@@ -52,6 +54,7 @@ public class PlaceOrderFormController implements Initializable {
     public Label lblOrderID;
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
+    OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETAIL);
     public AnchorPane PlaceOrderForm;
     public JFXTextField txtQuantity;
     public JFXTextField txtItemName;
@@ -300,42 +303,47 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
-        String date = String.valueOf(LocalDate.now());
-        double netTotal = Double.parseDouble(lblNetTotal.getText());
-
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.now();
         String time = dtf.format(localTime);
 
-        //--------------------------------------
-
-        Order order = new Order();
-        order.setOrderID(lblOrderID.getText());
-        order.setDate(date);
-        order.setTime(time);
-        order.setNetTotal(netTotal);
-
-        HashSet<Item> items = new HashSet<>();
-
-        for (OrderTM orderTM : orderTMS) {
-            Item item = new Item();
-            item.setItemID(orderTM.getItemID());
-            items.add(item);
-        }
-
-        order.setItems(items);
-
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        session.save(order);
+        Order order = new Order();
+        order.setOrderID(orderDAO.generateNewID());
+        order.setDate(String.valueOf(LocalDate.now()));
+        order.setTime(time);
 
+        String id = orderDetailDAO.generateNewID();
+
+        for (OrderTM orderTM : orderTMS) {
+            String[] strings = id.split("OD-");
+            int newID = Integer.parseInt(strings[1]) + 1;
+            id = "OD-"+newID;
+
+            OrderDetail orderDetail = new OrderDetail();
+            Item item = new Item();
+
+            item.setItemID(orderTM.getItemID());
+
+            orderDetail.setOrderDetailID(id);
+            orderDetail.setItem(item);
+            orderDetail.setOrder(order);
+            orderDetail.setSubTotal(orderTM.getTotal());
+            orderDetail.setUnitPrice(orderTM.getUnitSellingPrice());
+            orderDetail.setQuantity(orderTM.getQuantity());
+
+            order.addOrderDetail(orderDetail);
+            session.detach(item);
+        }
+
+        order.setNetTotal(Double.parseDouble(lblNetTotal.getText()));
+        session.save(order);
         transaction.commit();
         session.close();
-
-        //---------------------------------------
-        lblNetTotal.setText("0");
-        tblOrder.getItems().clear();
         generateNextOrderId();
+        tblOrder.getItems().clear();
+        lblNetTotal.setText("0");
     }
 }

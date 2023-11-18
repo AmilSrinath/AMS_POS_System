@@ -21,11 +21,10 @@ public class Order {
     private String time;
     private double netTotal;
 
-    @ManyToMany
-    @JoinTable(
-            name = "order_item",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id")
-    )
-    private Set<Item> items = new HashSet<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private Set<OrderDetail> orderDetails = new HashSet<>();
+
+    public void addOrderDetail(OrderDetail orderDetails) {
+        this.orderDetails.add(orderDetails);
+    }
 }

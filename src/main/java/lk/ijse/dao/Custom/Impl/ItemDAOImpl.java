@@ -63,28 +63,23 @@ public class ItemDAOImpl implements ItemDAO {
     public String generateNewID() throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT itemid FROM item ORDER BY itemid DESC LIMIT 1");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT itemid FROM item ORDER BY CAST(SUBSTRING(itemid, 6) AS SIGNED) DESC LIMIT 1;");
         String id = nativeQuery.uniqueResult();
         transaction.commit();
         session.close();
 
-        if(id != null){
-            String[] strings = id.split("I0");
-            int newID = Integer.parseInt(strings[1]);
-            newID++;
-            String ID = String.valueOf(newID);
-            int length = ID.length();
-            if (length < 2){
-                return "I00"+newID;
-            }else {
-                if (length < 3){
-                    return "I0"+newID;
-                }else {
-                    return "I"+newID;
-                }
+        if (id != null){
+            if (id.equals("999999")){
+                id="100000";
             }
+        }
+
+        if (id != null) {
+            String[] strings = id.split("I-");
+            int newID = Integer.parseInt(strings[1]) + 1;
+            return "I-"+newID;
         }else {
-            return "I001";
+            return "I-100000";
         }
     }
 
@@ -148,6 +143,7 @@ public class ItemDAOImpl implements ItemDAO {
             itemDTO.setItemID((String) result[0]);
             itemDTO.setItemName((String) result[1]);
             itemDTO.setItemQuantity((int) result[2]);
+            itemDTO.setUnitCost((double) result[3]);
             itemDTO.setUnitSellingPrice((double) result[4]);
 
             return itemDTO;

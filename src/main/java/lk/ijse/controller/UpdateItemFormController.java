@@ -12,6 +12,7 @@ import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Order;
+import lk.ijse.entity.OrderDetail;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,7 +54,7 @@ public class UpdateItemFormController {
         double itemUnitSellingPrice = Double.parseDouble(txtUnitSellingPrice.getText());
         double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
 
-        if (!itemBO.updateItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<Order>()))) {
+        if (!itemBO.updateItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<OrderDetail>()))) {
             new Alert(Alert.AlertType.ERROR, "Error!!").show();
         }
 

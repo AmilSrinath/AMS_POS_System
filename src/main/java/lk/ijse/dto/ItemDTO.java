@@ -2,6 +2,7 @@ package lk.ijse.dto;
 
 import jakarta.persistence.*;
 import lk.ijse.entity.Order;
+import lk.ijse.entity.OrderDetail;
 import lombok.*;
 
 import java.util.HashSet;
@@ -19,5 +20,5 @@ public class ItemDTO {
     private int itemQuantity;
     private double unitSellingPrice;
     private double unitCost;
-    private Set<Order> orders = new HashSet<>();
+    private Set<OrderDetail> orders = new HashSet<>();
 }

@@ -21,6 +21,6 @@ public class Item {
     private double unitSellingPrice;
     private double unitCost;
 
-    @ManyToMany(mappedBy = "items")
-    private Set<Order> orders = new HashSet<>();
+    @OneToMany(mappedBy = "item")
+    private Set<OrderDetail> orders = new HashSet<>();
 }

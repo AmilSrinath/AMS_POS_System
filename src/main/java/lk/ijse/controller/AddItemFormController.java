@@ -12,6 +12,7 @@ import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Order;
+import lk.ijse.entity.OrderDetail;
 
 import java.awt.*;
 import java.io.IOException;
@@ -65,7 +66,7 @@ public class AddItemFormController implements Initializable {
         double itemUnitSellingPrice = Double.parseDouble(txtUnitSellingPrice.getText());
         double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
 
-        if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<Order>()))) {
+        if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<OrderDetail>()))) {
             new Alert(Alert.AlertType.CONFIRMATION, "Saved!!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Error!!").show();

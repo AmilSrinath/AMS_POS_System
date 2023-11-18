@@ -42,17 +42,23 @@ public class OrderDAOImpl implements OrderDAO {
     public String generateNewID() throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT orderID FROM orders ORDER BY CAST(SUBSTRING(orderID, 3) AS SIGNED) DESC LIMIT 1;");
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT orderID FROM orders ORDER BY CAST(SUBSTRING(orderID, 6) AS SIGNED) DESC LIMIT 1;");
         String id = nativeQuery.uniqueResult();
         transaction.commit();
         session.close();
+
+        if (id != null){
+            if (id.equals("999999")){
+                id="100000";
+            }
+        }
 
         if (id != null) {
             String[] strings = id.split("O-");
             int newID = Integer.parseInt(strings[1]) + 1;
             return "O-"+newID;
         }else {
-            return "O-100";
+            return "O-100000";
         }
     }
 }
