@@ -52,6 +52,7 @@ public class PlaceOrderFormController implements Initializable {
     public TableColumn<?,?> colUnitPrice;
     public Label lblNetTotal;
     public Label lblOrderID;
+    public Label lblItemUnitPrice;
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
     OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETAIL);
@@ -133,6 +134,7 @@ public class PlaceOrderFormController implements Initializable {
         }
 
         ItemDTO itemDetails = itemDAO.getItemDetailsWithName(itemName);
+        lblItemUnitPrice.setText(String.valueOf(itemDetails.getUnitSellingPrice()));
 
         if (itemDetails != null) {
             int totalOrderedQuantity = calculateTotalOrderedQuantity(itemName);
@@ -333,6 +335,8 @@ public class PlaceOrderFormController implements Initializable {
             orderDetail.setSubTotal(orderTM.getTotal());
             orderDetail.setUnitPrice(orderTM.getUnitSellingPrice());
             orderDetail.setQuantity(orderTM.getQuantity());
+
+            itemDAO.updateQuantityWithItemID(orderTM.getItemID(),orderTM.getQuantity());
 
             order.addOrderDetail(orderDetail);
             session.detach(item);
