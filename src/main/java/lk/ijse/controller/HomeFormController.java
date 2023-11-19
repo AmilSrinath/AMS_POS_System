@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -24,6 +25,7 @@ public class HomeFormController implements Initializable {
     public Label lblTime;
     public AnchorPane HomeForm;
     public Label lblTodayOrderCount;
+    public Label lblYesterdayOrderCount;
 
     Stage homeFormStage; // Separate stage for HomeForm
     Stage placeOrderFormStage = new Stage(); // Separate stage for PlaceOrderForm
@@ -37,6 +39,7 @@ public class HomeFormController implements Initializable {
         TimeNow();
         try {
             setOrderCount();
+            setYesterdayOrderCount();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -152,5 +155,15 @@ public class HomeFormController implements Initializable {
     public void setOrderCount() throws IOException {
         int orderCount = homeDAO.setOrderCount(lblDate.getText());
         lblTodayOrderCount.setText(String.valueOf(orderCount));
+    }
+
+    public void setYesterdayOrderCount() throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        LocalDate date = LocalDate.parse(lblDate.getText(), formatter);
+        LocalDate newDate = date.minusDays(1);
+        String result = newDate.format(formatter);
+
+        int yesterdayOrderCount = homeDAO.setYesterdayOrderCount(result);
+        lblYesterdayOrderCount.setText(String.valueOf(yesterdayOrderCount));
     }
 }
