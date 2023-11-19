@@ -24,6 +24,7 @@ public class OrderDetail {
     private Order order;
 
     private int quantity;
+    private double unitCost;
     private double unitPrice;
     private double subTotal;
 }

@@ -16,6 +16,7 @@ public class OrderTM {
     private String itemID;
     private String itemName;
     private double unitSellingPrice;
+    private double unitCost;
     private int quantity;
     private double total;
 }

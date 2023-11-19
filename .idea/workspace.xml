@@ -9,11 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Start Layered">
+    <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ViewOrderHistoryFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ViewOrderHistoryFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/HomeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/HomeDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/TM/OrderTM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/TM/OrderTM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +197,7 @@
       <workItem from="1700189330818" duration="4218000" />
       <workItem from="1700203538037" duration="6459000" />
       <workItem from="1700216166216" duration="19064000" />
-      <workItem from="1700356723689" duration="4448000" />
+      <workItem from="1700356723689" duration="10264000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -371,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700359649481</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1700369556500</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1700369556500</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +394,8 @@
     <MESSAGE value="LoginForm.fxml Commit" />
     <MESSAGE value="Adding Font" />
     <MESSAGE value="Start Layered" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start Layered" />
+    <MESSAGE value="Inserting SQL Quary" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inserting SQL Quary" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

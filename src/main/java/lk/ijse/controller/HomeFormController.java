@@ -26,6 +26,10 @@ public class HomeFormController implements Initializable {
     public AnchorPane HomeForm;
     public Label lblTodayOrderCount;
     public Label lblYesterdayOrderCount;
+    public Label lblSellItemTypeCount;
+    public Label lblYesterdaySellItemTypeCount;
+    public Label lblProfit;
+    public Label lblYesterdayProfit;
 
     Stage homeFormStage; // Separate stage for HomeForm
     Stage placeOrderFormStage = new Stage(); // Separate stage for PlaceOrderForm
@@ -40,6 +44,10 @@ public class HomeFormController implements Initializable {
         try {
             setOrderCount();
             setYesterdayOrderCount();
+            setSellItemTypeCount();
+            setYesterdaySellItemTypeCount();
+            setProfit();
+            setYesterdayProfit();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -95,7 +103,7 @@ public class HomeFormController implements Initializable {
         Scene scene = new Scene(anchorPane);
 
         PlaceOrderFormController controller = loader.getController();
-        controller.setStage(homeFormStage);
+        controller.setStage(homeFormStage,profit);
 
         homeFormStage.setScene(scene);
         homeFormStage.setResizable(false);
@@ -103,8 +111,12 @@ public class HomeFormController implements Initializable {
         homeFormStage.show();
     }
 
-    public void setStage(Stage homeFormStage) {
+    double profit = 0;
+
+    public void setStage(Stage homeFormStage, double profit) {
         this.homeFormStage = homeFormStage;
+        this.profit = profit;
+        System.out.println(this.profit);
     }
 
     public void ViewItemOnAction(ActionEvent actionEvent) throws IOException {
@@ -165,5 +177,35 @@ public class HomeFormController implements Initializable {
 
         int yesterdayOrderCount = homeDAO.setYesterdayOrderCount(result);
         lblYesterdayOrderCount.setText(String.valueOf(yesterdayOrderCount));
+    }
+
+    public void setSellItemTypeCount() throws IOException {
+        int itemTypeCount = homeDAO.setSellItemTypeCount(lblDate.getText());
+        lblSellItemTypeCount.setText(String.valueOf(itemTypeCount));
+    }
+
+    public void setYesterdaySellItemTypeCount() throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        LocalDate date = LocalDate.parse(lblDate.getText(), formatter);
+        LocalDate newDate = date.minusDays(1);
+        String result = newDate.format(formatter);
+
+        int itemTypeCount = homeDAO.setYesterdaySellItemTypeCount(result);
+        lblYesterdaySellItemTypeCount.setText(String.valueOf(itemTypeCount));
+    }
+
+    public void setProfit() throws IOException {
+        double setProfit = homeDAO.setProfit(lblDate.getText());
+        lblProfit.setText(String.valueOf(setProfit));
+    }
+
+    public void setYesterdayProfit() throws IOException {
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        LocalDate date = LocalDate.parse(lblDate.getText(), formatter);
+        LocalDate newDate = date.minusDays(1);
+        String result = newDate.format(formatter);
+
+        double setProfit = homeDAO.setYesterdayProfit(result);
+        lblYesterdayProfit.setText(String.valueOf(setProfit));
     }
 }

@@ -111,19 +111,22 @@ public class PlaceOrderFormController implements Initializable {
         }
     }
 
+    double profit = 0;
+
     public void btnBackOnMouceClicked(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeForm.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
         HomeFormController controller = loader.getController();
-        controller.setStage(MainStage);
+        controller.setStage(MainStage,profit);
         MainStage.setScene(scene);
         MainStage.setResizable(false);
         MainStage.show();
     }
 
-    public void setStage(Stage mainStage) {
+    public void setStage(Stage mainStage, double profit) {
         this.MainStage = mainStage;
+        this.profit = profit;
     }
 
     public void txtItemNameOnAction(ActionEvent actionEvent) throws IOException {
@@ -213,7 +216,7 @@ public class PlaceOrderFormController implements Initializable {
                         int remainingQuantity = itemDetails.getItemQuantity() - (totalOrderedQuantity + quantity);
                         lblItemQut.setText(String.valueOf(remainingQuantity));
 
-                        OrderTM orderTM = new OrderTM(itemDetails.getItemID(), txtItemName.getText(), unitPrice, quantity, total);
+                        OrderTM orderTM = new OrderTM(itemDetails.getItemID(), txtItemName.getText(), unitPrice, itemDetails.getUnitCost(),quantity, total);
                         orderTMS.add(orderTM);
                         setNetTotal();
                     } else {
@@ -335,11 +338,13 @@ public class PlaceOrderFormController implements Initializable {
             orderDetail.setSubTotal(orderTM.getTotal());
             orderDetail.setUnitPrice(orderTM.getUnitSellingPrice());
             orderDetail.setQuantity(orderTM.getQuantity());
+            orderDetail.setUnitCost(orderTM.getUnitCost() * orderTM.getQuantity());
 
             itemDAO.updateQuantityWithItemID(orderTM.getItemID(),orderTM.getQuantity());
 
             order.addOrderDetail(orderDetail);
             session.detach(item);
+            profit = profit + (orderTM.getUnitCost() * orderDetail.getQuantity());
         }
 
         order.setNetTotal(Double.parseDouble(lblNetTotal.getText()));

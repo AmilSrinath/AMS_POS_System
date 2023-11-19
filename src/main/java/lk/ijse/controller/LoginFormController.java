@@ -56,7 +56,7 @@ public class LoginFormController extends Application {
             Scene scene = new Scene(anchorPane);
             Stage stage = new Stage();
             HomeFormController controller = loader.getController();
-            controller.setStage(stage);
+            controller.setStage(stage,0);
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

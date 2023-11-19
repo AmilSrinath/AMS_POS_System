@@ -59,7 +59,6 @@ public class ViewOrderHistoryFormController implements Initializable {
                     orderDetailEntity.getSubTotal()
             ));
         }
-        // tblItem is assumed to be your TableView
         tblItem.setItems(observableList);
     }
 
