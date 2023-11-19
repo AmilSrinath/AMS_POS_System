@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoadingFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/AAA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/LoadingForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LoginForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LoginForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/AAA.ico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +189,7 @@
       <workItem from="1700189330818" duration="4218000" />
       <workItem from="1700203538037" duration="6459000" />
       <workItem from="1700216166216" duration="19064000" />
-      <workItem from="1700356723689" duration="17831000" />
+      <workItem from="1700356723689" duration="18156000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -396,7 +391,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700398883904</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1700405231999</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1700405231999</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
