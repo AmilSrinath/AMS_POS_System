@@ -47,12 +47,6 @@ public class OrderDAOImpl implements OrderDAO {
         transaction.commit();
         session.close();
 
-        if (id != null){
-            if (id.equals("999999")){
-                id="100000";
-            }
-        }
-
         if (id != null) {
             String[] strings = id.split("O-");
             int newID = Integer.parseInt(strings[1]) + 1;

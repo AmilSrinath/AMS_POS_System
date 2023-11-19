@@ -118,7 +118,7 @@ public class PlaceOrderFormController implements Initializable {
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
         HomeFormController controller = loader.getController();
-        controller.setStage(MainStage,profit);
+        controller.setStage(MainStage);
         MainStage.setScene(scene);
         MainStage.setResizable(false);
         MainStage.show();

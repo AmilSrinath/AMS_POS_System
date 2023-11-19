@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -48,7 +49,7 @@ public class HomeFormController implements Initializable {
             setYesterdaySellItemTypeCount();
             setProfit();
             setYesterdayProfit();
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -113,10 +114,8 @@ public class HomeFormController implements Initializable {
 
     double profit = 0;
 
-    public void setStage(Stage homeFormStage, double profit) {
+    public void setStage(Stage homeFormStage) {
         this.homeFormStage = homeFormStage;
-        this.profit = profit;
-        System.out.println(this.profit);
     }
 
     public void ViewItemOnAction(ActionEvent actionEvent) throws IOException {
@@ -195,8 +194,12 @@ public class HomeFormController implements Initializable {
     }
 
     public void setProfit() throws IOException {
-        double setProfit = homeDAO.setProfit(lblDate.getText());
-        lblProfit.setText(String.valueOf(setProfit));
+        try {
+            double setProfit = homeDAO.setProfit(lblDate.getText());
+            lblProfit.setText(String.valueOf(setProfit));
+        }catch (NullPointerException e){
+            lblProfit.setText("0");
+        }
     }
 
     public void setYesterdayProfit() throws IOException {
@@ -205,7 +208,22 @@ public class HomeFormController implements Initializable {
         LocalDate newDate = date.minusDays(1);
         String result = newDate.format(formatter);
 
-        double setProfit = homeDAO.setYesterdayProfit(result);
-        lblYesterdayProfit.setText(String.valueOf(setProfit));
+        try {
+            double setProfit = homeDAO.setYesterdayProfit(result);
+            lblYesterdayProfit.setText(String.valueOf(setProfit));
+        }catch (NullPointerException e){
+            lblYesterdayProfit.setText("0");
+        }
+    }
+
+    public void btnLogOutOnMouseClick(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+        HomeForm.getScene().getWindow().hide();
     }
 }

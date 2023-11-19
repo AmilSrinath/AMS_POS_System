@@ -43,12 +43,6 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         transaction.commit();
         session.close();
 
-        if (id != null){
-            if (id.equals("999999")){
-                id="100000";
-            }
-        }
-
         if (id != null) {
             String[] strings = id.split("OD-");
             int newID = Integer.parseInt(strings[1]);
