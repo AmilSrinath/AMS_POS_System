@@ -79,9 +79,9 @@
                   <Font name="FMAbhaya x" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="103.0" layoutY="91.0" text="000">
+            <Label fx:id="lblTodayOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="88.0" prefHeight="32.0" prefWidth="142.0" text="2" textAlignment="CENTER">
                <font>
-                  <Font name="Poppins Regular" size="22.0" />
+                  <Font name="Poppins Regular" size="26.0" />
                </font>
             </Label>
          </children>

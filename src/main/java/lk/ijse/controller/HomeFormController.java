@@ -9,6 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.ijse.dao.Custom.Impl.HomeDAOImpl;
+import lk.ijse.dao.Custom.OrderDAO;
+import lk.ijse.dao.DAOFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,15 +23,23 @@ import java.util.ResourceBundle;
 public class HomeFormController implements Initializable {
     public Label lblTime;
     public AnchorPane HomeForm;
+    public Label lblTodayOrderCount;
 
     Stage homeFormStage; // Separate stage for HomeForm
     Stage placeOrderFormStage = new Stage(); // Separate stage for PlaceOrderForm
     Stage viewItemFormStage = new Stage(); // Separate stage for ViewItemForm
 
+    HomeDAOImpl homeDAO = (HomeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.HOME);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblDate.setText(String.valueOf(LocalDate.now()));
         TimeNow();
+        try {
+            setOrderCount();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public AnchorPane HomeFom;
@@ -136,5 +147,10 @@ public class HomeFormController implements Initializable {
         viewItemFormStage.centerOnScreen();
 
         viewItemFormStage.show();
+    }
+
+    public void setOrderCount() throws IOException {
+        int orderCount = homeDAO.setOrderCount(lblDate.getText());
+        lblTodayOrderCount.setText(String.valueOf(orderCount));
     }
 }
