@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="394.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PayFormController">
+   <children>
+      <TextField fx:id="txtAmount" layoutX="164.0" layoutY="164.0" onAction="#txtAmountOnAction" onKeyReleased="#OnKeyPressed" prefHeight="33.0" prefWidth="204.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="201.0" layoutY="131.0" text="Amount Rs.">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="82.0" prefWidth="535.0" style="-fx-background-color: #0079FF;">
+         <children>
+            <Label layoutX="21.0" layoutY="18.0" text="Pay" textFill="WHITE">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNetTotal" alignment="CENTER" layoutX="121.0" layoutY="23.0" prefHeight="37.0" prefWidth="294.0" text="8000.00" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="371.0" layoutY="164.0" text=".00">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCash" layoutX="287.0" layoutY="273.0" prefHeight="33.0" prefWidth="156.0" text="0.0">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="183.0" layoutY="273.0" text="Chash :">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

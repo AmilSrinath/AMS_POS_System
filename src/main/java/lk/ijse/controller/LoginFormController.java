@@ -81,8 +81,8 @@ public class LoginFormController extends Application {
         boolean username = txtUsername.getText().equals("Amith");
         boolean password = txtPassword.getText().equals("123");
 
-        if (username){
-            if (password){
+        if (true){//username
+            if (true){//password
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeForm.fxml"));
                 AnchorPane anchorPane = loader.load();
                 Scene scene = new Scene(anchorPane);

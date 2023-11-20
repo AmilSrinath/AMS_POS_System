@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.Custom.OrderDAO;
@@ -37,7 +38,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -307,6 +307,8 @@ public class PlaceOrderFormController implements Initializable {
         lblOrderID.setText(nextId);
     }
 
+    Stage homeFormStage;
+
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime localTime = LocalTime.now();
@@ -339,6 +341,7 @@ public class PlaceOrderFormController implements Initializable {
             orderDetail.setUnitPrice(orderTM.getUnitSellingPrice());
             orderDetail.setQuantity(orderTM.getQuantity());
             orderDetail.setUnitCost(orderTM.getUnitCost() * orderTM.getQuantity());
+            orderDetail.setItemName(orderTM.getItemName());
 
             itemDAO.updateQuantityWithItemID(orderTM.getItemID(),orderTM.getQuantity());
 
@@ -351,6 +354,29 @@ public class PlaceOrderFormController implements Initializable {
         session.save(order);
         transaction.commit();
         session.close();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PayForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        PayFormController controller = loader.getController();
+        controller.setNetTotal(lblNetTotal.getText());
+
+        // Create a new stage for the ViewItemForm
+        Stage viewItemFormStage = new Stage();
+        viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
+        viewItemFormStage.initOwner(MainStage); // Set the owner to the HomeForm stage
+
+        viewItemFormStage.setScene(scene);
+        viewItemFormStage.setResizable(false);
+        viewItemFormStage.centerOnScreen();
+
+        // Disable HomeForm when ViewItemForm is open
+        PlaceOrderForm.setDisable(true);
+
+        // Handle close event to enable HomeForm when ViewItemForm is closed
+        viewItemFormStage.setOnCloseRequest(windowEvent -> PlaceOrderForm.setDisable(false));
+        viewItemFormStage.show();
+
         generateNextOrderId();
         tblOrder.getItems().clear();
         lblNetTotal.setText("0");

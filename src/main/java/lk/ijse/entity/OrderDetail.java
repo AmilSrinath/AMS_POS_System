@@ -23,6 +23,7 @@ public class OrderDetail {
     @JoinColumn(name = "orderID")
     private Order order;
 
+    private String itemName;
     private int quantity;
     private double unitCost;
     private double unitPrice;
