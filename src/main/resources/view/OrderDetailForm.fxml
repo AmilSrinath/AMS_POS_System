@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="448.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.OrderDetailFormController">
+   <children>
+      <StackPane prefHeight="78.0" prefWidth="823.0" style="-fx-background-color: #95a5a6;">
+         <children>
+            <Label text="Order Detail" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+      <TableView fx:id="tblOrderDetail" layoutX="50.0" layoutY="175.0" prefHeight="235.0" prefWidth="723.0">
+        <columns>
+          <TableColumn fx:id="colorderDetailID" prefWidth="104.0" text="orderDetailID" />
+          <TableColumn fx:id="colitemID" prefWidth="100.0" text="itemID" />
+            <TableColumn fx:id="colitemName" prefWidth="152.0" text="itemName" />
+            <TableColumn fx:id="colquantity" prefWidth="81.0" text="quantity" />
+            <TableColumn fx:id="colunitPrice" prefWidth="93.0" text="unitPrice" />
+            <TableColumn fx:id="colunitCost" prefWidth="92.0" text="unitCost" />
+            <TableColumn fx:id="colsubTotal" prefWidth="100.0" text="subTotal" />
+        </columns>
+      </TableView>
+      <Label layoutX="82.0" layoutY="91.0" text="Order ID :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="277.0" layoutY="91.0" text="Net Total :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="91.0" text="Date :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="702.0" layoutY="91.0" text="Time :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderID" alignment="CENTER" layoutX="67.0" layoutY="120.0" prefHeight="23.0" prefWidth="106.0" text="XXXXX">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetTotal" alignment="CENTER" layoutX="263.0" layoutY="120.0" prefHeight="23.0" prefWidth="106.0" text="XXXXX">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDate" alignment="CENTER" layoutX="461.0" layoutY="120.0" prefHeight="23.0" prefWidth="106.0" text="XXXXX">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" alignment="CENTER" layoutX="672.0" layoutY="120.0" prefHeight="23.0" prefWidth="106.0" text="XXXXX">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

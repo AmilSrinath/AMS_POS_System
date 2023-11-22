@@ -23,6 +23,11 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
+      <Button layoutX="108.0" layoutY="504.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="106.0" styleClass="updateButton" stylesheets="@../Style/CSS.css" text="Clear">
+         <font>
+            <Font name="Poppins Regular" size="16.0" />
+         </font>
+      </Button>
       <JFXTextField fx:id="txtItemName" layoutX="119.0" layoutY="215.0" prefHeight="32.0" prefWidth="281.0" promptText="Item Name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
@@ -58,10 +63,5 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="108.0" layoutY="504.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="35.0" prefWidth="106.0" styleClass="updateButton" stylesheets="@../Style/CSS.css" text="Clear">
-         <font>
-            <Font name="Poppins Regular" size="16.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

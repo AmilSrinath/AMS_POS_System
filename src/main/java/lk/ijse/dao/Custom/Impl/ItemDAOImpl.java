@@ -148,8 +148,6 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public void updateQuantityWithItemID(String itemID, int quantity) throws IOException {
-        System.out.println(">>>>> "+itemID);
-        System.out.println(">>>>> "+quantity);
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         NativeQuery nativeQuery = session.createNativeQuery("UPDATE item SET  itemQuantity =  (itemQuantity- :quantity) WHERE itemID = :itemID");

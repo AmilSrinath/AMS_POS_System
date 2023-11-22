@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewItemFormController">
+<AnchorPane fx:id="ViewItemForm" prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewItemFormController">
    <children>
       <TableView fx:id="tblItem" layoutX="45.0" layoutY="140.0" onMouseClicked="#rowOnMouseClicked" prefHeight="315.0" prefWidth="725.0">
         <columns>

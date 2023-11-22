@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewOrderHistoryFormController">
+<AnchorPane fx:id="ViewOrderHistoryForm" prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewOrderHistoryFormController">
    <children>
       <StackPane prefHeight="78.0" prefWidth="815.0" style="-fx-background-color: #95a5a6;">
          <children>
@@ -20,7 +19,7 @@
             </Label>
          </children>
       </StackPane>
-      <TableView fx:id="tblItem" layoutX="55.0" layoutY="146.0" prefHeight="319.0" prefWidth="725.0">
+      <TableView fx:id="tblItem" layoutX="55.0" layoutY="146.0" onMouseClicked="#OnMouseClicked" prefHeight="319.0" prefWidth="725.0">
          <columns>
             <TableColumn fx:id="colorderDetailID" prefWidth="112.0" text="order_Detail_ID" />
             <TableColumn fx:id="colquantity" prefWidth="136.0" text="quantity" />

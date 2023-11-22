@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.Impl.DataRefreshListener;
@@ -36,6 +37,7 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
     public TableView<Item> tblItem;
     public TableColumn<Item, Void> colStatus;
     public JFXTextField txtSearch;
+    public AnchorPane ViewItemForm;
     @FXML
     private TableColumn<?, ?> colItemID;
     @FXML
@@ -109,6 +111,20 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
         UpdateItemFormController controller = loader.getController();
         controller.setValues(id,itemName,itemQut,itemUnitPrice,itemUnitCost,stage);
         controller.setDataRefreshListener(this);
+
+        stage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
+        stage.initOwner(viewItemFormStage); // Set the owner to the HomeForm stage
+
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
+
+        // Disable HomeForm when ViewItemForm is open
+        ViewItemForm.setDisable(true);
+
+        // Handle close event to enable HomeForm when ViewItemForm is closed
+        stage.setOnCloseRequest(windowEvent -> ViewItemForm.setDisable(false));
+
 
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -205,5 +221,10 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
             buyer.comparatorProperty().bind(tblItem.comparatorProperty());
             tblItem.setItems(buyer);
         });
+    }
+
+    Stage viewItemFormStage;
+    public void setStage(Stage viewItemFormStage) {
+        this.viewItemFormStage = viewItemFormStage;
     }
 }

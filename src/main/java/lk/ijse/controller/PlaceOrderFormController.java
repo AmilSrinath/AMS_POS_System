@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -39,6 +40,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
@@ -53,6 +55,8 @@ public class PlaceOrderFormController implements Initializable {
     public Label lblNetTotal;
     public Label lblOrderID;
     public Label lblItemUnitPrice;
+    public TextField txtAmount;
+    public Label lblBalance;
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
     OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETAIL);
@@ -70,6 +74,31 @@ public class PlaceOrderFormController implements Initializable {
         } catch (IOException | ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
+
+        PlaceOrderForm.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case F4:
+                    try {
+                        addItem();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case F5:
+                    txtAmount.requestFocus();
+                    break;
+                case F6:
+                    try {
+                        placeOrder();
+                    } catch (SQLException | IOException | ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                default:
+                    // Handle other key events if needed
+                    break;
+            }
+        });
 
 
         // Configure table columns
@@ -96,6 +125,8 @@ public class PlaceOrderFormController implements Initializable {
                 }
             }
         });
+
+        txtAmount.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5px");
     }
 
     private void updateLblItemQut() throws IOException {
@@ -130,26 +161,30 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     public void txtItemNameOnAction(ActionEvent actionEvent) throws IOException {
-        String itemName = txtItemName.getText();
+        try {
+            String itemName = txtItemName.getText();
 
-        if (itemName.isEmpty()) {
-            return;
+            if (itemName.isEmpty()) {
+                return;
+            }
+
+            ItemDTO itemDetails = itemDAO.getItemDetailsWithName(itemName);
+            lblItemUnitPrice.setText(String.valueOf(itemDetails.getUnitSellingPrice()));
+
+            if (itemDetails != null) {
+                int totalOrderedQuantity = calculateTotalOrderedQuantity(itemName);
+                int remainingQuantity = itemDetails.getItemQuantity() - totalOrderedQuantity;
+                lblItemQut.setText(String.valueOf(remainingQuantity));
+            } else {
+                lblItemQut.setText("0");
+            }
+
+            txtQuantity.setStyle("-fx-background-color: none;");
+            txtQuantity.setText("");
+            txtQuantity.requestFocus();
+        }catch (Exception e){
+            new Alert(Alert.AlertType.ERROR,"ඇතුලත් කිරීම වැරදි!\nකරුණාකර ඔබේ අයිතමවල ඇති දේ පමණක් ඇතුලත් කරන්න, නැති නම් නව අයිතමයක් එකතු කරන්න. " ).show();
         }
-
-        ItemDTO itemDetails = itemDAO.getItemDetailsWithName(itemName);
-        lblItemUnitPrice.setText(String.valueOf(itemDetails.getUnitSellingPrice()));
-
-        if (itemDetails != null) {
-            int totalOrderedQuantity = calculateTotalOrderedQuantity(itemName);
-            int remainingQuantity = itemDetails.getItemQuantity() - totalOrderedQuantity;
-            lblItemQut.setText(String.valueOf(remainingQuantity));
-        } else {
-            lblItemQut.setText("0");
-        }
-
-        txtQuantity.setStyle("-fx-background-color: none;");
-        txtQuantity.setText("");
-        txtQuantity.requestFocus();
     }
 
     private void loadItemName() throws IOException {
@@ -230,6 +265,8 @@ public class PlaceOrderFormController implements Initializable {
         txtQuantity.clear();
         txtItemName.clear();
         txtItemName.requestFocus();
+        lblBalance.setText("0.0");
+        txtAmount.setText("");
     }
 
     public void btnAddOnAction(ActionEvent actionEvent) throws IOException {
@@ -277,6 +314,9 @@ public class PlaceOrderFormController implements Initializable {
 
                     double netTotal = calculateTotalNetAmount();
                     lblNetTotal.setText(String.valueOf(netTotal));
+
+                    lblBalance.setText("0.0");
+                    txtAmount.setText("");
                 });
             }
 
@@ -310,76 +350,94 @@ public class PlaceOrderFormController implements Initializable {
     Stage homeFormStage;
 
     public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalTime localTime = LocalTime.now();
-        String time = dtf.format(localTime);
+        placeOrder();
+    }
 
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
+    public void placeOrder() throws SQLException, IOException, ClassNotFoundException {
+        boolean equals = lblNetTotal.getText().equals("0.0");
+        if (isEnough() & !equals) {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "ඔබට ඇනවුම විශ්වාසද?", yes, no).showAndWait();
 
-        Order order = new Order();
-        order.setOrderID(orderDAO.generateNewID());
-        order.setDate(String.valueOf(LocalDate.now()));
-        order.setTime(time);
+            if (result.orElse(no) == yes) {
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+                LocalTime localTime = LocalTime.now();
+                String time = dtf.format(localTime);
 
-        String id = orderDetailDAO.generateNewID();
+                Session session = FactoryConfiguration.getInstance().getSession();
+                Transaction transaction = session.beginTransaction();
 
-        for (OrderTM orderTM : orderTMS) {
-            String[] strings = id.split("OD-");
-            int newID = Integer.parseInt(strings[1]) + 1;
-            id = "OD-"+newID;
+                Order order = new Order();
+                order.setOrderID(orderDAO.generateNewID());
+                order.setDate(String.valueOf(LocalDate.now()));
+                order.setTime(time);
 
-            OrderDetail orderDetail = new OrderDetail();
-            Item item = new Item();
+                String id = orderDetailDAO.generateNewID();
 
-            item.setItemID(orderTM.getItemID());
+                for (OrderTM orderTM : orderTMS) {
+                    String[] strings = id.split("OD-");
+                    int newID = Integer.parseInt(strings[1]) + 1;
+                    id = "OD-" + newID;
 
-            orderDetail.setOrderDetailID(id);
-            orderDetail.setItem(item);
-            orderDetail.setOrder(order);
-            orderDetail.setSubTotal(orderTM.getTotal());
-            orderDetail.setUnitPrice(orderTM.getUnitSellingPrice());
-            orderDetail.setQuantity(orderTM.getQuantity());
-            orderDetail.setUnitCost(orderTM.getUnitCost() * orderTM.getQuantity());
-            orderDetail.setItemName(orderTM.getItemName());
+                    OrderDetail orderDetail = new OrderDetail();
+                    Item item = new Item();
 
-            itemDAO.updateQuantityWithItemID(orderTM.getItemID(),orderTM.getQuantity());
+                    item.setItemID(orderTM.getItemID());
 
-            order.addOrderDetail(orderDetail);
-            session.detach(item);
-            profit = profit + (orderTM.getUnitCost() * orderDetail.getQuantity());
+                    orderDetail.setOrderDetailID(id);
+                    orderDetail.setItem(item);
+                    orderDetail.setOrder(order);
+                    orderDetail.setSubTotal(orderTM.getTotal());
+                    orderDetail.setUnitPrice(orderTM.getUnitSellingPrice());
+                    orderDetail.setQuantity(orderTM.getQuantity());
+                    orderDetail.setUnitCost(orderTM.getUnitCost() * orderTM.getQuantity());
+                    orderDetail.setItemName(orderTM.getItemName());
+
+                    itemDAO.updateQuantityWithItemID(orderTM.getItemID(), orderTM.getQuantity());
+
+                    order.addOrderDetail(orderDetail);
+                    session.detach(item);
+                    profit = profit + (orderTM.getUnitCost() * orderDetail.getQuantity());
+                }
+
+                order.setNetTotal(Double.parseDouble(lblNetTotal.getText()));
+                session.save(order);
+                transaction.commit();
+                session.close();
+                tblOrder.getItems().clear();
+                generateNextOrderId();
+                lblNetTotal.setText("0");
+                lblItemQut.setText("0");
+                txtAmount.setText("");
+                lblBalance.setText("0.0");
+            }
+        }else {
+            new Alert(Alert.AlertType.ERROR,"මුදල ප්‍රමාණවත් නැත!").show();
         }
+    }
+    public boolean isEnough() {
+        try {
+            double netTotal = Double.parseDouble(lblNetTotal.getText());
+            if (!txtAmount.getStyle().equals("-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5px")) {
+                double cash = Double.parseDouble(txtAmount.getText()) - netTotal;
+                lblBalance.setText(String.valueOf(cash));
+                return true;
+            }
+            return false;
+        }catch (Exception e){}
+        return false;
+    }
 
-        order.setNetTotal(Double.parseDouble(lblNetTotal.getText()));
-        session.save(order);
-        transaction.commit();
-        session.close();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PayForm.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-        PayFormController controller = loader.getController();
-        controller.setNetTotal(lblNetTotal.getText());
-
-        // Create a new stage for the ViewItemForm
-        Stage viewItemFormStage = new Stage();
-        viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
-        viewItemFormStage.initOwner(MainStage); // Set the owner to the HomeForm stage
-
-        viewItemFormStage.setScene(scene);
-        viewItemFormStage.setResizable(false);
-        viewItemFormStage.centerOnScreen();
-
-        // Disable HomeForm when ViewItemForm is open
-        PlaceOrderForm.setDisable(true);
-
-        // Handle close event to enable HomeForm when ViewItemForm is closed
-        viewItemFormStage.setOnCloseRequest(windowEvent -> PlaceOrderForm.setDisable(false));
-        viewItemFormStage.show();
-
-        generateNextOrderId();
-        tblOrder.getItems().clear();
-        lblNetTotal.setText("0");
-        lblItemQut.setText("0");
+    public void txtAmountOnKeyReleased(KeyEvent keyEvent) {
+        try {
+            double amount = Double.parseDouble(txtAmount.getText());
+            double netTotal = Double.parseDouble(lblNetTotal.getText());
+            if (amount < netTotal) {
+                txtAmount.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5px");
+            } else {
+                txtAmount.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5px");
+            }
+        }catch (Exception e){}
     }
 }

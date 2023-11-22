@@ -123,8 +123,11 @@ public class HomeFormController implements Initializable {
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
 
+        ViewItemFormController controller = loader.getController();
+
         // Create a new stage for the ViewItemForm
         Stage viewItemFormStage = new Stage();
+        controller.setStage(viewItemFormStage);
         viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
         viewItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
 
@@ -148,6 +151,10 @@ public class HomeFormController implements Initializable {
 
         // Create a new stage for the ViewItemForm
         Stage viewItemFormStage = new Stage();
+
+        ViewOrderHistoryFormController controller = loader.getController();
+        controller.setStage(viewItemFormStage);
+
         viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
         viewItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
 

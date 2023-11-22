@@ -14,19 +14,10 @@ public class PayFormController {
     double netTotal = 0;
     public void setNetTotal(String netTotal) {
         this.netTotal= Double.parseDouble(netTotal);
-        lblNetTotal.setText("Rs. "+netTotal+"0");
-        txtAmount.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5px");
     }
 
     public void OnKeyPressed(KeyEvent keyEvent) {
-        try {
-            double amount = Double.parseDouble(txtAmount.getText());
-            if (amount < netTotal) {
-                txtAmount.setStyle("-fx-background-color: red; -fx-border-color: black; -fx-border-radius: 5px");
-            } else {
-                txtAmount.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5px");
-            }
-        }catch (Exception e){}
+
     }
 
     public void txtAmountOnAction(ActionEvent actionEvent) {

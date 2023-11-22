@@ -1,6 +1,8 @@
 package lk.ijse.dao.Custom.Impl;
 
+import javafx.collections.ObservableList;
 import lk.ijse.dao.Custom.OrderDetailDAO;
+import lk.ijse.dto.OrderAndOrderDetailsDTO;
 import lk.ijse.entity.OrderDetail;
 import lk.ijse.entity.TM.OrderDetailTM;
 import lk.ijse.util.FactoryConfiguration;
@@ -10,6 +12,7 @@ import org.hibernate.query.NativeQuery;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
@@ -59,6 +62,39 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM order_details");
         nativeQuery.addEntity(OrderDetail.class);
         List<OrderDetail> orderDetailEntities = nativeQuery.getResultList();
+        transaction.commit();
+        session.close();
+        return orderDetailEntities;
+    }
+
+    @Override
+    public List<OrderAndOrderDetailsDTO> getAllItems(String orderID) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        NativeQuery<Object[]> nativeQuery = session.createNativeQuery("SELECT order_details.orderDetailID, order_details.itemID, order_details.itemName, order_details.quantity, order_details.unitPrice, order_details.unitCost, order_details.subTotal, orders.orderID, orders.netTotal, orders.date, orders.time FROM order_details JOIN orders ON order_details.orderID = orders.orderID WHERE orders.orderID = :orderID");
+        nativeQuery.setParameter("orderID", orderID);
+        List<Object[]> results = nativeQuery.getResultList();
+        List<OrderAndOrderDetailsDTO> orderDetailEntities = new ArrayList<>();
+
+        for (Object[] result : results) {
+            OrderAndOrderDetailsDTO orderAndOrderDetailsDTO = new OrderAndOrderDetailsDTO();
+
+            orderAndOrderDetailsDTO.setOrderDetailID((String) result[0]);
+            orderAndOrderDetailsDTO.setItemID((String) result[1]);
+            orderAndOrderDetailsDTO.setItemName((String) result[2]);
+            orderAndOrderDetailsDTO.setQuantity((int) result[3]);
+            orderAndOrderDetailsDTO.setUnitSellingPrice((double) result[4]);
+            orderAndOrderDetailsDTO.setUnitCost((double) result[5]);
+            orderAndOrderDetailsDTO.setSubTotal((double) result[6]);
+            orderAndOrderDetailsDTO.setOrderID((String) result[7]);
+            orderAndOrderDetailsDTO.setNetTotal((double) result[8]);
+            orderAndOrderDetailsDTO.setDate((String) result[9]);
+            orderAndOrderDetailsDTO.setTime((String) result[10]);
+
+            orderDetailEntities.add(orderAndOrderDetailsDTO);
+        }
+
         transaction.commit();
         session.close();
         return orderDetailEntities;
