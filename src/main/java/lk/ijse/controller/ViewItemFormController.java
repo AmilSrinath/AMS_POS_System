@@ -50,7 +50,6 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
     public TableColumn<?, ?> colUnitCost;
     ObservableList<Item> observableList;
     ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
-    Stage stage = new Stage();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -109,6 +108,7 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
         Scene scene = new Scene(anchorPane);
 
         UpdateItemFormController controller = loader.getController();
+        Stage stage = new Stage();
         controller.setValues(id,itemName,itemQut,itemUnitPrice,itemUnitCost,stage);
         controller.setDataRefreshListener(this);
 

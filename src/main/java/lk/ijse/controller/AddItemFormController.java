@@ -5,15 +5,19 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderDetail;
+import org.controlsfx.control.Notifications;
 
+import javax.management.Notification;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -67,9 +71,20 @@ public class AddItemFormController implements Initializable {
         double itemUnitCost = Double.parseDouble(txtUnitCost.getText());
 
         if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<OrderDetail>()))) {
-            new Alert(Alert.AlertType.CONFIRMATION, "Saved!!").show();
+            Notifications.create()
+                    .title("සාර්ථකයි...!")
+                    .text("අයිතමය සාර්ථකව එකතුකර ගෙන ඇත.")
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.TOP_RIGHT)
+                    .showConfirm();
+
         } else {
-            new Alert(Alert.AlertType.ERROR, "Error!!").show();
+            Notifications.create()
+                    .title("අසාර්ථකයි...!")
+                    .text("අයිතමය සාර්ථකව එකතුකර ගෙන නැත. නැවත උත්සහා කරන්න..!")
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.TOP_RIGHT)
+                    .showConfirm();
         }
         cleanTextField();
         generateNextItemId();

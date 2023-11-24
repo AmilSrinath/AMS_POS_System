@@ -13,11 +13,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.Custom.OrderDAO;
@@ -45,12 +43,12 @@ import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
     public Label lblItemQut;
+    public TableView<OrderTM> tblOrder;
     public TableColumn<?, ?> colItemID;
     public TableColumn<?, ?> colItemName;
     public TableColumn<?, ?> colQuantity;
     public TableColumn<?, ?> colTotal;
     public TableColumn<OrderTM, Void> colAction;
-    public TableView<OrderTM> tblOrder;
     public TableColumn<?,?> colUnitPrice;
     public Label lblNetTotal;
     public Label lblOrderID;

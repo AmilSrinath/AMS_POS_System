@@ -35,7 +35,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Pane layoutX="317.0" layoutY="97.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="317.0" layoutY="237.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label layoutX="76.0" layoutY="10.0" prefHeight="208.0" prefWidth="95.0" text="wo ,dNh">
                <font>
@@ -54,7 +54,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="617.0" layoutY="97.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="617.0" layoutY="237.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label layoutX="15.0" layoutY="14.0" prefHeight="285.0" prefWidth="228.0" text="wo úl=KQ whs;u j¾.">
                <font>
@@ -73,7 +73,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="919.0" layoutY="97.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="919.0" layoutY="237.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label layoutX="31.0" layoutY="10.0" prefHeight="285.0" prefWidth="185.0" text="wo weKjqï .Kk">
                <font>
@@ -87,7 +87,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="318.0" layoutY="298.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="318.0" layoutY="438.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label layoutX="47.0" layoutY="10.0" prefHeight="285.0" prefWidth="154.0" text="fmr È​k ,dNh">
                <font>
@@ -106,7 +106,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="618.0" layoutY="298.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="618.0" layoutY="438.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label layoutX="10.0" layoutY="10.0" prefHeight="285.0" prefWidth="228.0" text="fmr È​k úl=KQ whs;u">
                <font>
@@ -125,7 +125,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="920.0" layoutY="298.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="920.0" layoutY="438.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label fx:id="lblYesterdayOrderCount" alignment="CENTER" layoutX="60.0" layoutY="91.0" prefHeight="32.0" prefWidth="131.0" text="0">
                <font>
@@ -186,5 +186,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Pane layoutX="318.0" layoutY="88.0" prefHeight="96.0" prefWidth="852.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label layoutX="294.0" layoutY="16.0" text="Abhinu Rice">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

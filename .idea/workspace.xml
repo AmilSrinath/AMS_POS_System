@@ -10,23 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/OrderDetailFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dto/OrderAndOrderDetailsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/TM/OrderDetailsTM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/OrderDetailForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Start.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/TraialFromController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/TraialFrom.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddItemFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PayFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PayFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ViewItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ViewItemFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ViewOrderHistoryFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/ViewOrderHistoryFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/ItemDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/OrderDetailDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/OrderDetailDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/OrderDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/OrderDetailDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/PlaceOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/PlaceOrderForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/UpdateItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/UpdateItemForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ViewItemForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ViewItemForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ViewOrderHistoryForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ViewOrderHistoryForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +63,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.31957185&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
@@ -96,7 +91,7 @@
       <recent name="lk.ijse.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Demo">
+  <component name="RunManager" selected="Application.Start">
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Demo" />
       <module name="AMS_POS_System" />
@@ -123,6 +118,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Start" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Start" />
+      <module name="AMS_POS_System" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AMS_POS_System-1.0-SNAPSHOT-shaded.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/target/AMS_POS_System-1.0-SNAPSHOT-shaded.jar" />
       <method v="2" />
@@ -133,8 +135,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Demo" />
+        <item itemvalue="Application.Start" />
         <item itemvalue="JAR Application.AMS_POS_System-1.0-SNAPSHOT-shaded.jar" />
+        <item itemvalue="Application.Demo" />
         <item itemvalue="JAR Application.AMS_POS_System-1.0-SNAPSHOT.jar" />
         <item itemvalue="Application.LoginFormController" />
       </list>
@@ -209,7 +212,9 @@
       <workItem from="1700448432806" duration="5401000" />
       <workItem from="1700494155724" duration="1189000" />
       <workItem from="1700576393573" duration="6007000" />
-      <workItem from="1700633022962" duration="12367000" />
+      <workItem from="1700633022962" duration="15828000" />
+      <workItem from="1700712729106" duration="7937000" />
+      <workItem from="1700802600696" duration="3019000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -443,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700577134472</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1700666633079</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1700666633079</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

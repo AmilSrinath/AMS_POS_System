@@ -73,10 +73,6 @@ public class LoginFormController extends Application {
         pause.play();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     public void btnSigninOnAction(ActionEvent actionEvent) throws IOException {
         boolean username = txtUsername.getText().equals("Amith");
         boolean password = txtPassword.getText().equals("123");
