@@ -82,10 +82,10 @@ public class ItemDAOImpl implements ItemDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         NativeQuery nativeQuery = session.createNativeQuery("SELECT itemID FROM item");
-        List<String> studentIds = nativeQuery.getResultList();
+        List<String> itemList = nativeQuery.getResultList();
         transaction.commit();
         session.close();
-        return studentIds;
+        return itemList;
     }
 
     @Override

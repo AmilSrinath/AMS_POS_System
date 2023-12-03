@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class Demo extends Application {
-    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 11, 24);
+    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 5);
 
     public static void main(String[] args) {
         launch(args);
