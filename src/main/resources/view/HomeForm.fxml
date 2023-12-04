@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,30 +11,6 @@
 
 <AnchorPane fx:id="HomeForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeFormController">
    <children>
-      <Button contentDisplay="TOP" graphicTextGap="0.0" layoutX="33.0" layoutY="83.0" mnemonicParsing="false" onAction="#AddItemOnAction" prefHeight="22.0" prefWidth="142.0" styleClass="addButton" stylesheets="@../Style/CSS.css" text="Add Item" textFill="WHITE">
-         <font>
-            <Font name="Poppins Regular" size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="63.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assest/icons8-add-48.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="496.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
-         <font>
-            <Font name="Poppins Regular" size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assest/icons8-purchase-order-60.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <Pane layoutX="317.0" layoutY="237.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label layoutX="76.0" layoutY="10.0" prefHeight="208.0" prefWidth="95.0" text="wo ,dNh">
@@ -144,56 +120,95 @@
             </Label>
          </children>
       </Pane>
-      <Label fx:id="lblDate" layoutX="978.0" layoutY="25.0" prefHeight="27.0" prefWidth="142.0" text="0000-00-00">
-         <font>
-            <Font name="Poppins Regular" size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblTime" layoutX="1111.0" layoutY="25.0" prefHeight="27.0" prefWidth="154.0">
-         <font>
-            <Font name="Poppins Regular" size="19.0" />
-         </font>
-      </Label>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="200.0" mnemonicParsing="false" onAction="#ViewItemOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="btnViewItem" stylesheets="@../Style/CSS.css" text="View Item" textFill="WHITE">
-         <font>
-            <Font name="Poppins Regular" size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assest/icons8-view-50.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="33.0" layoutY="337.0" mnemonicParsing="false" onAction="#OrderHistoryOnAction" prefHeight="96.0" prefWidth="142.0" styleClass="btnViewItem" stylesheets="@../Style/CSS.css" text="Order History" textFill="WHITE">
-         <font>
-            <Font name="Poppins Regular" size="16.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assest/icons8-view-50.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="17.0" layoutY="686.0" onMouseClicked="#btnLogOutOnMouseClick" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-         <image>
-            <Image url="@../assest/icons8-logout-96.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <Pane layoutX="318.0" layoutY="88.0" prefHeight="96.0" prefWidth="852.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <AnchorPane prefHeight="57.0" prefWidth="1279.0" style="-fx-background-color: #212529;">
          <children>
-            <Label layoutX="294.0" layoutY="16.0" text="Abhinu Rice">
+            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="945.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-date-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1124.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-time-50.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <Label fx:id="lblDate" layoutX="978.0" layoutY="17.0" prefHeight="27.0" prefWidth="142.0" text="0000-00-00" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" layoutX="1161.0" layoutY="17.0" prefHeight="27.0" prefWidth="95.0" text="00:00" textFill="WHITE">
+         <font>
+            <Font name="Poppins Regular" size="19.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="57.0" prefHeight="693.0" prefWidth="228.0" style="-fx-background-color: #212529;">
+         <children>
+            <Button contentDisplay="RIGHT" graphicTextGap="55.0" layoutY="46.0" mnemonicParsing="false" onAction="#AddItemOnAction" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Add Item" textFill="WHITE">
                <font>
-                  <Font size="53.0" />
+                  <Font name="Poppins Regular" size="19.0" />
                </font>
-            </Label>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/icons8-add-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button contentDisplay="RIGHT" graphicTextGap="58.0" layoutY="99.0" mnemonicParsing="false" onAction="#ViewItemOnAction" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="View Item" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="19.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/icons8-view-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="RIGHT" graphicTextGap="26.0" layoutY="148.0" mnemonicParsing="false" onAction="#OrderHistoryOnAction" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Order History" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="19.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/icons8-view-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="RIGHT" graphicTextGap="32.0" layoutY="197.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="19.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/icons8-purchase-order-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button contentDisplay="RIGHT" graphicTextGap="57.0" layoutY="637.0" mnemonicParsing="false" onAction="#LogOutOnAction" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Regular" size="19.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/icons8-logout-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
-      </Pane>
+      </AnchorPane>
    </children>
 </AnchorPane>

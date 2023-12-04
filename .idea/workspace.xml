@@ -10,10 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/Hovericons8-logout-50-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-date-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-logout-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-time-50.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/ItemDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/ItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/ItemDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/TraialFromController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/TraialFromController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +61,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.31957185&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
@@ -129,8 +135,8 @@
       <list>
         <item itemvalue="Application.Start" />
         <item itemvalue="JAR Application.AMS_POS_System-1.0-SNAPSHOT-shaded.jar" />
-        <item itemvalue="Application.Demo" />
         <item itemvalue="JAR Application.AMS_POS_System-1.0-SNAPSHOT.jar" />
+        <item itemvalue="Application.Demo" />
         <item itemvalue="Application.LoginFormController" />
       </list>
     </recent_temporary>
@@ -217,7 +223,8 @@
       <workItem from="1701493915158" duration="27000" />
       <workItem from="1701572593324" duration="1445000" />
       <workItem from="1701578041541" duration="6738000" />
-      <workItem from="1701610502247" duration="322000" />
+      <workItem from="1701610502247" duration="5139000" />
+      <workItem from="1701662821963" duration="1679000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -467,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700841385827</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1701615350228</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701615350228</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

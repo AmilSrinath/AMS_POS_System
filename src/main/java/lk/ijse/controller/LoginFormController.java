@@ -61,7 +61,7 @@ public class LoginFormController extends Application {
 
     private void showLoadingForm() {
         loadingStage.show();
-        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        PauseTransition pause = new PauseTransition(Duration.seconds(0));
         pause.setOnFinished(event -> {
             loadingStage.hide();
             try {
