@@ -4,12 +4,20 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.controller.LoginFormController;
+import lk.ijse.dao.Custom.Impl.HomeDAOImpl;
+import lk.ijse.dao.Custom.Impl.UserDAOImpl;
+import lk.ijse.dao.DAOFactory;
+import lk.ijse.util.FactoryConfiguration;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
 public class Demo extends Application {
     private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 5);
+
+    UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     public static void main(String[] args) {
         launch(args);
@@ -20,8 +28,35 @@ public class Demo extends Application {
         try {
             if (!isExpired()) {
                 System.out.println("Welcome to the trial version!");
-                LoginFormController loginForm = new LoginFormController();
-                loginForm.start(primaryStage);
+
+                Session session = null;
+                try {
+                    session = FactoryConfiguration.getInstance().getSession();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Transaction transaction = session.beginTransaction();
+                transaction.commit();
+                session.close();
+
+                //--------------------------------------------------------------
+
+                boolean isEmpty = userDAO.isEmpty();
+                if (isEmpty){
+                    FXMLLoader loader = new FXMLLoader(Demo.class.getResource("/view/UserForm.fxml"));
+                    AnchorPane anchorPane = loader.load();
+                    Scene scene = new Scene(anchorPane);
+                    primaryStage.setScene(scene);
+                    primaryStage.setResizable(false);
+                    primaryStage.centerOnScreen();
+                    primaryStage.show();
+                }else {
+                    LoginFormController loginForm = new LoginFormController();
+                    loginForm.start(primaryStage);
+                }
+
+                //--------------------------------------------------------------
+
             } else {
                 FXMLLoader loader = new FXMLLoader(Demo.class.getResource("/view/TraialFrom.fxml"));
                 AnchorPane anchorPane = loader.load();

@@ -5,54 +5,42 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lk.ijse.dao.Custom.Impl.HomeDAOImpl;
-import lk.ijse.dao.Custom.OrderDAO;
-import lk.ijse.dao.DAOFactory;
 
-import javax.management.Notification;
+import javax.swing.*;
+import java.awt.event.MouseAdapter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class HomeFormController implements Initializable {
+public class HomeFormController implements Initializable{
     public Label lblTime;
     public AnchorPane HomeForm;
-    public Label lblTodayOrderCount;
-    public Label lblYesterdayOrderCount;
-    public Label lblSellItemTypeCount;
-    public Label lblYesterdaySellItemTypeCount;
-    public Label lblProfit;
-    public Label lblYesterdayProfit;
+    public AnchorPane ControllArea;
+    public Button btnDashbord;
+    public Button btnPlaceOrder;
+    public Button btnOrderHistory;
+    public Button btnViewItem;
+    public Button btnUsers;
+    public Button btnAddItem;
+    public Label lblUsername;
+    public Button btnLogOut;
 
-    Stage homeFormStage; // Separate stage for HomeForm
-    Stage placeOrderFormStage = new Stage(); // Separate stage for PlaceOrderForm
-    Stage viewItemFormStage = new Stage(); // Separate stage for ViewItemForm
-
-    HomeDAOImpl homeDAO = (HomeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.HOME);
+    Stage homeFormStage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblDate.setText(String.valueOf(LocalDate.now()));
         TimeNow();
-        try {
-            setOrderCount();
-            setYesterdayOrderCount();
-            setSellItemTypeCount();
-            setYesterdaySellItemTypeCount();
-            setProfit();
-            setYesterdayProfit();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public AnchorPane HomeFom;
@@ -77,26 +65,7 @@ public class HomeFormController implements Initializable {
     }
 
     public void AddItemOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddItemForm.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-
-        // Create a new stage for the AddItemForm
-        Stage addItemFormStage = new Stage();
-        addItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
-        addItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
-
-        addItemFormStage.setScene(scene);
-        addItemFormStage.setResizable(false);
-        addItemFormStage.centerOnScreen();
-
-        // Disable HomeForm when AddItemForm is open
-        HomeForm.setDisable(true);
-
-        // Handle close event to enable HomeForm when AddItemForm is closed
-        addItemFormStage.setOnCloseRequest(windowEvent -> HomeForm.setDisable(false));
-
-        addItemFormStage.show();
+        navigation("/view/AddItemForm.fxml");
     }
 
     public void PlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
@@ -120,108 +89,18 @@ public class HomeFormController implements Initializable {
     }
 
     public void ViewItemOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewItemForm.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-
-        ViewItemFormController controller = loader.getController();
-
-        // Create a new stage for the ViewItemForm
-        Stage viewItemFormStage = new Stage();
-        controller.setStage(viewItemFormStage);
-        viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
-        viewItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
-
-        viewItemFormStage.setScene(scene);
-        viewItemFormStage.setResizable(false);
-        viewItemFormStage.centerOnScreen();
-
-        // Disable HomeForm when ViewItemForm is open
-        HomeForm.setDisable(true);
-
-        // Handle close event to enable HomeForm when ViewItemForm is closed
-        viewItemFormStage.setOnCloseRequest(windowEvent -> HomeForm.setDisable(false));
-
-        viewItemFormStage.show();
+        navigation("/view/ViewItemForm.fxml");
     }
 
     public void OrderHistoryOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ViewOrderHistoryForm.fxml"));
+        navigation("/view/ViewOrderHistoryForm.fxml");
+    }
+
+    public void navigation(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-
-        // Create a new stage for the ViewItemForm
-        Stage viewItemFormStage = new Stage();
-
-        ViewOrderHistoryFormController controller = loader.getController();
-        controller.setStage(viewItemFormStage);
-
-        viewItemFormStage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
-        viewItemFormStage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
-
-        // Disable HomeForm when ViewItemForm is open
-        HomeForm.setDisable(true);
-
-        // Handle close event to enable HomeForm when ViewItemForm is closed
-        viewItemFormStage.setOnCloseRequest(windowEvent -> HomeForm.setDisable(false));
-        viewItemFormStage.setScene(scene);
-        viewItemFormStage.setResizable(false);
-        viewItemFormStage.centerOnScreen();
-
-        viewItemFormStage.show();
-    }
-
-    public void setOrderCount() throws IOException {
-        int orderCount = homeDAO.setOrderCount(lblDate.getText());
-        lblTodayOrderCount.setText(String.valueOf(orderCount));
-    }
-
-    public void setYesterdayOrderCount() throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        LocalDate date = LocalDate.parse(lblDate.getText(), formatter);
-        LocalDate newDate = date.minusDays(1);
-        String result = newDate.format(formatter);
-
-        int yesterdayOrderCount = homeDAO.setYesterdayOrderCount(result);
-        lblYesterdayOrderCount.setText(String.valueOf(yesterdayOrderCount));
-    }
-
-    public void setSellItemTypeCount() throws IOException {
-        int itemTypeCount = homeDAO.setSellItemTypeCount(lblDate.getText());
-        lblSellItemTypeCount.setText(String.valueOf(itemTypeCount));
-    }
-
-    public void setYesterdaySellItemTypeCount() throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        LocalDate date = LocalDate.parse(lblDate.getText(), formatter);
-        LocalDate newDate = date.minusDays(1);
-        String result = newDate.format(formatter);
-
-        int itemTypeCount = homeDAO.setYesterdaySellItemTypeCount(result);
-        lblYesterdaySellItemTypeCount.setText(String.valueOf(itemTypeCount));
-    }
-
-    public void setProfit() throws IOException {
-        try {
-            double setProfit = homeDAO.setProfit(lblDate.getText());
-            lblProfit.setText(String.valueOf(setProfit));
-        }catch (NullPointerException e){
-            lblProfit.setText("0");
-        }
-    }
-
-    public void setYesterdayProfit() throws IOException {
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        LocalDate date = LocalDate.parse(lblDate.getText(), formatter);
-        LocalDate newDate = date.minusDays(1);
-        String result = newDate.format(formatter);
-
-        try {
-            double setProfit = homeDAO.setYesterdayProfit(result);
-            lblYesterdayProfit.setText(String.valueOf(setProfit));
-        }catch (NullPointerException e){
-            lblYesterdayProfit.setText("0");
-        }
+        ControllArea.getChildren().removeAll();
+        ControllArea.getChildren().setAll(anchorPane);
     }
 
     public void LogOutOnAction(ActionEvent actionEvent) throws IOException {
@@ -233,5 +112,160 @@ public class HomeFormController implements Initializable {
         stage.setResizable(false);
         stage.show();
         HomeForm.getScene().getWindow().hide();
+    }
+
+    public void DashbordOnAction(ActionEvent actionEvent) throws IOException {
+        navigation("/view/DashbordForm.fxml");
+    }
+
+    int value = -1;
+
+    public void UserOnAction(ActionEvent actionEvent) {
+
+    }
+
+    public void btnPlaceOrderOnMouseEntered(MouseEvent mouseEvent) {
+        btnPlaceOrder.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnPlaceOrderOnMouseExited(MouseEvent mouseEvent) {
+        if (value!=4) {
+            btnPlaceOrder.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnDashbordOnMouseEntered(MouseEvent mouseEvent) {
+        btnDashbord.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnDashbordOnMouseExited(MouseEvent mouseEvent) {
+        if (value!=0) {
+            btnDashbord.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnUserOnMouseEntered(MouseEvent mouseEvent) {
+        btnUsers.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnUserOnMouseExited(MouseEvent mouseEvent) {
+        if (value!=5) {
+            btnUsers.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnAddItemOnMouseEntered(MouseEvent mouseEvent) {
+        btnAddItem.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnAddItemOnMouseExited(MouseEvent mouseEvent) {
+        if (value!=1) {
+            btnAddItem.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnViewItemOnMouseEntered(MouseEvent mouseEvent) {
+        btnViewItem.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnViewItemOnMouseExited(MouseEvent mouseEvent) {
+        if (value!=2) {
+            btnViewItem.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnOrderHistoryOnMouseEntered(MouseEvent mouseEvent) {
+        btnOrderHistory.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnOrderHistoryOnMouseExited(MouseEvent mouseEvent) {
+        if (value!=3) {
+            btnOrderHistory.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnLogOutOnMouseEntered(MouseEvent mouseEvent) {
+        btnLogOut.setStyle("-fx-background-color: #5a189a;");
+    }
+
+    public void btnLogOutOnMouseExited(MouseEvent mouseEvent) {
+        btnLogOut.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnAddItemOnMouseClicked(MouseEvent mouseEvent) {
+        btnAddItem.setStyle("-fx-background-color: #5a189a;");
+        value=1;
+        btnLogOut.setStyle("-fx-background-color: none;");
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnViewItem.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnViewItemOnMouseClicked(MouseEvent mouseEvent) {
+        btnViewItem.setStyle("-fx-background-color: #5a189a;");
+        value=2;
+        btnLogOut.setStyle("-fx-background-color: none;");
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnOrderHistoryOnMouseClicked(MouseEvent mouseEvent) {
+        btnOrderHistory.setStyle("-fx-background-color: #5a189a;");
+        value=3;
+        btnLogOut.setStyle("-fx-background-color: none;");
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnViewItem.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnPlaceOrderOnMouseClicked(MouseEvent mouseEvent) {
+        btnPlaceOrder.setStyle("-fx-background-color: #5a189a;");
+        value=4;
+        btnLogOut.setStyle("-fx-background-color: none;");
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnViewItem.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnLogOutOnMouseClicked(MouseEvent mouseEvent) {
+        btnLogOut.setStyle("-fx-background-color: #5a189a;");
+
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnViewItem.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnDashbordOnMouseClicked(MouseEvent mouseEvent) {
+        btnDashbord.setStyle("-fx-background-color: #5a189a;");
+        value=0;
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnViewItem.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnLogOut.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnUserOnMouseClicked(MouseEvent mouseEvent) {
+        btnUsers.setStyle("-fx-background-color: #5a189a;");
+        value=5;
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnViewItem.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnLogOut.setStyle("-fx-background-color: none;");
     }
 }

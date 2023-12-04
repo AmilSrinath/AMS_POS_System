@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="693.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashbordFormController">
+   <children>
+      <Pane layoutX="101.0" layoutY="176.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label alignment="CENTER" layoutX="24.0" layoutY="14.0" prefHeight="38.0" prefWidth="199.0" text="Today's profit">
+               <font>
+                  <Font name="Poppins Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="93.0" layoutY="51.0" prefHeight="38.0" prefWidth="61.0" text="Rs.">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblProfit" alignment="CENTER" layoutX="31.0" layoutY="88.0" prefHeight="38.0" prefWidth="185.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="401.0" layoutY="176.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblSellItemTypeCount" alignment="CENTER" layoutX="65.0" layoutY="91.0" prefHeight="38.0" prefWidth="105.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Text layoutX="31.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of item types sold today" textAlignment="CENTER" wrappingWidth="184.99999183416367">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="703.0" layoutY="176.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblTodayOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="88.0" prefHeight="32.0" prefWidth="142.0" text="0" textAlignment="CENTER">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Text layoutX="31.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of orders today" textAlignment="CENTER" wrappingWidth="184.99999183416367">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="102.0" layoutY="377.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblYesterdayProfit" alignment="CENTER" layoutX="24.0" layoutY="88.0" prefHeight="32.0" prefWidth="199.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="38.0" prefWidth="211.0" text="Yesterday's profit">
+               <font>
+                  <Font name="Poppins Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="93.0" layoutY="51.0" prefHeight="38.0" prefWidth="61.0" text="Rs.">
+               <font>
+                  <Font name="Poppins Regular" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="402.0" layoutY="377.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblYesterdaySellItemTypeCount" alignment="CENTER" layoutX="65.0" layoutY="94.0" prefHeight="32.0" prefWidth="117.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of item types sold yesterday" textAlignment="CENTER" wrappingWidth="218.99999183416367">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="704.0" layoutY="377.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblYesterdayOrderCount" alignment="CENTER" layoutX="60.0" layoutY="91.0" prefHeight="32.0" prefWidth="131.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Text layoutX="31.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of orders yesterday" textAlignment="CENTER" wrappingWidth="184.99999183416367">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

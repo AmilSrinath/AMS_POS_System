@@ -10,14 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/Hovericons8-logout-50-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-date-50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-logout-50.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-time-50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DashbordFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/UserDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/TM/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-dashboard-64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-user-40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-user-80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assest/icons8-users-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/DashbordForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/UserForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/LoginFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/TraialFromController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/TraialFromController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/DAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/util/FactoryConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/util/FactoryConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/CSS.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeForm.fxml" afterDir="false" />
     </list>
@@ -29,14 +39,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -48,26 +63,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/apple/IdeaProjects/AMS_POS_System/src/main/resources/assest&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.31957185&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "second",
+    "last_opened_file_path": "/Users/apple/IdeaProjects/AMS_POS_System/src/main/resources/assest",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31957185",
+    "settings.editor.selected.configurable": "editing.templates",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/assest" />
@@ -224,7 +244,8 @@
       <workItem from="1701572593324" duration="1445000" />
       <workItem from="1701578041541" duration="6738000" />
       <workItem from="1701610502247" duration="5139000" />
-      <workItem from="1701662821963" duration="1679000" />
+      <workItem from="1701662821963" duration="2340000" />
+      <workItem from="1701677242304" duration="15094000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -482,7 +503,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701615350228</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1701676697393</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1701676697393</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

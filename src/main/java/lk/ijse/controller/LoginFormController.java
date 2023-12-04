@@ -47,16 +47,6 @@ public class LoginFormController extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
-        Session session = null;
-        try {
-            session = FactoryConfiguration.getInstance().getSession();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Transaction transaction = session.beginTransaction();
-        transaction.commit();
-        session.close();
     }
 
     private void showLoadingForm() {
