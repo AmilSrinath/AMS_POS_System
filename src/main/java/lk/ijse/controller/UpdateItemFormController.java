@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.Impl.DataRefreshListener;
@@ -11,12 +12,10 @@ import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
-import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderDetail;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class UpdateItemFormController {
@@ -64,6 +63,10 @@ public class UpdateItemFormController {
 
         cleanTextField();
         stage.getScene().getWindow().hide();
+        homeForm.setDisable(false);
+
+        // Handle close event to enable HomeForm when ViewItemForm is closed
+        stage.setOnCloseRequest(windowEvent -> homeForm.setDisable(true));
     }
 
     public void txtItemIDOnAction(ActionEvent actionEvent) throws IOException {
@@ -84,12 +87,15 @@ public class UpdateItemFormController {
         cleanTextField();
     }
     Stage stage = new Stage();
-    public void setValues(String id, String itemName, String itemQut, String itemUnitPrice, String itemUnitCost, Stage stage) {
+    AnchorPane homeForm;
+
+    public void setValues(String id, String itemName, String itemQut, String itemUnitPrice, String itemUnitCost, Stage stage, AnchorPane homeForm) {
         txtItemID.setText(id);
         txtItemName.setText(itemName);
         txtItemQuantity.setText(String.valueOf(itemQut));
-        txtUnitCost.setText(String.valueOf(itemUnitPrice));
-        txtUnitSellingPrice.setText(String.valueOf(itemUnitCost));
-        this.stage=stage;
+        txtUnitSellingPrice.setText(String.valueOf(itemUnitPrice));
+        txtUnitCost.setText(String.valueOf(itemUnitCost));
+        this.stage = stage;
+        this.homeForm = homeForm;
     }
 }

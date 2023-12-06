@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -34,6 +35,8 @@ public class HomeFormController implements Initializable{
     public Button btnAddItem;
     public Label lblUsername;
     public Button btnLogOut;
+    public ImageView btnSetting;
+    public ImageView btnSettingHover;
 
     Stage homeFormStage;
 
@@ -41,9 +44,8 @@ public class HomeFormController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblDate.setText(String.valueOf(LocalDate.now()));
         TimeNow();
+        btnSettingHover.setVisible(false);
     }
-
-    public AnchorPane HomeFom;
     public Label lblDate;
 
     private void TimeNow(){
@@ -65,7 +67,14 @@ public class HomeFormController implements Initializable{
     }
 
     public void AddItemOnAction(ActionEvent actionEvent) throws IOException {
-        navigation("/view/AddItemForm.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddItemForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+
+        AddItemFormController controller = loader.getController();
+        controller.setStage(homeFormStage,HomeForm);
+
+        ControllArea.getChildren().removeAll();
+        ControllArea.getChildren().setAll(anchorPane);
     }
 
     public void PlaceOrderOnAction(ActionEvent actionEvent) throws IOException {
@@ -120,8 +129,8 @@ public class HomeFormController implements Initializable{
 
     int value = -1;
 
-    public void UserOnAction(ActionEvent actionEvent) {
-
+    public void UserOnAction(ActionEvent actionEvent) throws IOException {
+        navigation("/view/UserForm.fxml");
     }
 
     public void btnPlaceOrderOnMouseEntered(MouseEvent mouseEvent) {
@@ -267,5 +276,13 @@ public class HomeFormController implements Initializable{
         btnViewItem.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnLogOut.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnSettingOnMouseEntered(MouseEvent mouseEvent) {
+        btnSettingHover.setVisible(true);
+    }
+
+    public void btnSettingOnMouseExited(MouseEvent mouseEvent) {
+        btnSettingHover.setVisible(false);
     }
 }

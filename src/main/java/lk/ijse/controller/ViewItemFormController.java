@@ -23,9 +23,7 @@ import lk.ijse.bo.Custom.Impl.DataRefreshListener;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
-import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderDetail;
-import lk.ijse.entity.TM.ItemTM;
 
 import java.io.IOException;
 import java.net.URL;
@@ -109,8 +107,6 @@ public class ViewItemFormController implements Initializable, DataRefreshListene
 
         UpdateItemFormController controller = loader.getController();
         Stage stage = new Stage();
-        controller.setValues(id,itemName,itemQut,itemUnitPrice,itemUnitCost,stage);
-        controller.setDataRefreshListener(this);
 
         stage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
         stage.initOwner(viewItemFormStage); // Set the owner to the HomeForm stage

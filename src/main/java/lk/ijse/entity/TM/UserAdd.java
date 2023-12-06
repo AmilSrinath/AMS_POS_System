@@ -13,7 +13,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class UserAdd {
     @Id
     private String id;
     private String name;

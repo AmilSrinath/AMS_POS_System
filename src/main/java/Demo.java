@@ -4,8 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.controller.LoginFormController;
-import lk.ijse.dao.Custom.Impl.HomeDAOImpl;
-import lk.ijse.dao.Custom.Impl.UserDAOImpl;
+import lk.ijse.dao.Custom.Impl.UserAddDAOImpl;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -15,9 +14,9 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 public class Demo extends Application {
-    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 5);
+    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 7);
 
-    UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     public static void main(String[] args) {
         launch(args);
@@ -43,7 +42,7 @@ public class Demo extends Application {
 
                 boolean isEmpty = userDAO.isEmpty();
                 if (isEmpty){
-                    FXMLLoader loader = new FXMLLoader(Demo.class.getResource("/view/UserForm.fxml"));
+                    FXMLLoader loader = new FXMLLoader(Demo.class.getResource("/view/UserAddForm.fxml"));
                     AnchorPane anchorPane = loader.load();
                     Scene scene = new Scene(anchorPane);
                     primaryStage.setScene(scene);

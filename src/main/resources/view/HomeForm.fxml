@@ -27,6 +27,16 @@
                   <Font name="Poppins Regular" size="21.0" />
                </font>
             </Label>
+            <ImageView fx:id="btnSetting" fitHeight="31.0" fitWidth="31.0" layoutX="858.0" layoutY="13.0" onMouseEntered="#btnSettingOnMouseEntered" onMouseExited="#btnSettingOnMouseExited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-setting-50-2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnSettingHover" fitHeight="31.0" fitWidth="31.0" layoutX="858.0" layoutY="13.0" onMouseEntered="#btnSettingOnMouseEntered" onMouseExited="#btnSettingOnMouseExited" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/icons8-setting-50-3.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <Label fx:id="lblDate" layoutX="978.0" layoutY="17.0" prefHeight="27.0" prefWidth="142.0" text="0000-00-00" textFill="WHITE">
          <font>
@@ -79,7 +89,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnPlaceOrder" contentDisplay="RIGHT" graphicTextGap="32.0" layoutY="297.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" onMouseClicked="#btnPlaceOrderOnMouseClicked" onMouseEntered="#btnPlaceOrderOnMouseEntered" onMouseExited="#btnPlaceOrderOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+            <Button fx:id="btnPlaceOrder" contentDisplay="RIGHT" graphicTextGap="32.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" onMouseClicked="#btnPlaceOrderOnMouseClicked" onMouseEntered="#btnPlaceOrderOnMouseEntered" onMouseExited="#btnPlaceOrderOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>
@@ -133,7 +143,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="btnUsers" contentDisplay="RIGHT" graphicTextGap="91.0" layoutY="346.0" mnemonicParsing="false" onAction="#UserOnAction" onMouseClicked="#btnUserOnMouseClicked" onMouseEntered="#btnUserOnMouseEntered" onMouseExited="#btnUserOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Users" textFill="WHITE">
+            <Button fx:id="btnUsers" contentDisplay="RIGHT" graphicTextGap="91.0" layoutY="297.0" mnemonicParsing="false" onAction="#UserOnAction" onMouseClicked="#btnUserOnMouseClicked" onMouseEntered="#btnUserOnMouseEntered" onMouseExited="#btnUserOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Users" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>

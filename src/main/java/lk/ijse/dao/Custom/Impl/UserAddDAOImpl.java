@@ -1,7 +1,7 @@
 package lk.ijse.dao.Custom.Impl;
 
-import lk.ijse.dao.Custom.UserDAO;
-import lk.ijse.entity.TM.User;
+import lk.ijse.dao.Custom.UserAddDAO;
+import lk.ijse.entity.TM.UserAdd;
 import lk.ijse.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserDAOImpl implements UserDAO {
+public class UserAddDAOImpl implements UserAddDAO {
     public boolean isEmpty() throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
@@ -28,12 +28,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getAll() throws SQLException, ClassNotFoundException, IOException {
+    public List<UserAdd> getAll() throws SQLException, ClassNotFoundException, IOException {
         return null;
     }
 
     @Override
-    public boolean add(User entity) throws SQLException, ClassNotFoundException, IOException {
+    public boolean add(UserAdd entity) throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         session.persist(entity);
@@ -43,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean update(User entity) throws SQLException, ClassNotFoundException, IOException {
+    public boolean update(UserAdd entity) throws SQLException, ClassNotFoundException, IOException {
         return false;
     }
 

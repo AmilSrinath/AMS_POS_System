@@ -27,7 +27,7 @@ public class DAOFactory {
             case HOME:
                 return new HomeDAOImpl();
             case USER:
-                return new UserDAOImpl();
+                return new UserAddDAOImpl();
             default:
                 return null;
         }
