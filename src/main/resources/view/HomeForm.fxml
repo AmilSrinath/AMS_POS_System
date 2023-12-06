@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="HomeForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeFormController">
+<AnchorPane fx:id="HomeForm" prefHeight="800.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.HomeFormController">
    <children>
-      <AnchorPane prefHeight="57.0" prefWidth="1280.0" style="-fx-background-color: #212529;">
+      <AnchorPane prefHeight="57.0" prefWidth="1350.0" style="-fx-background-color: #212529;">
          <children>
-            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="945.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1025.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/icons8-date-50.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1124.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1214.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/icons8-time-50.png" />
                </image>
@@ -27,30 +27,30 @@
                   <Font name="Poppins Regular" size="21.0" />
                </font>
             </Label>
-            <ImageView fx:id="btnSetting" fitHeight="31.0" fitWidth="31.0" layoutX="858.0" layoutY="13.0" onMouseEntered="#btnSettingOnMouseEntered" onMouseExited="#btnSettingOnMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnSetting" fitHeight="31.0" fitWidth="31.0" layoutX="928.0" layoutY="13.0" onMouseEntered="#btnSettingOnMouseEntered" onMouseExited="#btnSettingOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/icons8-setting-50-2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnSettingHover" fitHeight="31.0" fitWidth="31.0" layoutX="858.0" layoutY="13.0" onMouseEntered="#btnSettingOnMouseEntered" onMouseExited="#btnSettingOnMouseExited" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btnSettingHover" fitHeight="31.0" fitWidth="31.0" layoutX="928.0" layoutY="13.0" onMouseEntered="#btnSettingOnMouseEntered" onMouseExited="#btnSettingOnMouseExited" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/icons8-setting-50-3.png" />
                </image>
             </ImageView>
          </children></AnchorPane>
-      <Label fx:id="lblDate" layoutX="978.0" layoutY="17.0" prefHeight="27.0" prefWidth="142.0" text="0000-00-00" textFill="WHITE">
+      <Label fx:id="lblDate" layoutX="1068.0" layoutY="17.0" prefHeight="27.0" prefWidth="142.0" text="0000-00-00" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblTime" layoutX="1161.0" layoutY="17.0" prefHeight="27.0" prefWidth="95.0" text="00:00" textFill="WHITE">
+      <Label fx:id="lblTime" layoutX="1251.0" layoutY="17.0" prefHeight="27.0" prefWidth="95.0" text="00:00" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="19.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="55.0" prefHeight="695.0" prefWidth="228.0" style="-fx-background-color: #212529;">
+      <AnchorPane layoutY="55.0" prefHeight="745.0" prefWidth="228.0" style="-fx-background-color: #212529;">
          <children>
-            <Button fx:id="btnAddItem" contentDisplay="RIGHT" graphicTextGap="55.0" layoutY="146.0" mnemonicParsing="false" onAction="#AddItemOnAction" onMouseClicked="#btnAddItemOnMouseClicked" onMouseEntered="#btnAddItemOnMouseEntered" onMouseExited="#btnAddItemOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Add Item" textFill="WHITE">
+            <Button fx:id="btnAddItem" contentDisplay="RIGHT" graphicTextGap="15.0" layoutY="146.0" mnemonicParsing="false" onAction="#AddItemOnAction" onMouseClicked="#btnAddItemOnMouseClicked" onMouseEntered="#btnAddItemOnMouseEntered" onMouseExited="#btnAddItemOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Manage Item" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="btnViewItem" contentDisplay="RIGHT" graphicTextGap="58.0" layoutY="199.0" mnemonicParsing="false" onAction="#ViewItemOnAction" onMouseClicked="#btnViewItemOnMouseClicked" onMouseEntered="#btnViewItemOnMouseEntered" onMouseExited="#btnViewItemOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="View Item" textFill="WHITE">
+            <Button fx:id="btnOrderHistory" contentDisplay="RIGHT" graphicTextGap="26.0" layoutY="199.0" mnemonicParsing="false" onAction="#OrderHistoryOnAction" onMouseClicked="#btnOrderHistoryOnMouseClicked" onMouseEntered="#btnOrderHistoryOnMouseEntered" onMouseExited="#btnOrderHistoryOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Order History" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>
@@ -77,19 +77,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnOrderHistory" contentDisplay="RIGHT" graphicTextGap="26.0" layoutY="248.0" mnemonicParsing="false" onAction="#OrderHistoryOnAction" onMouseClicked="#btnOrderHistoryOnMouseClicked" onMouseEntered="#btnOrderHistoryOnMouseEntered" onMouseExited="#btnOrderHistoryOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Order History" textFill="WHITE">
-               <font>
-                  <Font name="Poppins Regular" size="19.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assest/icons8-view-50.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="btnPlaceOrder" contentDisplay="RIGHT" graphicTextGap="32.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" onMouseClicked="#btnPlaceOrderOnMouseClicked" onMouseEntered="#btnPlaceOrderOnMouseEntered" onMouseExited="#btnPlaceOrderOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+            <Button fx:id="btnPlaceOrder" contentDisplay="RIGHT" graphicTextGap="32.0" layoutY="297.0" mnemonicParsing="false" onAction="#PlaceOrderOnAction" onMouseClicked="#btnPlaceOrderOnMouseClicked" onMouseEntered="#btnPlaceOrderOnMouseEntered" onMouseExited="#btnPlaceOrderOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>
@@ -101,7 +89,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="btnLogOut" contentDisplay="RIGHT" graphicTextGap="69.0" layoutY="395.0" mnemonicParsing="false" onAction="#LogOutOnAction" onMouseClicked="#btnLogOutOnMouseClicked" onMouseEntered="#btnLogOutOnMouseEntered" onMouseExited="#btnLogOutOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Log Out" textFill="WHITE">
+            <Button fx:id="btnLogOut" contentDisplay="RIGHT" graphicTextGap="69.0" layoutY="346.0" mnemonicParsing="false" onAction="#LogOutOnAction" onMouseClicked="#btnLogOutOnMouseClicked" onMouseEntered="#btnLogOutOnMouseEntered" onMouseExited="#btnLogOutOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Log Out" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>
@@ -133,17 +121,17 @@
                   <Image url="@../assest/icons8-user-80.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="142.0" fitWidth="147.0" layoutX="45.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="142.0" fitWidth="147.0" layoutX="43.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/AAA.png" />
                </image>
             </ImageView>
-            <Label layoutX="67.0" layoutY="656.0" text="077 142 8333" textFill="WHITE">
+            <Label layoutX="65.0" layoutY="706.0" text="077 142 8333" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="btnUsers" contentDisplay="RIGHT" graphicTextGap="91.0" layoutY="297.0" mnemonicParsing="false" onAction="#UserOnAction" onMouseClicked="#btnUserOnMouseClicked" onMouseEntered="#btnUserOnMouseEntered" onMouseExited="#btnUserOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Users" textFill="WHITE">
+            <Button fx:id="btnUsers" contentDisplay="RIGHT" graphicTextGap="91.0" layoutY="248.0" mnemonicParsing="false" onAction="#UserOnAction" onMouseClicked="#btnUserOnMouseClicked" onMouseEntered="#btnUserOnMouseEntered" onMouseExited="#btnUserOnMouseExited" prefHeight="47.0" prefWidth="228.0" styleClass="btn" stylesheets="@../Style/CSS.css" text="Users" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="19.0" />
                </font>
@@ -157,6 +145,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ControllArea" layoutX="228.0" layoutY="57.0" prefHeight="693.0" prefWidth="1051.0" />
+      <AnchorPane fx:id="ControllArea" layoutX="228.0" layoutY="57.0" prefHeight="745.0" prefWidth="1122.0" />
    </children>
 </AnchorPane>

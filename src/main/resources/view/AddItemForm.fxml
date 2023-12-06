@@ -10,58 +10,58 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ViewItemForm" prefHeight="693.0" prefWidth="1051.0" style="-fx-background-color: 93B1A6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AddItemFormController">
+<AnchorPane fx:id="ViewItemForm" prefHeight="745.0" prefWidth="1122.0" style="-fx-background-color: 93B1A6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.AddItemFormController">
    <children>
-      <StackPane prefHeight="78.0" prefWidth="1051.0" style="-fx-background-color: #212529;">
+      <StackPane prefHeight="78.0" prefWidth="1122.0" style="-fx-background-color: #212529;">
          <children>
             <Label text="Add Item" textFill="WHITE">
                <font>
                   <Font name="Poppins Regular" size="30.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="txtItemID" disable="true" opacity="0.0" prefHeight="32.0" prefWidth="246.0" promptText="Item ID" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
          </children>
       </StackPane>
-      <JFXTextField fx:id="txtItemID" disable="true" layoutX="34.0" layoutY="187.0" prefHeight="32.0" prefWidth="246.0" promptText="Item ID" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtItemName" layoutX="60.0" layoutY="257.0" prefHeight="32.0" prefWidth="246.0" promptText="Item Name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtItemName" layoutX="34.0" layoutY="241.0" prefHeight="32.0" prefWidth="246.0" promptText="Item Name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtItemQuantity" layoutX="60.0" layoutY="317.0" prefHeight="32.0" prefWidth="246.0" promptText="Item Quantity" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtItemQuantity" layoutX="34.0" layoutY="305.0" prefHeight="32.0" prefWidth="246.0" promptText="Item Quantity" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtUnitSellingPrice" layoutX="95.0" layoutY="383.0" prefHeight="32.0" prefWidth="213.0" promptText="Unit Selling Price" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtUnitSellingPrice" layoutX="69.0" layoutY="367.0" prefHeight="32.0" prefWidth="213.0" promptText="Unit Selling Price" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtUnitCost" layoutX="95.0" layoutY="444.0" prefHeight="32.0" prefWidth="213.0" promptText="Unit Cost" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtUnitCost" layoutX="69.0" layoutY="428.0" prefHeight="32.0" prefWidth="213.0" promptText="Unit Cost" styleClass="PromtText" stylesheets="@../Style/CSS.css">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </JFXTextField>
-      <Button layoutX="35.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="246.0" styleClass="btnAdd" stylesheets="@../Style/CSS.css" text="Add" textFill="WHITE">
+      <Button layoutX="65.0" layoutY="533.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="246.0" styleClass="btnAdd" stylesheets="@../Style/CSS.css" text="Add" textFill="WHITE">
          <font>
             <Font name="Poppins Regular" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="35.0" layoutY="372.0" text="Rs.">
+      <Label layoutX="61.0" layoutY="388.0" text="Rs.">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="35.0" layoutY="433.0" text="Rs.">
+      <Label layoutX="61.0" layoutY="449.0" text="Rs.">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tblItem" layoutX="297.0" layoutY="181.0" onMouseClicked="#rowOnMouseClicked" prefHeight="405.0" prefWidth="724.0" stylesheets="@../Style/CSS.css">
+      <TableView fx:id="tblItem" layoutX="367.0" layoutY="191.0" onMouseClicked="#rowOnMouseClicked" prefHeight="489.0" prefWidth="724.0" stylesheets="@../Style/CSS.css">
          <columns>
             <TableColumn fx:id="colItemID" prefWidth="90.0" text="ItemID" />
             <TableColumn fx:id="colItemName" prefWidth="230.0" text="ItemName" />
@@ -76,6 +76,9 @@
             <String fx:value="table-view" />
          </styleClass>
       </TableView>
-      <JFXTextField fx:id="txtSearch" layoutX="796.0" layoutY="136.0" prefHeight="33.0" prefWidth="223.0" promptText="Search" />
+      <JFXTextField fx:id="txtSearch" layoutX="835.0" layoutY="151.0" prefHeight="34.0" prefWidth="254.0" promptText="Search">
+         <font>
+            <Font size="17.0" />
+         </font></JFXTextField>
    </children>
 </AnchorPane>

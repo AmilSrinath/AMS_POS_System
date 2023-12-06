@@ -208,18 +208,6 @@ public class HomeFormController implements Initializable{
         btnUsers.setStyle("-fx-background-color: none;");
         btnPlaceOrder.setStyle("-fx-background-color: none;");
         btnOrderHistory.setStyle("-fx-background-color: none;");
-        btnViewItem.setStyle("-fx-background-color: none;");
-        btnDashbord.setStyle("-fx-background-color: none;");
-    }
-
-    public void btnViewItemOnMouseClicked(MouseEvent mouseEvent) {
-        btnViewItem.setStyle("-fx-background-color: #5a189a;");
-        value=2;
-        btnLogOut.setStyle("-fx-background-color: none;");
-        btnUsers.setStyle("-fx-background-color: none;");
-        btnPlaceOrder.setStyle("-fx-background-color: none;");
-        btnOrderHistory.setStyle("-fx-background-color: none;");
-        btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
     }
 
@@ -229,7 +217,6 @@ public class HomeFormController implements Initializable{
         btnLogOut.setStyle("-fx-background-color: none;");
         btnUsers.setStyle("-fx-background-color: none;");
         btnPlaceOrder.setStyle("-fx-background-color: none;");
-        btnViewItem.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
     }
@@ -240,7 +227,6 @@ public class HomeFormController implements Initializable{
         btnLogOut.setStyle("-fx-background-color: none;");
         btnUsers.setStyle("-fx-background-color: none;");
         btnOrderHistory.setStyle("-fx-background-color: none;");
-        btnViewItem.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
     }
@@ -251,7 +237,6 @@ public class HomeFormController implements Initializable{
         btnPlaceOrder.setStyle("-fx-background-color: none;");
         btnUsers.setStyle("-fx-background-color: none;");
         btnOrderHistory.setStyle("-fx-background-color: none;");
-        btnViewItem.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
     }
@@ -262,7 +247,6 @@ public class HomeFormController implements Initializable{
         btnPlaceOrder.setStyle("-fx-background-color: none;");
         btnUsers.setStyle("-fx-background-color: none;");
         btnOrderHistory.setStyle("-fx-background-color: none;");
-        btnViewItem.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnLogOut.setStyle("-fx-background-color: none;");
     }
@@ -273,7 +257,6 @@ public class HomeFormController implements Initializable{
         btnPlaceOrder.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
         btnOrderHistory.setStyle("-fx-background-color: none;");
-        btnViewItem.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnLogOut.setStyle("-fx-background-color: none;");
     }
