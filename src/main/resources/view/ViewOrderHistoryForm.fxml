@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ViewOrderHistoryForm" prefHeight="498.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewOrderHistoryFormController">
+<AnchorPane fx:id="ViewOrderHistoryForm" prefHeight="745.0" prefWidth="1122.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ViewOrderHistoryFormController">
    <children>
-      <StackPane prefHeight="78.0" prefWidth="815.0" style="-fx-background-color: #95a5a6;">
+      <StackPane prefHeight="78.0" prefWidth="1122.0" style="-fx-background-color: #212529;">
          <children>
             <Label text="Order History" textFill="WHITE">
                <font>
@@ -19,16 +19,19 @@
             </Label>
          </children>
       </StackPane>
-      <TableView fx:id="tblItem" layoutX="55.0" layoutY="146.0" onMouseClicked="#OnMouseClicked" prefHeight="319.0" prefWidth="725.0">
+      <TableView fx:id="tblItem" layoutX="37.0" layoutY="174.0" onMouseClicked="#OnMouseClicked" prefHeight="541.0" prefWidth="1055.0" stylesheets="@../Style/CSS.css">
          <columns>
-            <TableColumn fx:id="colorderDetailID" prefWidth="112.0" text="order_Detail_ID" />
-            <TableColumn fx:id="colquantity" prefWidth="136.0" text="quantity" />
-            <TableColumn fx:id="colsubTotal" prefWidth="120.0" text="subTotal" />
-            <TableColumn fx:id="colunitPrice" prefWidth="141.0" text="unitPrice" />
-            <TableColumn fx:id="colitemID" prefWidth="110.0" text="itemID" />
-            <TableColumn fx:id="colorderID" prefWidth="105.0" text="orderID" />
+            <TableColumn fx:id="colorderDetailID" prefWidth="176.55121231079102" text="order_Detail_ID" />
+            <TableColumn fx:id="colquantity" prefWidth="185.9658660888672" text="quantity" />
+            <TableColumn fx:id="colsubTotal" prefWidth="187.09365844726562" text="subTotal" />
+            <TableColumn fx:id="colunitPrice" prefWidth="190.8720703125" text="unitPrice" />
+            <TableColumn fx:id="colitemID" prefWidth="167.241455078125" text="itemID" />
+            <TableColumn fx:id="colorderID" prefWidth="142.24139404296875" text="orderID" />
          </columns>
       </TableView>
-      <JFXTextField fx:id="txtSearch" layoutX="558.0" layoutY="100.0" prefHeight="33.0" prefWidth="223.0" promptText="Search" />
+      <JFXTextField fx:id="txtSearch" layoutX="837.0" layoutY="129.0" prefHeight="36.0" prefWidth="255.0" promptText="Search">
+         <font>
+            <Font size="16.0" />
+         </font></JFXTextField>
    </children>
 </AnchorPane>

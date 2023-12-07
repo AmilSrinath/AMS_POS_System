@@ -1,6 +1,7 @@
 package lk.ijse.dao.Custom.Impl;
 
-import lk.ijse.dao.Custom.UserAddDAO;
+import lk.ijse.dao.Custom.UserDAO;
+import lk.ijse.entity.Item;
 import lk.ijse.entity.User;
 import lk.ijse.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -11,25 +12,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserAddDAOImpl implements UserAddDAO {
-    public boolean isEmpty() throws IOException {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        NativeQuery<Long> nativeQuery = session.createNativeQuery("SELECT COUNT(*) FROM user;");
-        Long l = nativeQuery.uniqueResult();
-        transaction.commit();
-        session.close();
-
-        if (l==0){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
+public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getAll() throws SQLException, ClassNotFoundException, IOException {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM user");
+        nativeQuery.addEntity(User.class);
+        List<User> users = nativeQuery.getResultList();
+        transaction.commit();
+        session.close();
+        return users;
     }
 
     @Override
@@ -49,7 +42,15 @@ public class UserAddDAOImpl implements UserAddDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException, IOException {
-        return false;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        String sql = "DELETE FROM user WHERE id = :id";
+        NativeQuery<User> nativeQuery = session.createNativeQuery(sql);
+        nativeQuery.setParameter("id",id);
+        nativeQuery.executeUpdate();
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override

@@ -19,17 +19,17 @@
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="txtPassword" layoutX="143.0" layoutY="284.0" prefHeight="27.0" prefWidth="281.0" promptText="Password" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXPasswordField fx:id="txtPassword" layoutX="143.0" layoutY="284.0" onKeyReleased="#txtPasswordOnKeyReleased" prefHeight="27.0" prefWidth="281.0" promptText="Password" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXPasswordField>
-      <JFXPasswordField fx:id="txtRePassword" layoutX="143.0" layoutY="342.0" prefHeight="27.0" prefWidth="281.0" promptText="Re-Password" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXPasswordField fx:id="txtRePassword" layoutX="143.0" layoutY="342.0" onKeyReleased="#txtRePasswordOnKeyReleased" prefHeight="27.0" prefWidth="281.0" promptText="Re-Password" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXPasswordField>
-      <JFXTextField fx:id="txtDisplayName" layoutX="143.0" layoutY="395.0" prefHeight="32.0" prefWidth="281.0" promptText="Display name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtDisplayName" layoutX="143.0" layoutY="402.0" prefHeight="32.0" prefWidth="281.0" promptText="Display name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
@@ -59,6 +59,11 @@
          </font>
       </Text>
       <Text layoutX="118.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are the admin of this system and for that fill the following information and click the Add button. And don't forget username and password." textAlignment="CENTER" wrappingWidth="331.652099609375">
+         <font>
+            <Font name="Poppins Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblError" fill="RED" layoutX="143.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't match password!!!" wrappingWidth="210.652099609375">
          <font>
             <Font name="Poppins Regular" size="13.0" />
          </font>

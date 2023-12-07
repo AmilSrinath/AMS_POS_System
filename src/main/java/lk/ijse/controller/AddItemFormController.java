@@ -76,7 +76,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            generateNextItemId();
+            txtItemID.setText(itemBO.generateNewItemID());
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -146,27 +146,23 @@ public class AddItemFormController implements Initializable, DataRefreshListener
 
         if (itemBO.addItem(new ItemDTO(itemID, itemName, itemQut, itemUnitSellingPrice, itemUnitCost, new HashSet<OrderDetail>()))) {
             Notifications.create()
-                    .title("සාර්ථකයි...!")
-                    .text("අයිතමය සාර්ථකව එකතුකර ගෙන ඇත.")
+                    .title("Successfully...!")
+                    .text("Item Added Successfully...!")
                     .hideAfter(Duration.seconds(5))
                     .position(Pos.TOP_RIGHT)
                     .showConfirm();
 
         } else {
             Notifications.create()
-                    .title("අසාර්ථකයි...!")
-                    .text("අයිතමය සාර්ථකව එකතුකර ගෙන නැත. නැවත උත්සහා කරන්න..!")
+                    .title("Not Successfully...!")
+                    .text("Item Added Not Successfully...!")
                     .hideAfter(Duration.seconds(5))
                     .position(Pos.TOP_RIGHT)
-                    .showConfirm();
+                    .showError();
         }
         cleanTextField();
-        generateNextItemId();
+        txtItemID.setText(itemBO.generateNewItemID());
         getAll();
-    }
-    private void generateNextItemId() throws SQLException, IOException, ClassNotFoundException {
-        String nextId = itemBO.generateNewItemID();
-        txtItemID.setText(nextId);
     }
 
     private void removeItem(Item item) throws SQLException, IOException, ClassNotFoundException {
@@ -214,7 +210,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
                     try {
                         removeItem(item);
                         getAll();
-                        generateNextItemId();
+                        txtItemID.setText(itemBO.generateNewItemID());
                     } catch (SQLException | IOException | ClassNotFoundException e) {
                         throw new RuntimeException(e);
                     }
@@ -254,17 +250,15 @@ public class AddItemFormController implements Initializable, DataRefreshListener
         controller.setValues(id,itemName,itemQut,itemUnitPrice,itemUnitCost,stage,homeForm);
         controller.setDataRefreshListener(this);
 
-        stage.initModality(Modality.WINDOW_MODAL); // or Modality.APPLICATION_MODAL
-        stage.initOwner(homeFormStage); // Set the owner to the HomeForm stage
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(homeFormStage);
 
         stage.setScene(scene);
         stage.setResizable(false);
         stage.centerOnScreen();
 
-        // Disable HomeForm when ViewItemForm is open
         homeForm.setDisable(true);
 
-        // Handle close event to enable HomeForm when ViewItemForm is closed
         stage.setOnCloseRequest(windowEvent -> homeForm.setDisable(false));
 
         stage.setScene(scene);

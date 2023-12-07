@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.controller.LoginFormController;
+import lk.ijse.controller.UserAddFormController;
 import lk.ijse.dao.Custom.Impl.UserAddDAOImpl;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.util.FactoryConfiguration;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 public class Demo extends Application {
     private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 7);
 
-    UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USERADD);
 
     public static void main(String[] args) {
         launch(args);
@@ -49,6 +50,7 @@ public class Demo extends Application {
                     primaryStage.setResizable(false);
                     primaryStage.centerOnScreen();
                     primaryStage.show();
+
                 }else {
                     LoginFormController loginForm = new LoginFormController();
                     loginForm.start(primaryStage);

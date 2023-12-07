@@ -75,7 +75,6 @@
     -fx-background-color: red;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);
 }
 
 .table-view .column-header {

@@ -181,7 +181,7 @@ public class PlaceOrderFormController implements Initializable {
             txtQuantity.setText("");
             txtQuantity.requestFocus();
         }catch (Exception e){
-            new Alert(Alert.AlertType.ERROR,"ඇතුලත් කිරීම වැරදි!\nකරුණාකර ඔබේ අයිතමවල ඇති දේ පමණක් ඇතුලත් කරන්න, නැති නම් නව අයිතමයක් එකතු කරන්න. " ).show();
+            new Alert(Alert.AlertType.ERROR,"Wrong Input" ).show();
         }
     }
 

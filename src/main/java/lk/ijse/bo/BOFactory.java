@@ -1,6 +1,7 @@
 package lk.ijse.bo;
 
 import lk.ijse.bo.Custom.Impl.ItemBOImpl;
+import lk.ijse.bo.Custom.Impl.UserBOImpl;
 
 public class BOFactory {
     private static BOFactory boFactory;
@@ -11,7 +12,7 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        ITEM
+        ITEM,USER
     }
 
     //Object creation logic for BO objects
@@ -19,6 +20,8 @@ public class BOFactory {
         switch (types){
             case ITEM:
                 return new ItemBOImpl();
+            case USER:
+                return new UserBOImpl();
             default:
                 return null;
         }

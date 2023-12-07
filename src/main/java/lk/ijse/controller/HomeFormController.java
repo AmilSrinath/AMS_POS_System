@@ -45,6 +45,12 @@ public class HomeFormController implements Initializable{
         lblDate.setText(String.valueOf(LocalDate.now()));
         TimeNow();
         btnSettingHover.setVisible(false);
+        setBtnDashbord();
+        try {
+            navigation("/view/DashbordForm.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public Label lblDate;
 
@@ -242,6 +248,10 @@ public class HomeFormController implements Initializable{
     }
 
     public void btnDashbordOnMouseClicked(MouseEvent mouseEvent) {
+        setBtnDashbord();
+    }
+
+    void setBtnDashbord(){
         btnDashbord.setStyle("-fx-background-color: #5a189a;");
         value=0;
         btnPlaceOrder.setStyle("-fx-background-color: none;");
