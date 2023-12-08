@@ -4,27 +4,27 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.controller.LoginFormController;
-import lk.ijse.controller.UserAddFormController;
+import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
 import lk.ijse.dao.Custom.Impl.UserAddDAOImpl;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.entity.Setting;
 import lk.ijse.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Demo extends Application {
-    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 7);
-
+    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 9);
     UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USERADD);
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws SQLException, IOException, ClassNotFoundException {
         try {
             if (!isExpired()) {
                 System.out.println("Welcome to the trial version!");

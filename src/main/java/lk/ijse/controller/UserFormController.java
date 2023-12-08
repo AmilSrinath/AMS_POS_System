@@ -150,6 +150,15 @@ public class UserFormController implements Initializable {
                     .hideAfter(Duration.seconds(5))
                     .position(Pos.TOP_RIGHT)
                     .showConfirm();
+
+            txtUserID.clear();
+            txtName.clear();
+            txtUserName.clear();
+            txtPassword.clear();
+            txtDisplayName.clear();
+            txtEmail.clear();
+            txtContactNumber.clear();
+            
         }else {
             Notifications.create()
                     .title("Not Successfully...!")
@@ -218,13 +227,13 @@ public class UserFormController implements Initializable {
         }
     }
 
-    @FXML
-    void txtPasswordOnKeyReleased(KeyEvent event) {
-
+    public void txtPasswordOnKeyReleased(KeyEvent keyEvent) {
+        lblError.setVisible(false);
+        txtRePassword.setStyle("-fx-border-color: none;");
     }
 
-    @FXML
-    void txtRePasswordOnKeyReleased(KeyEvent event) {
-
+    public void txtRePasswordOnKeyReleased(KeyEvent keyEvent) {
+        lblError.setVisible(false);
+        txtRePassword.setStyle("-fx-border-color: none;");
     }
 }

@@ -11,8 +11,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
 import lk.ijse.dao.Custom.Impl.UserAddDAOImpl;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.entity.Setting;
 import lk.ijse.entity.User;
 
 import java.io.IOException;
@@ -45,6 +47,7 @@ public class UserAddFormController implements Initializable {
     @FXML
     private JFXTextField txtContactNumber;
     UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USERADD);
+    SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -53,6 +56,11 @@ public class UserAddFormController implements Initializable {
             throw new RuntimeException(e);
         }
         lblError.setVisible(false);
+        try {
+            settingDAO.add(new Setting("S001","false"));
+        } catch (SQLException | ClassNotFoundException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     public void btnSaveOnAtion(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
         if (txtPassword.getText().equals(txtRePassword.getText())) {

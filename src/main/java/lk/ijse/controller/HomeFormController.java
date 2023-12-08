@@ -13,6 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
+import lk.ijse.dao.DAOFactory;
+import lk.ijse.entity.Setting;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -35,23 +38,31 @@ public class HomeFormController implements Initializable{
     public Button btnAddItem;
     public Label lblUsername;
     public Button btnLogOut;
-    public ImageView btnSetting;
     public ImageView btnSettingHover;
-
-    Stage homeFormStage;
+    public Button btnSetting;
+    SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
+    static Stage homeFormStage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblDate.setText(String.valueOf(LocalDate.now()));
         TimeNow();
-        btnSettingHover.setVisible(false);
         setBtnDashbord();
         try {
+            displayUsername();
             navigation("/view/DashbordForm.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+    public void displayUsername() throws IOException {
+        boolean displayUsername = settingDAO.displayUsername();
+        if (!displayUsername){
+            lblUsername.setVisible(false);
+        }
+    }
+
     public Label lblDate;
 
     private void TimeNow(){
@@ -101,10 +112,6 @@ public class HomeFormController implements Initializable{
 
     public void setStage(Stage homeFormStage) {
         this.homeFormStage = homeFormStage;
-    }
-
-    public void ViewItemOnAction(ActionEvent actionEvent) throws IOException {
-        navigation("/view/ViewItemForm.fxml");
     }
 
     public void OrderHistoryOnAction(ActionEvent actionEvent) throws IOException {
@@ -179,16 +186,6 @@ public class HomeFormController implements Initializable{
         }
     }
 
-    public void btnViewItemOnMouseEntered(MouseEvent mouseEvent) {
-        btnViewItem.setStyle("-fx-background-color: #5a189a;");
-    }
-
-    public void btnViewItemOnMouseExited(MouseEvent mouseEvent) {
-        if (value!=2) {
-            btnViewItem.setStyle("-fx-background-color: none;");
-        }
-    }
-
     public void btnOrderHistoryOnMouseEntered(MouseEvent mouseEvent) {
         btnOrderHistory.setStyle("-fx-background-color: #5a189a;");
     }
@@ -215,6 +212,7 @@ public class HomeFormController implements Initializable{
         btnPlaceOrder.setStyle("-fx-background-color: none;");
         btnOrderHistory.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
+        btnSetting.setStyle("-fx-background-color: none;");
     }
 
     public void btnOrderHistoryOnMouseClicked(MouseEvent mouseEvent) {
@@ -225,6 +223,7 @@ public class HomeFormController implements Initializable{
         btnPlaceOrder.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
+        btnSetting.setStyle("-fx-background-color: none;");
     }
 
     public void btnPlaceOrderOnMouseClicked(MouseEvent mouseEvent) {
@@ -235,6 +234,7 @@ public class HomeFormController implements Initializable{
         btnOrderHistory.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
+        btnSetting.setStyle("-fx-background-color: none;");
     }
 
     public void btnLogOutOnMouseClicked(MouseEvent mouseEvent) {
@@ -245,6 +245,7 @@ public class HomeFormController implements Initializable{
         btnOrderHistory.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnDashbord.setStyle("-fx-background-color: none;");
+        btnSetting.setStyle("-fx-background-color: none;");
     }
 
     public void btnDashbordOnMouseClicked(MouseEvent mouseEvent) {
@@ -259,6 +260,7 @@ public class HomeFormController implements Initializable{
         btnOrderHistory.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnLogOut.setStyle("-fx-background-color: none;");
+        btnSetting.setStyle("-fx-background-color: none;");
     }
 
     public void btnUserOnMouseClicked(MouseEvent mouseEvent) {
@@ -269,13 +271,34 @@ public class HomeFormController implements Initializable{
         btnOrderHistory.setStyle("-fx-background-color: none;");
         btnAddItem.setStyle("-fx-background-color: none;");
         btnLogOut.setStyle("-fx-background-color: none;");
+        btnSetting.setStyle("-fx-background-color: none;");
+    }
+
+    public void btnSettingOnAction(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SettingForm.fxml"));
+        AnchorPane anchorPane = loader.load();
+        ControllArea.getChildren().removeAll();
+        ControllArea.getChildren().setAll(anchorPane);
     }
 
     public void btnSettingOnMouseEntered(MouseEvent mouseEvent) {
-        btnSettingHover.setVisible(true);
+        btnSetting.setStyle("-fx-background-color: #5a189a;");
     }
 
     public void btnSettingOnMouseExited(MouseEvent mouseEvent) {
-        btnSettingHover.setVisible(false);
+        if (value!=6) {
+            btnSetting.setStyle("-fx-background-color: none;");
+        }
+    }
+
+    public void btnSettingOnMouseClicked(MouseEvent mouseEvent) {
+        btnSetting.setStyle("-fx-background-color: #5a189a;");
+        value=6;
+        btnUsers.setStyle("-fx-background-color: none;");
+        btnPlaceOrder.setStyle("-fx-background-color: none;");
+        btnDashbord.setStyle("-fx-background-color: none;");
+        btnOrderHistory.setStyle("-fx-background-color: none;");
+        btnAddItem.setStyle("-fx-background-color: none;");
+        btnLogOut.setStyle("-fx-background-color: none;");
     }
 }

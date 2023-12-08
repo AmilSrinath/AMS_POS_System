@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="PlaceOrderForm" prefHeight="750.0" prefWidth="1279.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PlaceOrderFormController">
+<AnchorPane fx:id="PlaceOrderForm" prefHeight="800.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PlaceOrderFormController">
    <children>
       <AnchorPane layoutX="52.0" layoutY="161.0" prefHeight="552.0" prefWidth="865.0" style="-fx-background-color: d7e3fc; -fx-background-radius: 20;">
          <children>
@@ -25,7 +25,7 @@
          </children></AnchorPane>
       <JFXTextField fx:id="txtItemName" layoutX="93.0" layoutY="179.0" onAction="#txtItemNameOnAction" prefHeight="32.0" prefWidth="218.0" promptText="Item Name" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
       <JFXTextField fx:id="txtQuantity" layoutX="357.0" layoutY="179.0" onAction="#txtQuantityOnAction" onKeyReleased="#txtQuantityOnKeyReleased" prefHeight="32.0" prefWidth="218.0" promptText="Quantity" styleClass="PromtTextOfComboBox" stylesheets="@../Style/CSS.css" />
-      <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="792.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="32.0" prefWidth="93.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Add" textFill="WHITE">
+      <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="792.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="32.0" prefWidth="93.0" styleClass="btnAdd" stylesheets="@../Style/CSS.css" text="Add" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
@@ -37,7 +37,7 @@
             </Label>
          </graphic>
       </Button>
-      <StackPane prefHeight="78.0" prefWidth="1279.0" style="-fx-background-color: #0079FF;">
+      <StackPane prefHeight="78.0" prefWidth="1350.0" style="-fx-background-color: #212529;">
          <children>
             <Label text="Place Order" textFill="WHITE">
                <font>
@@ -105,7 +105,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="86.0" layoutY="470.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="placeOrderButton" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+            <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="86.0" layoutY="470.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="btnAdd" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
