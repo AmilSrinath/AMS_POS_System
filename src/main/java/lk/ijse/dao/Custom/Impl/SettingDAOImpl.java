@@ -62,4 +62,47 @@ public class SettingDAOImpl implements SettingDAO {
             return false;
         }
     }
+
+    @Override
+    public boolean displayDate() throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT showDate FROM setting;");
+        String isTrue = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        if (isTrue.equals("true")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean displayTime() throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT showTime FROM setting;");
+        String isTrue = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        if (isTrue.equals("true")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public String getNotificationSide() throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT showNotification FROM setting;");
+        String notification = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+        return notification;
+    }
 }

@@ -12,12 +12,12 @@
    <children>
       <AnchorPane prefHeight="57.0" prefWidth="1350.0" style="-fx-background-color: #212529;">
          <children>
-            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1025.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgDate" fitHeight="27.0" fitWidth="24.0" layoutX="1025.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/icons8-date-50.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1214.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgTime" fitHeight="27.0" fitWidth="24.0" layoutX="1214.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/icons8-time-50.png" />
                </image>

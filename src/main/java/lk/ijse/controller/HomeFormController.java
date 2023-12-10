@@ -33,15 +33,17 @@ public class HomeFormController implements Initializable{
     public Button btnDashbord;
     public Button btnPlaceOrder;
     public Button btnOrderHistory;
-    public Button btnViewItem;
     public Button btnUsers;
     public Button btnAddItem;
     public Label lblUsername;
     public Button btnLogOut;
-    public ImageView btnSettingHover;
     public Button btnSetting;
+    public ImageView imgDate;
+    public ImageView imgTime;
     SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
     static Stage homeFormStage;
+    public Label lblDate;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,6 +52,8 @@ public class HomeFormController implements Initializable{
         setBtnDashbord();
         try {
             displayUsername();
+            displayDate();
+            displayTime();
             navigation("/view/DashbordForm.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -57,13 +61,27 @@ public class HomeFormController implements Initializable{
     }
 
     public void displayUsername() throws IOException {
-        boolean displayUsername = settingDAO.displayUsername();
-        if (!displayUsername){
+        if (!settingDAO.displayUsername()){
             lblUsername.setVisible(false);
         }
     }
 
-    public Label lblDate;
+    public void displayDate() throws IOException {
+        if (!settingDAO.displayDate()){
+            lblDate.setVisible(false);
+            imgDate.setVisible(false);
+        }
+    }
+
+    public void displayTime() throws IOException {
+        if (!settingDAO.displayTime()){
+            lblTime.setVisible(false);
+            imgTime.setVisible(false);
+
+            lblDate.setLayoutX(1200);
+            imgDate.setLayoutX(1164);
+        }
+    }
 
     private void TimeNow(){
         Thread thread = new Thread(() ->{

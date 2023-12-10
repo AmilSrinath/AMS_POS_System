@@ -1040,8 +1040,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="303" parent="1" name="AMS_POS_System">
-      <IntrospectionTimestamp>2023-12-07.19:47:24</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-12-07.08:47:24</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-12-10.14:07:48</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-12-10.03:07:48</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="304" parent="1" name="mysql.infoschema">
@@ -1221,51 +1221,63 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <index id="342" parent="311" name="PRIMARY">
+    <column id="342" parent="311" name="showDate">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="343" parent="311" name="showTime">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="344" parent="311" name="showNotification">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <index id="345" parent="311" name="PRIMARY">
       <ColNames>settingID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="343" parent="311" name="PRIMARY">
+    <key id="346" parent="311" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="344" parent="312" name="id">
+    <column id="347" parent="312" name="id">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="345" parent="312" name="contactNumber">
+    <column id="348" parent="312" name="contactNumber">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="346" parent="312" name="displayUsername">
+    <column id="349" parent="312" name="displayUsername">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="347" parent="312" name="email">
+    <column id="350" parent="312" name="email">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="348" parent="312" name="name">
+    <column id="351" parent="312" name="name">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="349" parent="312" name="password">
+    <column id="352" parent="312" name="password">
       <DasType>varchar(255)|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="350" parent="312" name="username">
+    <column id="353" parent="312" name="username">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <index id="351" parent="312" name="PRIMARY">
+    <index id="354" parent="312" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="352" parent="312" name="PRIMARY">
+    <key id="355" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

@@ -62,7 +62,7 @@
     -fx-padding: 0.0em;
 }
 .table-row-cell:even{
-    -fx-background-color: #f1d6ff;
+    -fx-background-color: #f8eeff;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
@@ -91,3 +91,13 @@
     -fx-font-size:15px;
 }
 
+
+.SettingButtons{
+    -fx-border-color: grey;
+    -fx-border-radius: 30;
+}
+
+.SettingButtons:hover{
+    -fx-background-color: #e9ecef;
+    -fx-background-radius: 30;
+}

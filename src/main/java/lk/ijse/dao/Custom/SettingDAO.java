@@ -7,4 +7,8 @@ import java.io.IOException;
 
 public interface SettingDAO extends CrudDAO<Setting> {
     boolean displayUsername() throws IOException;
+    boolean displayDate() throws IOException;
+
+    boolean displayTime() throws IOException;
+    String getNotificationSide() throws IOException;
 }

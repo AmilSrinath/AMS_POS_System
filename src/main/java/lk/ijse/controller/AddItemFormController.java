@@ -24,6 +24,8 @@ import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.Impl.DataRefreshListener;
 import lk.ijse.bo.Custom.ItemBO;
+import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
+import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.OrderDetail;
@@ -72,6 +74,8 @@ public class AddItemFormController implements Initializable, DataRefreshListener
     public TableColumn<Item, Void> colStatus;
     public JFXTextField txtSearch;
     public AnchorPane ViewItemForm;
+    SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
+    String notify;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -84,6 +88,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
         try {
             getAll();
             searchFilter();
+            notify = settingDAO.getNotificationSide();
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -149,7 +154,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
                     .title("Successfully...!")
                     .text("Item Added Successfully...!")
                     .hideAfter(Duration.seconds(5))
-                    .position(Pos.TOP_RIGHT)
+                    .position(Pos.valueOf(notify))
                     .showConfirm();
 
         } else {
@@ -157,7 +162,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
                     .title("Not Successfully...!")
                     .text("Item Added Not Successfully...!")
                     .hideAfter(Duration.seconds(5))
-                    .position(Pos.TOP_RIGHT)
+                    .position(Pos.valueOf(notify))
                     .showError();
         }
         cleanTextField();

@@ -23,6 +23,7 @@ import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.ItemBO;
 import lk.ijse.bo.Custom.UserBO;
+import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
 import lk.ijse.dao.Custom.Impl.UserAddDAOImpl;
 import lk.ijse.dao.Custom.Impl.UserDAOImpl;
 import lk.ijse.dao.DAOFactory;
@@ -93,7 +94,9 @@ public class UserFormController implements Initializable {
     private TableColumn<?, ?> colContactNumber;
     UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
     UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
     ObservableList<User> observableList;
+    String notify;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblError.setVisible(false);
@@ -102,6 +105,7 @@ public class UserFormController implements Initializable {
             setCellValueFactory();
             txtUserID.setText(userDAO.generateNewID());
             setupDeleteButtonColumn();
+            notify = settingDAO.getNotificationSide();
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -148,7 +152,7 @@ public class UserFormController implements Initializable {
                     .title("Successfully...!")
                     .text("User Added Successfully...!")
                     .hideAfter(Duration.seconds(5))
-                    .position(Pos.TOP_RIGHT)
+                    .position(Pos.valueOf(notify))
                     .showConfirm();
 
             txtUserID.clear();
@@ -164,7 +168,7 @@ public class UserFormController implements Initializable {
                     .title("Not Successfully...!")
                     .text("User Added Not Successfully...!")
                     .hideAfter(Duration.seconds(5))
-                    .position(Pos.TOP_RIGHT)
+                    .position(Pos.valueOf(notify))
                     .showError();
 
             txtRePassword.setStyle("-fx-border-color: red;");

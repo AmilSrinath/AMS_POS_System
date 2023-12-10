@@ -57,7 +57,7 @@ public class UserAddFormController implements Initializable {
         }
         lblError.setVisible(false);
         try {
-            settingDAO.add(new Setting("S001","false"));
+            settingDAO.add(new Setting("S001","true","true","true","TOP_RIGHT"));
         } catch (SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
