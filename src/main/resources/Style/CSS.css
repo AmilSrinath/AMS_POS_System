@@ -95,6 +95,7 @@
 .SettingButtons{
     -fx-border-color: grey;
     -fx-border-radius: 30;
+    -fx-background-radius: 30;
 }
 
 .SettingButtons:hover{

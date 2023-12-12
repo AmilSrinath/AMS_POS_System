@@ -20,4 +20,8 @@ public class User {
     private String displayUsername;
     private String email;
     private String contactNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "setting_id", referencedColumnName = "settingID")
+    private Setting setting;
 }

@@ -3,6 +3,7 @@ package lk.ijse.bo.Custom.Impl;
 import lk.ijse.bo.Custom.UserBO;
 import lk.ijse.dao.Custom.UserDAO;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.entity.Setting;
 import lk.ijse.entity.User;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class UserBOImpl implements UserBO {
         List<User> userList= new ArrayList<>();
         List<User> users = userDAO.getAll();
         for (User user : users) {
-            userList.add(new User(user.getId(),user.getName(),user.getUsername(),user.getPassword(),user.getDisplayUsername(),user.getEmail(),user.getContactNumber()));
+            userList.add(new User(user.getId(),user.getName(),user.getUsername(),user.getPassword(),user.getDisplayUsername(),user.getEmail(),user.getContactNumber(),new Setting()));
         }
         return userList;
     }

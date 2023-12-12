@@ -6,9 +6,9 @@ import lk.ijse.entity.Setting;
 import java.io.IOException;
 
 public interface SettingDAO extends CrudDAO<Setting> {
-    boolean displayUsername() throws IOException;
-    boolean displayDate() throws IOException;
+    boolean displayUsername(String settingID) throws IOException;
+    boolean displayDate(String settingID) throws IOException;
 
-    boolean displayTime() throws IOException;
-    String getNotificationSide() throws IOException;
+    boolean displayTime(String settingID) throws IOException;
+    String getNotificationSide(String settingID) throws IOException;
 }

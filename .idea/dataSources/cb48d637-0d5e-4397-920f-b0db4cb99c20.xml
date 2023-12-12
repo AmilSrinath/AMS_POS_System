@@ -1040,8 +1040,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="303" parent="1" name="AMS_POS_System">
-      <IntrospectionTimestamp>2023-12-10.14:07:48</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-12-10.03:07:48</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-12-12.16:10:39</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-12-12.05:10:39</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <user id="304" parent="1" name="mysql.infoschema">
@@ -1217,11 +1217,11 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="341" parent="311" name="showUsername">
+    <column id="341" parent="311" name="showDate">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="342" parent="311" name="showDate">
+    <column id="342" parent="311" name="showNotification">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
@@ -1229,7 +1229,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="344" parent="311" name="showNotification">
+    <column id="344" parent="311" name="showUsername">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
@@ -1272,15 +1272,33 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <index id="354" parent="312" name="PRIMARY">
+    <column id="354" parent="312" name="setting_id">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <foreign-key id="355" parent="312" name="FKne8bc555cj3peix6rghxl1lkv">
+      <ColNames>setting_id</ColNames>
+      <RefColNames>settingID</RefColNames>
+      <RefTableName>setting</RefTableName>
+      <RefTableParentName>ams_pos_system</RefTableParentName>
+    </foreign-key>
+    <index id="356" parent="312" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="355" parent="312" name="PRIMARY">
+    <index id="357" parent="312" name="UK_2tsc95h8mknd1ufnsyymmd6ny">
+      <ColNames>setting_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="358" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="359" parent="312" name="UK_2tsc95h8mknd1ufnsyymmd6ny">
+      <UnderlyingIndexName>UK_2tsc95h8mknd1ufnsyymmd6ny</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

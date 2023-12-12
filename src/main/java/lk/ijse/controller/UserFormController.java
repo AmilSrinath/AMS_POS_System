@@ -30,6 +30,7 @@ import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.OrderDetail;
+import lk.ijse.entity.Setting;
 import lk.ijse.entity.User;
 import org.controlsfx.control.Notifications;
 
@@ -105,7 +106,7 @@ public class UserFormController implements Initializable {
             setCellValueFactory();
             txtUserID.setText(userDAO.generateNewID());
             setupDeleteButtonColumn();
-            notify = settingDAO.getNotificationSide();
+            notify = settingDAO.getNotificationSide(settingID);
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -121,7 +122,7 @@ public class UserFormController implements Initializable {
         List<User> alluser = userBO.getAllUser();
 
         for (User user : alluser){
-            observableList.add(new User(user.getId(), user.getName(), user.getUsername(), user.getPassword(), user.getDisplayUsername(),user.getEmail(),user.getContactNumber()));
+            observableList.add(new User(user.getId(), user.getName(), user.getUsername(), user.getPassword(), user.getDisplayUsername(),user.getEmail(),user.getContactNumber(),new Setting()));
         }
         tblUser.setItems(observableList);
     }
@@ -139,6 +140,13 @@ public class UserFormController implements Initializable {
     @FXML
     void btnSaveOnAtion(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         if (txtPassword.getText().equals(txtRePassword.getText())) {
+            Setting setting = new Setting();
+            setting.setSettingID(settingDAO.generateNewID());
+            setting.setShowDate("ture");
+            setting.setShowNotification("TOP_RIGHT");
+            setting.setShowTime("ture");
+            setting.setShowUsername("ture");
+
             userDAO.add(new User(
                     txtUserID.getText(),
                     txtName.getText(),
@@ -146,7 +154,8 @@ public class UserFormController implements Initializable {
                     txtPassword.getText(),
                     txtDisplayName.getText(),
                     txtEmail.getText(),
-                    txtContactNumber.getText()
+                    txtContactNumber.getText(),
+                    setting
             ));
             Notifications.create()
                     .title("Successfully...!")
@@ -239,5 +248,11 @@ public class UserFormController implements Initializable {
     public void txtRePasswordOnKeyReleased(KeyEvent keyEvent) {
         lblError.setVisible(false);
         txtRePassword.setStyle("-fx-border-color: none;");
+    }
+
+    String settingID;
+
+    public void setSettingID(String settingID) {
+        this.settingID = settingID;
     }
 }

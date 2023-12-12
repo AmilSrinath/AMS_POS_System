@@ -12,6 +12,7 @@ import javafx.util.Duration;
 import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.entity.Setting;
+import lk.ijse.entity.User;
 import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
@@ -29,29 +30,6 @@ public class SettingFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            if(settingDAO.displayUsername() ){
-                btnDisplayUsername.setSelected(true);
-            }else {
-                btnDisplayUsername.setSelected(false);
-            }
-
-            if(settingDAO.displayDate() ){
-                btnDisplayDate.setSelected(true);
-            }else {
-                btnDisplayDate.setSelected(false);
-            }
-
-            if(settingDAO.displayTime() ){
-                btnDisplayTime.setSelected(true);
-            }else {
-                btnDisplayTime.setSelected(false);
-            }
-            setNotificationButton();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
         ToggleGroup toggleGroup = new ToggleGroup();
         btnTop_Right.setToggleGroup(toggleGroup);
         btnTop_Left.setToggleGroup(toggleGroup);
@@ -60,7 +38,9 @@ public class SettingFormController implements Initializable {
     }
 
     public void setNotificationButton() throws IOException {
-        String nofity = settingDAO.getNotificationSide();
+        String nofity = settingDAO.getNotificationSide(settingID);
+        System.out.println(nofity);
+
         if (nofity.equals("TOP_RIGHT")){
             btnTop_Right.setSelected(true);
         } else if (nofity.equals("BOTTOM_RIGHT")) {
@@ -93,7 +73,7 @@ public class SettingFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to change setting...! \nAnd Restart the system", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            settingDAO.update(new Setting("S001", isSelectDisplayUsername,isDisplayDate,isDisplayTime,notification));
+            settingDAO.update(new Setting(settingID, isSelectDisplayUsername,isDisplayDate,isDisplayTime,notification,new User()));
             callLoginForm();
         }
     }
@@ -104,7 +84,7 @@ public class SettingFormController implements Initializable {
         Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to change setting...! \nAnd Restart the system", yes, no).showAndWait();
 
         if (result.orElse(no) == yes) {
-            settingDAO.update(new Setting("S001", "true", "true", "true","TOP_RIGHT"));
+            settingDAO.update(new Setting("S001", "true", "true", "true","TOP_RIGHT",new User()));
             callLoginForm();
         }
     }
@@ -141,5 +121,33 @@ public class SettingFormController implements Initializable {
 
     public void btnTop_LeftOnAction(ActionEvent actionEvent) {
         tsetNotification("TOP_LEFT");
+    }
+
+    String settingID;
+    public void setDisplayUsername(String settingID) {
+        this.settingID = settingID;
+
+        try {
+            if(settingDAO.displayUsername(settingID) ){
+                btnDisplayUsername.setSelected(true);
+            }else {
+                btnDisplayUsername.setSelected(false);
+            }
+
+            if(settingDAO.displayDate(settingID) ){
+                btnDisplayDate.setSelected(true);
+            }else {
+                btnDisplayDate.setSelected(false);
+            }
+
+            if(settingDAO.displayTime(settingID) ){
+                btnDisplayTime.setSelected(true);
+            }else {
+                btnDisplayTime.setSelected(false);
+            }
+            setNotificationButton();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -70,4 +70,89 @@ public class UserDAOImpl implements UserDAO {
             return "U-100000";
         }
     }
+
+    @Override
+    public List<String> loadUserName() throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery nativeQuery = session.createNativeQuery("SELECT username FROM user");
+        List<String> usernames = nativeQuery.getResultList();
+        transaction.commit();
+        session.close();
+        return usernames;
+    }
+
+    public boolean checkPassword(String username, String password) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT password FROM user WHERE username = :username");
+        nativeQuery.setParameter("username", username);
+        String pass = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        if (password.equals(pass)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean checkUsername(String username) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT username FROM user WHERE username = :username");
+        nativeQuery.setParameter("username", username);
+        String pass = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        if (username.equals(pass)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public String getDisplayUserName(String username) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT displayUsername FROM user WHERE username = :username");
+        nativeQuery.setParameter("username", username);
+        String displayUsername = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+        return displayUsername;
+    }
+
+    public boolean isAdmin(String username) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM user WHERE displayUsername = :username");
+        nativeQuery.setParameter("username", username);
+        String id = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+
+        System.out.println(id);
+
+        if (id.equals("U-100000")) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public String getSettingIDWithDisplayUsername(String displayUsername) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT setting_id FROM user WHERE displayUsername = :displayUsername");
+        nativeQuery.setParameter("displayUsername", displayUsername);
+        String settingID = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+        System.out.println("Setting ID - "+settingID);
+        return settingID;
+    }
 }

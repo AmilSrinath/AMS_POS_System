@@ -147,15 +147,18 @@ public class PlaceOrderFormController implements Initializable {
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
         HomeFormController controller = loader.getController();
-        controller.setStage(MainStage);
+        controller.setStage(MainStage,displayUsername);
         MainStage.setScene(scene);
         MainStage.setResizable(false);
         MainStage.show();
     }
 
-    public void setStage(Stage mainStage, double profit) {
+    String displayUsername;
+
+    public void setStage(Stage mainStage, double profit, String displayUsername) {
         this.MainStage = mainStage;
         this.profit = profit;
+        this.displayUsername = displayUsername;
     }
 
     public void txtItemNameOnAction(ActionEvent actionEvent) throws IOException {

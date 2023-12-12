@@ -21,4 +21,7 @@ public class Setting {
     private String showDate;
     private String showTime;
     private String showNotification;
+
+    @OneToOne(mappedBy = "setting")
+    private User user;
 }

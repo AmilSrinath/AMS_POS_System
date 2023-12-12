@@ -56,14 +56,16 @@ public class UserAddFormController implements Initializable {
             throw new RuntimeException(e);
         }
         lblError.setVisible(false);
-        try {
-            settingDAO.add(new Setting("S001","true","true","true","TOP_RIGHT"));
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            throw new RuntimeException(e);
-        }
     }
     public void btnSaveOnAtion(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
         if (txtPassword.getText().equals(txtRePassword.getText())) {
+            Setting setting = new Setting();
+            setting.setSettingID(settingDAO.generateNewID());
+            setting.setShowDate("true");
+            setting.setShowNotification("TOP_RIGHT");
+            setting.setShowTime("true");
+            setting.setShowUsername("true");
+
             userDAO.add(new User(
                     txtUserID.getText(),
                     txtName.getText(),
@@ -71,7 +73,8 @@ public class UserAddFormController implements Initializable {
                     txtPassword.getText(),
                     txtDisplayName.getText(),
                     txtEmail.getText(),
-                    txtContactNumber.getText()
+                    txtContactNumber.getText(),
+                    setting
             ));
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginForm.fxml"));

@@ -88,7 +88,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
         try {
             getAll();
             searchFilter();
-            notify = settingDAO.getNotificationSide();
+            notify = settingDAO.getNotificationSide(username);
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -283,8 +283,11 @@ public class AddItemFormController implements Initializable, DataRefreshListener
 
     Stage homeFormStage;
     AnchorPane homeForm;
-    public void setStage(Stage homeFormStage, AnchorPane homeForm) {
+    String username;
+
+    public void setStage(Stage homeFormStage, AnchorPane homeForm, String text) {
         this.homeFormStage = homeFormStage;
         this.homeForm = homeForm;
+        this.username = text;
     }
 }

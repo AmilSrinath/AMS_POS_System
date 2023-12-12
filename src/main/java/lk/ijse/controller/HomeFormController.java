@@ -4,21 +4,20 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.dao.Custom.Impl.SettingDAOImpl;
+import lk.ijse.dao.Custom.Impl.UserDAOImpl;
 import lk.ijse.dao.DAOFactory;
-import lk.ijse.entity.Setting;
+import org.controlsfx.control.Notifications;
 
-import javax.swing.*;
-import java.awt.event.MouseAdapter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -43,7 +42,9 @@ public class HomeFormController implements Initializable{
     SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
     static Stage homeFormStage;
     public Label lblDate;
-
+    UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
+    String notify;
+    String settingID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,9 +52,6 @@ public class HomeFormController implements Initializable{
         TimeNow();
         setBtnDashbord();
         try {
-            displayUsername();
-            displayDate();
-            displayTime();
             navigation("/view/DashbordForm.fxml");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -61,20 +59,20 @@ public class HomeFormController implements Initializable{
     }
 
     public void displayUsername() throws IOException {
-        if (!settingDAO.displayUsername()){
+        if (!settingDAO.displayUsername(settingID)) {
             lblUsername.setVisible(false);
         }
     }
 
     public void displayDate() throws IOException {
-        if (!settingDAO.displayDate()){
+        if (!settingDAO.displayDate(settingID)) {
             lblDate.setVisible(false);
             imgDate.setVisible(false);
         }
     }
 
     public void displayTime() throws IOException {
-        if (!settingDAO.displayTime()){
+        if (!settingDAO.displayTime(settingID)){
             lblTime.setVisible(false);
             imgTime.setVisible(false);
 
@@ -106,7 +104,7 @@ public class HomeFormController implements Initializable{
         AnchorPane anchorPane = loader.load();
 
         AddItemFormController controller = loader.getController();
-        controller.setStage(homeFormStage,HomeForm);
+        controller.setStage(homeFormStage,HomeForm,lblUsername.getText());
 
         ControllArea.getChildren().removeAll();
         ControllArea.getChildren().setAll(anchorPane);
@@ -118,7 +116,7 @@ public class HomeFormController implements Initializable{
         Scene scene = new Scene(anchorPane);
 
         PlaceOrderFormController controller = loader.getController();
-        controller.setStage(homeFormStage,profit);
+        controller.setStage(homeFormStage,profit,displayUsername);
 
         homeFormStage.setScene(scene);
         homeFormStage.setResizable(false);
@@ -127,9 +125,19 @@ public class HomeFormController implements Initializable{
     }
 
     double profit = 0;
+    String displayUsername;
 
-    public void setStage(Stage homeFormStage) {
+    public void setStage(Stage homeFormStage, String displayUsername) throws IOException {
         this.homeFormStage = homeFormStage;
+        this.displayUsername = displayUsername;
+        lblUsername.setText(displayUsername);
+
+        settingID = userDAO.getSettingIDWithDisplayUsername(displayUsername);
+        notify = settingDAO.getNotificationSide(settingID);
+
+        displayUsername();
+        displayDate();
+        displayTime();
     }
 
     public void OrderHistoryOnAction(ActionEvent actionEvent) throws IOException {
@@ -161,7 +169,23 @@ public class HomeFormController implements Initializable{
     int value = -1;
 
     public void UserOnAction(ActionEvent actionEvent) throws IOException {
-        navigation("/view/UserForm.fxml");
+        if (userDAO.isAdmin(lblUsername.getText())) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserForm.fxml"));
+            AnchorPane anchorPane = loader.load();
+
+            ControllArea.getChildren().removeAll();
+            ControllArea.getChildren().setAll(anchorPane);
+
+            UserFormController controller = loader.getController();
+            controller.setSettingID(settingID);
+        }else {
+            Notifications.create()
+                    .title("Not Access...!")
+                    .text("You can't access User Form...!\n Only Admin")
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.valueOf(notify))
+                    .showError();
+        }
     }
 
     public void btnPlaceOrderOnMouseEntered(MouseEvent mouseEvent) {
@@ -295,8 +319,12 @@ public class HomeFormController implements Initializable{
     public void btnSettingOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SettingForm.fxml"));
         AnchorPane anchorPane = loader.load();
-        ControllArea.getChildren().removeAll();
-        ControllArea.getChildren().setAll(anchorPane);
+
+        SettingFormController controller = loader.getController(); // Retrieve the controller
+        controller.setDisplayUsername(settingID);
+
+        ControllArea.getChildren().clear(); // Use clear() to remove all children
+        ControllArea.getChildren().add(anchorPane);
     }
 
     public void btnSettingOnMouseEntered(MouseEvent mouseEvent) {
