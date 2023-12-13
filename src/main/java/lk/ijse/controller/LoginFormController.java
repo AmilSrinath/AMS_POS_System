@@ -13,8 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -37,6 +39,7 @@ public class LoginFormController extends Application implements Initializable {
     public JFXTextField txtUsername;
     public AnchorPane LoginForm;
     private Stage loadingStage;
+    private Stage PrimaryStage;
     UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
     @Override
@@ -48,12 +51,12 @@ public class LoginFormController extends Application implements Initializable {
         }
     }
 
-    String displayUsername;
-
     @Override
     public void start(Stage stage) throws Exception {
+        PrimaryStage = stage;  // Initialize PrimaryStage here
+
         Parent root = FXMLLoader.load(getClass().getResource("/view/LoadingForm.fxml"));
-        Scene scene = new Scene(root, 700,700, Color.TRANSPARENT);
+        Scene scene = new Scene(root, 700, 700, Color.TRANSPARENT);
         loadingStage = new Stage();
         root.setStyle("-fx-background-color: transparent;");
         loadingStage.initStyle(StageStyle.TRANSPARENT);
@@ -62,14 +65,24 @@ public class LoginFormController extends Application implements Initializable {
         showLoadingForm();
     }
 
-    private void openMainForm() throws IOException {
+    void openMainForm() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginForm.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        PrimaryStage = new Stage();
+
+        LoginFormController controller = loader.getController();
+        controller.setPrimaryStage(PrimaryStage);
+
+        PrimaryStage.setScene(scene);
+        PrimaryStage.setResizable(false);
+        PrimaryStage.show();
+    }
+
+    private Stage primaryStage;
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
     private void loadUserName() throws IOException {
@@ -128,5 +141,26 @@ public class LoginFormController extends Application implements Initializable {
 
     public void passwordOnKeyPressed(KeyEvent keyEvent) {
         txtPassword.setStyle("-fx-border-color: none;");
+    }
+
+    public void lblFogotPasswordOnMouseClick(MouseEvent mouseEvent) throws IOException {FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FogotPassword1Form.fxml"));
+        AnchorPane anchorPane = loader.load();
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(primaryStage);
+
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.centerOnScreen();
+
+        LoginForm.setDisable(true);
+
+        stage.setOnCloseRequest(windowEvent -> {
+            LoginForm.setDisable(false);
+        });
+
+        stage.show();
     }
 }

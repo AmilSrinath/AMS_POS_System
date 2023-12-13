@@ -17,14 +17,14 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Demo extends Application {
-    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 12);
+    private static final LocalDate EXPIRY_DATE = LocalDate.of(2023, 12, 15);
     UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USERADD);
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws SQLException, IOException, ClassNotFoundException {
+    public void start(Stage primaryStage) {
         try {
             if (!isExpired()) {
                 System.out.println("Welcome to the trial version!");

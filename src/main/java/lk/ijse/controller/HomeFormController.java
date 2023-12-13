@@ -152,13 +152,7 @@ public class HomeFormController implements Initializable{
     }
 
     public void LogOutOnAction(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LoginForm.fxml"));
-        AnchorPane anchorPane = loader.load();
-        Scene scene = new Scene(anchorPane);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        new LoginFormController().openMainForm();
         HomeForm.getScene().getWindow().hide();
     }
 

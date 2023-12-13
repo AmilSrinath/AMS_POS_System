@@ -66,5 +66,13 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Label layoutX="831.0" layoutY="411.0" onMouseClicked="#lblFogotPasswordOnMouseClick" text="Fogot your password?" textFill="#0077ff">
+         <font>
+            <Font name="Poppins Regular" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
    </children>
 </AnchorPane>

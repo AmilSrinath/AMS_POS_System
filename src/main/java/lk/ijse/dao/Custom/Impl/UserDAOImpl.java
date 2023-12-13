@@ -1,7 +1,6 @@
 package lk.ijse.dao.Custom.Impl;
 
 import lk.ijse.dao.Custom.UserDAO;
-import lk.ijse.entity.Item;
 import lk.ijse.entity.User;
 import lk.ijse.util.FactoryConfiguration;
 import org.hibernate.Session;
@@ -154,5 +153,16 @@ public class UserDAOImpl implements UserDAO {
         session.close();
         System.out.println("Setting ID - "+settingID);
         return settingID;
+    }
+
+    public String getEmailWithUsername(String username) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT email FROM user WHERE username = :username");
+        nativeQuery.setParameter("username", username);
+        String email = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+        return email;
     }
 }
