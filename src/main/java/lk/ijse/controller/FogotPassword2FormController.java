@@ -75,7 +75,22 @@ public class FogotPassword2FormController implements Initializable {
             int otp = FogotPassword1FormController.otp;
 
             if (txtOtp == otp) {
-                System.out.println("Done");
+                Parent root = FXMLLoader.load(getClass().getResource("/view/FogotPassword3Form.fxml"));
+                Scene scene = btnConfirm.getScene();
+                root.translateXProperty().set(scene.getWidth());
+
+                AnchorPane parentContainer = (AnchorPane) scene.getRoot();
+                parentContainer.getChildren().add(root);
+
+                Timeline timeline = new Timeline();
+                KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+                KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+                timeline.getKeyFrames().add(kf);
+                timeline.setOnFinished(event1 -> {
+                    parentContainer.getChildren().remove(FogotPassword2);
+                });
+                timeline.play();
+
             } else {
                 System.out.println("Not Done");
             }

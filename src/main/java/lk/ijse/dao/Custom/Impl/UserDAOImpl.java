@@ -165,4 +165,16 @@ public class UserDAOImpl implements UserDAO {
         session.close();
         return email;
     }
+
+    public boolean updateUserWithUsername(String username, String password) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        NativeQuery<String> nativeQuery = session.createNativeQuery("UPDATE user SET password = :password WHERE username = :username");
+        nativeQuery.setParameter("password", password);
+        nativeQuery.setParameter("username", username);
+        nativeQuery.executeUpdate();
+        transaction.commit();
+        session.close();
+        return true;
+    }
 }

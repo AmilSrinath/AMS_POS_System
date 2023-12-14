@@ -135,6 +135,8 @@ public class LoginFormController extends Application implements Initializable {
         }
     }
 
+    public static Stage stage = new Stage();;
+
     public void UsernameOnKeyPressed(KeyEvent keyEvent) {
         txtUsername.setStyle("-fx-border-color: none;");
     }
@@ -146,21 +148,23 @@ public class LoginFormController extends Application implements Initializable {
     public void lblFogotPasswordOnMouseClick(MouseEvent mouseEvent) throws IOException {FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FogotPassword1Form.fxml"));
         AnchorPane anchorPane = loader.load();
         Scene scene = new Scene(anchorPane);
-        Stage stage = new Stage();
+        try {
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(primaryStage);
 
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primaryStage);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
 
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.centerOnScreen();
+            /*LoginForm.setDisable(true);*/
 
-        LoginForm.setDisable(true);
+            stage.setOnCloseRequest(windowEvent -> {
+                LoginForm.setDisable(false);
+            });
 
-        stage.setOnCloseRequest(windowEvent -> {
-            LoginForm.setDisable(false);
-        });
-
-        stage.show();
+            stage.show();
+        }catch (Exception e){
+            new Alert(Alert.AlertType.ERROR,"Please Close the System and try again...!").show();
+        }
     }
 }

@@ -34,6 +34,7 @@ public class FogotPassword1FormController implements Initializable {
     public AnchorPane FogotPassword1;
 
     public static int otp;
+    public static String username;
 
     UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
 
@@ -44,6 +45,7 @@ public class FogotPassword1FormController implements Initializable {
 
     public void btnNextOnAction(ActionEvent actionEvent) throws IOException, MessagingException {
         if (userDAO.checkUsername(txtUsername.getText())) {
+            username = txtUsername.getText();
             Parent root = FXMLLoader.load(getClass().getResource("/view/FogotPassword2Form.fxml"));
             Scene scene = btnNext.getScene();
             root.translateXProperty().set(scene.getWidth());
