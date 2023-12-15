@@ -23,7 +23,7 @@
             </Label>
          </children>
       </StackPane>
-      <JFXToggleButton fx:id="btnDisplayUsername" contentDisplay="RIGHT" graphicTextGap="216.0" layoutX="75.0" layoutY="176.0" prefHeight="37.0" prefWidth="430.0" selected="true" styleClass="SettingButtons" stylesheets="@../Style/CSS.css" text="Show Username" toggleColor="#7b2cbf" toggleLineColor="#a257e4">
+      <JFXToggleButton fx:id="btnDisplayUsername" contentDisplay="RIGHT" graphicTextGap="216.0" layoutX="101.0" layoutY="177.0" prefHeight="37.0" prefWidth="430.0" selected="true" styleClass="SettingButtons" stylesheets="@../Style/CSS.css" text="Show Username" toggleColor="#7b2cbf" toggleLineColor="#a257e4">
          <font>
             <Font name="Poppins Regular" size="15.0" />
          </font></JFXToggleButton>
@@ -37,17 +37,17 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <JFXToggleButton fx:id="btnDisplayDate" contentDisplay="RIGHT" graphicTextGap="258.0" layoutX="75.0" layoutY="256.0" prefHeight="37.0" prefWidth="430.0" selected="true" styleClass="SettingButtons" stylesheets="@../Style/CSS.css" text="Show Date" toggleColor="#7b2cbf" toggleLineColor="#a257e4">
+      <JFXToggleButton fx:id="btnDisplayDate" contentDisplay="RIGHT" graphicTextGap="258.0" layoutX="101.0" layoutY="257.0" prefHeight="37.0" prefWidth="430.0" selected="true" styleClass="SettingButtons" stylesheets="@../Style/CSS.css" text="Show Date" toggleColor="#7b2cbf" toggleLineColor="#a257e4">
          <font>
             <Font name="Poppins Regular" size="15.0" />
          </font>
       </JFXToggleButton>
-      <JFXToggleButton fx:id="btnDisplayTime" contentDisplay="RIGHT" graphicTextGap="258.0" layoutX="75.0" layoutY="334.0" prefHeight="37.0" prefWidth="430.0" selected="true" styleClass="SettingButtons" stylesheets="@../Style/CSS.css" text="Show Time" toggleColor="#7b2cbf" toggleLineColor="#a257e4">
+      <JFXToggleButton fx:id="btnDisplayTime" contentDisplay="RIGHT" graphicTextGap="258.0" layoutX="101.0" layoutY="335.0" prefHeight="37.0" prefWidth="430.0" selected="true" styleClass="SettingButtons" stylesheets="@../Style/CSS.css" text="Show Time" toggleColor="#7b2cbf" toggleLineColor="#a257e4">
          <font>
             <Font name="Poppins Regular" size="15.0" />
          </font>
       </JFXToggleButton>
-      <AnchorPane layoutX="75.0" layoutY="469.0" prefHeight="234.0" prefWidth="367.0" style="-fx-border-color: #adb5bd; -fx-border-radius: 20;">
+      <AnchorPane layoutX="630.0" layoutY="171.0" prefHeight="234.0" prefWidth="367.0" style="-fx-border-color: #adb5bd; -fx-border-radius: 20;">
          <children>
             <RadioButton fx:id="btnTop_Right" layoutX="29.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnTop_RightOnAction">
                <graphic>
