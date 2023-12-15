@@ -10,28 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
-      <change afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/db/DBConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Reports/AMS.jrxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20/storage_v2/_src_/schema/AMS_POS_System.Upw00g.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20/storage_v2/_src_/schema/AMS_POS_System.Upw00g.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/AddItemFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DashbordFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/DashbordFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/FogotPassword1FormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/FogotPassword1FormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/FogotPassword2FormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/FogotPassword2FormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/HomeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/SettingFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/SettingFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/ItemDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/OrderDetailDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/OrderDetailDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/dao/Custom/Impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/DashbordForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/DashbordForm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/FogotPassword1Form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/FogotPassword1Form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/FogotPassword2Form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/FogotPassword2Form.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +254,7 @@
       <workItem from="1702433458593" duration="1655000" />
       <workItem from="1702470892542" duration="13803000" />
       <workItem from="1702522819076" duration="18138000" />
-      <workItem from="1702627129561" duration="1161000" />
+      <workItem from="1702627129561" duration="1512000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -621,7 +600,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702530125906</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1702629109265</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1702629109265</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
