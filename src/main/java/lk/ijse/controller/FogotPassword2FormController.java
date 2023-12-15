@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,7 +94,12 @@ public class FogotPassword2FormController implements Initializable {
                 timeline.play();
 
             } else {
-                System.out.println("Not Done");
+                Notifications.create()
+                        .title("Invalid OTP...!")
+                        .text("Please check your OTP number...!")
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.valueOf(HomeFormController.notify))
+                        .showError();
             }
         }catch (Exception e){}
     }

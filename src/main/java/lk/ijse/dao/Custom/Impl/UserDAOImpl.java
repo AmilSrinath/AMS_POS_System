@@ -134,8 +134,6 @@ public class UserDAOImpl implements UserDAO {
         transaction.commit();
         session.close();
 
-        System.out.println(id);
-
         if (id.equals("U-100000")) {
             return true;
         }else {
@@ -151,7 +149,7 @@ public class UserDAOImpl implements UserDAO {
         String settingID = nativeQuery.uniqueResult();
         transaction.commit();
         session.close();
-        System.out.println("Setting ID - "+settingID);
+
         return settingID;
     }
 

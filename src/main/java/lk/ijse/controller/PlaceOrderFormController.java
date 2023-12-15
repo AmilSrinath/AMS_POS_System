@@ -17,16 +17,22 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dao.Custom.Impl.OrderDetailDAOImpl;
 import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.Custom.OrderDAO;
 import lk.ijse.dao.Custom.OrderDetailDAO;
 import lk.ijse.dao.DAOFactory;
+import lk.ijse.db.DBConnection;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.Item;
 import lk.ijse.entity.Order;
 import lk.ijse.entity.OrderDetail;
 import lk.ijse.entity.TM.OrderTM;
 import lk.ijse.util.FactoryConfiguration;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.controlsfx.control.textfield.TextFields;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -37,9 +43,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PlaceOrderFormController implements Initializable {
     public Label lblItemQut;
@@ -58,11 +62,15 @@ public class PlaceOrderFormController implements Initializable {
     ItemDAO itemDAO = (ItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     OrderDAO orderDAO = (OrderDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDER);
     OrderDetailDAO orderDetailDAO = (OrderDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETAIL);
+    OrderDetailDAOImpl orderDetailDAOImpl = (OrderDetailDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ORDERDETAIL);
     public AnchorPane PlaceOrderForm;
     public JFXTextField txtQuantity;
     public JFXTextField txtItemName;
     Stage MainStage = new Stage();
     private ObservableList<OrderTM> orderTMS = FXCollections.observableArrayList();
+
+    public PlaceOrderFormController() throws JRException {
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,7 +96,7 @@ public class PlaceOrderFormController implements Initializable {
                 case F6:
                     try {
                         placeOrder();
-                    } catch (SQLException | IOException | ClassNotFoundException e) {
+                    } catch (SQLException | IOException | ClassNotFoundException | JRException e) {
                         throw new RuntimeException(e);
                     }
                     break;
@@ -283,7 +291,6 @@ public class PlaceOrderFormController implements Initializable {
         for(OrderTM item: orderTMS){
             netTotal+=item.getTotal();
         }
-        System.out.println(netTotal);
         lblNetTotal.setText(String.valueOf(netTotal));
     }
 
@@ -350,11 +357,11 @@ public class PlaceOrderFormController implements Initializable {
 
     Stage homeFormStage;
 
-    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException {
+    public void btnPlaceOrderOnAction(ActionEvent actionEvent) throws SQLException, IOException, ClassNotFoundException, JRException {
         placeOrder();
     }
 
-    public void placeOrder() throws SQLException, IOException, ClassNotFoundException {
+    public void placeOrder() throws SQLException, IOException, ClassNotFoundException, JRException {
         boolean equals = lblNetTotal.getText().equals("0.0");
         if (isEnough() & !equals) {
             ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
@@ -407,6 +414,7 @@ public class PlaceOrderFormController implements Initializable {
                 transaction.commit();
                 session.close();
                 tblOrder.getItems().clear();
+                CreateBill(lblOrderID.getText());
                 generateNextOrderId();
                 lblNetTotal.setText("0");
                 lblItemQut.setText("0");
@@ -417,6 +425,24 @@ public class PlaceOrderFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR,"මුදල ප්‍රමාණවත් නැත!").show();
         }
     }
+
+    JasperDesign jasDesign = JRXmlLoader.load("src/main/resources/Reports/AMS.jrxml");
+    JasperReport jasReport = JasperCompileManager.compileReport(jasDesign);
+
+    public void CreateBill(String orderID) throws JRException, SQLException, IOException {
+        Map<String,Object> data = new HashMap<>();
+        data.put("OrderID",orderID);
+        data.put("NetTotal",NetTotalCalculate(orderID));
+
+        JasperPrint jasPrint = JasperFillManager.fillReport(jasReport, data, DBConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasPrint,false);
+    }
+
+    public String NetTotalCalculate(String orderID) throws SQLException, IOException {
+        double netTotal = orderDetailDAOImpl.NetTotalCalculate(orderID);
+        return netTotal+"";
+    }
+
     public boolean isEnough() {
         try {
             double netTotal = Double.parseDouble(lblNetTotal.getText());

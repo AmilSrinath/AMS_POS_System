@@ -48,15 +48,19 @@ public class ItemDAOImpl implements ItemDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException, IOException {
-        Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        String sql = "DELETE FROM item WHERE itemid = :itemid";
-        NativeQuery<Item> nativeQuery = session.createNativeQuery(sql);
-        nativeQuery.setParameter("itemid",id);
-        nativeQuery.executeUpdate();
-        transaction.commit();
-        session.close();
-        return true;
+        try {
+            Session session = FactoryConfiguration.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            String sql = "DELETE FROM item WHERE itemid = :itemid";
+            NativeQuery<Item> nativeQuery = session.createNativeQuery(sql);
+            nativeQuery.setParameter("itemid", id);
+            nativeQuery.executeUpdate();
+            transaction.commit();
+            session.close();
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @Override
@@ -158,4 +162,61 @@ public class ItemDAOImpl implements ItemDAO {
         session.close();
     }
 
+    public int setHighestItemCount() throws IOException {
+        try {
+            Session session = FactoryConfiguration.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            String sql = "select itemQuantity from Item ORDER BY itemQuantity DESC LIMIT 1";
+            NativeQuery<Integer> nativeQuery = session.createNativeQuery(sql); // Change the type to Integer
+            int count = nativeQuery.uniqueResult(); // No need to cast, it's already an int
+            transaction.commit();
+            session.close();
+            return count;
+        }catch (Exception e){
+            return 0;
+        }
+    }
+
+    public int setLowestItemCount() throws IOException {
+        try {
+            Session session = FactoryConfiguration.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            String sql = "select itemQuantity from Item ORDER BY itemQuantity LIMIT 1";
+            NativeQuery<Integer> nativeQuery = session.createNativeQuery(sql);
+            int count = nativeQuery.uniqueResult();
+            transaction.commit();
+            session.close();
+            return count;
+        }catch (Exception e){
+            return 0;
+        }
+    }
+
+    public String setHighestItemName() throws IOException {
+        try {
+            Session session = FactoryConfiguration.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            NativeQuery<String> nativeQuery = session.createNativeQuery("select itemName from Item ORDER BY itemQuantity DESC LIMIT 1;");
+            String HighestItemName = nativeQuery.uniqueResult();
+            transaction.commit();
+            session.close();
+            return HighestItemName;
+        }catch (Exception e){
+            return "Insert Item";
+        }
+    }
+
+    public String setLowestItemName() throws IOException {
+        try {
+            Session session = FactoryConfiguration.getInstance().getSession();
+            Transaction transaction = session.beginTransaction();
+            NativeQuery<String> nativeQuery = session.createNativeQuery("select itemName from Item ORDER BY itemQuantity LIMIT 1;");
+            String LowestItemName = nativeQuery.uniqueResult();
+            transaction.commit();
+            session.close();
+            return LowestItemName;
+        }catch (Exception e){
+            return "Insert Item";
+        }
+    }
 }

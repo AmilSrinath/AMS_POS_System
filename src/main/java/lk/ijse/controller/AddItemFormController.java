@@ -75,8 +75,6 @@ public class AddItemFormController implements Initializable, DataRefreshListener
     public JFXTextField txtSearch;
     public AnchorPane ViewItemForm;
     SettingDAOImpl settingDAO = (SettingDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SETTING);
-    String notify;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -88,7 +86,6 @@ public class AddItemFormController implements Initializable, DataRefreshListener
         try {
             getAll();
             searchFilter();
-            notify = settingDAO.getNotificationSide(username);
         } catch (SQLException | IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -154,7 +151,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
                     .title("Successfully...!")
                     .text("Item Added Successfully...!")
                     .hideAfter(Duration.seconds(5))
-                    .position(Pos.valueOf(notify))
+                    .position(Pos.valueOf(HomeFormController.notify))
                     .showConfirm();
 
         } else {
@@ -162,7 +159,7 @@ public class AddItemFormController implements Initializable, DataRefreshListener
                     .title("Not Successfully...!")
                     .text("Item Added Not Successfully...!")
                     .hideAfter(Duration.seconds(5))
-                    .position(Pos.valueOf(notify))
+                    .position(Pos.valueOf(HomeFormController.notify))
                     .showError();
         }
         cleanTextField();
@@ -180,7 +177,12 @@ public class AddItemFormController implements Initializable, DataRefreshListener
             if (itemBO.deleteItem(item.getItemID())) {
                 observableList.remove(item);
             }else {
-                new Alert(Alert.AlertType.ERROR, "Error!!").show();
+                Notifications.create()
+                        .title("Not Successfully...!")
+                        .text("This item can't delete...!")
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.valueOf(HomeFormController.notify))
+                        .showError();
             }
         }
     }
@@ -217,7 +219,12 @@ public class AddItemFormController implements Initializable, DataRefreshListener
                         getAll();
                         txtItemID.setText(itemBO.generateNewItemID());
                     } catch (SQLException | IOException | ClassNotFoundException e) {
-                        throw new RuntimeException(e);
+                        Notifications.create()
+                                .title("Not Successfully...!")
+                                .text("This item can't delete...!")
+                                .hideAfter(Duration.seconds(5))
+                                .position(Pos.valueOf(HomeFormController.notify))
+                                .showError();
                     }
                 });
             }

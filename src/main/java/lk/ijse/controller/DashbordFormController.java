@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import lk.ijse.dao.Custom.Impl.HomeDAOImpl;
+import lk.ijse.dao.Custom.Impl.ItemDAOImpl;
 import lk.ijse.dao.DAOFactory;
 
 import java.io.IOException;
@@ -14,6 +15,10 @@ import java.util.ResourceBundle;
 
 public class DashbordFormController implements Initializable {
 
+    public Label lblHighestItemCount;
+    public Label lblLowestItemCount;
+    public Label lblLowestItemName;
+    public Label lblHighestItemName;
     @FXML
     private Label lblProfit;
 
@@ -33,6 +38,7 @@ public class DashbordFormController implements Initializable {
     private Label lblYesterdayOrderCount;
 
     HomeDAOImpl homeDAO = (HomeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.HOME);
+    ItemDAOImpl itemDAO = (ItemDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     String lblDate;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,6 +50,7 @@ public class DashbordFormController implements Initializable {
             setYesterdaySellItemTypeCount();
             setProfit();
             setYesterdayProfit();
+            setItemCount();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -100,5 +107,13 @@ public class DashbordFormController implements Initializable {
         }catch (NullPointerException e){
             lblYesterdayProfit.setText("0");
         }
+    }
+
+    public void setItemCount() throws IOException {
+        lblHighestItemCount.setText(String.valueOf(itemDAO.setHighestItemCount()));
+        lblLowestItemCount.setText(String.valueOf(itemDAO.setLowestItemCount()));
+
+        lblHighestItemName.setText(itemDAO.setHighestItemName());
+        lblLowestItemName.setText(itemDAO.setLowestItemName());
     }
 }

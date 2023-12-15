@@ -39,7 +39,6 @@ public class SettingFormController implements Initializable {
 
     public void setNotificationButton() throws IOException {
         String nofity = settingDAO.getNotificationSide(settingID);
-        System.out.println(nofity);
 
         if (nofity.equals("TOP_RIGHT")){
             btnTop_Right.setSelected(true);

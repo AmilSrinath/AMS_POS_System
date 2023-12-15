@@ -43,7 +43,7 @@ public class HomeFormController implements Initializable{
     static Stage homeFormStage;
     public Label lblDate;
     UserDAOImpl userDAO = (UserDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USER);
-    String notify;
+    static String notify;
     String settingID;
 
     @Override
@@ -87,9 +87,7 @@ public class HomeFormController implements Initializable{
             while (!false){
                 try {
                     Thread.sleep(1000);
-                }catch (Exception e){
-                    System.out.println(e);
-                }
+                }catch (Exception e){}
                 final String timenow = sdf.format(new Date());
                 Platform.runLater(() ->{
                     lblTime.setText(timenow);

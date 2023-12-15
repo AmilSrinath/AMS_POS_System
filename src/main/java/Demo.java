@@ -27,8 +27,6 @@ public class Demo extends Application {
     public void start(Stage primaryStage) {
         try {
             if (!isExpired()) {
-                System.out.println("Welcome to the trial version!");
-
                 Session session = null;
                 try {
                     session = FactoryConfiguration.getInstance().getSession();

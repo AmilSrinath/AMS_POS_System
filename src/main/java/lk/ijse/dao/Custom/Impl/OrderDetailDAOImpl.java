@@ -51,7 +51,7 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
             int newID = Integer.parseInt(strings[1]);
             return "OD-"+newID;
         }else {
-            return "OD-100000";
+            return "OD-10000000";
         }
     }
 
@@ -98,5 +98,17 @@ public class OrderDetailDAOImpl implements OrderDetailDAO {
         transaction.commit();
         session.close();
         return orderDetailEntities;
+    }
+
+    public double NetTotalCalculate(String orderID) throws IOException {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        String sql = "SELECT SUM(subTotal) FROM order_details WHERE orderID = :orderID";
+        NativeQuery<Double> nativeQuery = session.createNativeQuery(sql);
+        nativeQuery.setParameter("orderID",orderID);
+        double netTotal = nativeQuery.uniqueResult();
+        transaction.commit();
+        session.close();
+        return netTotal;
     }
 }

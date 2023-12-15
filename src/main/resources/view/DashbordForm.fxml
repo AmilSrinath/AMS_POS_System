@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="693.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashbordFormController">
    <children>
-      <Pane layoutX="101.0" layoutY="176.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="101.0" layoutY="76.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label alignment="CENTER" layoutX="24.0" layoutY="14.0" prefHeight="38.0" prefWidth="199.0" text="Today's profit">
                <font>
@@ -27,7 +27,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="401.0" layoutY="176.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="401.0" layoutY="76.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label fx:id="lblSellItemTypeCount" alignment="CENTER" layoutX="65.0" layoutY="91.0" prefHeight="38.0" prefWidth="105.0" text="0">
                <font>
@@ -41,7 +41,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="703.0" layoutY="176.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="703.0" layoutY="76.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label fx:id="lblTodayOrderCount" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="88.0" prefHeight="32.0" prefWidth="142.0" text="0" textAlignment="CENTER">
                <font>
@@ -55,7 +55,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="102.0" layoutY="377.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="102.0" layoutY="277.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label fx:id="lblYesterdayProfit" alignment="CENTER" layoutX="24.0" layoutY="88.0" prefHeight="32.0" prefWidth="199.0" text="0.0">
                <font>
@@ -74,7 +74,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="402.0" layoutY="377.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="402.0" layoutY="277.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label fx:id="lblYesterdaySellItemTypeCount" alignment="CENTER" layoutX="65.0" layoutY="94.0" prefHeight="32.0" prefWidth="117.0" text="0">
                <font>
@@ -88,7 +88,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="704.0" layoutY="377.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+      <Pane layoutX="704.0" layoutY="277.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
          <children>
             <Label fx:id="lblYesterdayOrderCount" alignment="CENTER" layoutX="60.0" layoutY="91.0" prefHeight="32.0" prefWidth="131.0" text="0">
                <font>
@@ -100,6 +100,44 @@
                   <Font name="Poppins Bold" size="20.0" />
                </font>
             </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="102.0" layoutY="475.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblLowestItemCount" alignment="CENTER" layoutX="65.0" layoutY="94.0" prefHeight="32.0" prefWidth="117.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lowest Item" textAlignment="CENTER" wrappingWidth="218.99999183416367">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblLowestItemName" alignment="CENTER" layoutX="7.0" layoutY="48.0" prefHeight="38.0" prefWidth="234.0">
+               <font>
+                  <Font name="Poppins Regular" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="401.0" layoutY="475.0" prefHeight="140.0" prefWidth="247.0" styleClass="pane" stylesheets="@../Style/CSS.css">
+         <children>
+            <Label fx:id="lblHighestItemCount" alignment="CENTER" layoutX="65.0" layoutY="94.0" prefHeight="32.0" prefWidth="117.0" text="0">
+               <font>
+                  <Font name="Poppins Regular" size="26.0" />
+               </font>
+            </Label>
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highest Item" textAlignment="CENTER" wrappingWidth="218.99999183416367">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblHighestItemName" alignment="CENTER" layoutX="7.0" layoutY="51.0" prefHeight="38.0" prefWidth="234.0">
+               <font>
+                  <Font name="Poppins Regular" size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

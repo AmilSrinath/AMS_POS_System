@@ -1,5 +1,3 @@
-import lk.ijse.util.JavaMailUtil;
-
 import javax.mail.MessagingException;
 
 public class Start {

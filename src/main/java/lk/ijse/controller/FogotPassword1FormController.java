@@ -63,7 +63,6 @@ public class FogotPassword1FormController implements Initializable {
             timeline.play();
 
             otp = new Random().nextInt(9999)+1000;
-            System.out.println(otp);
             Task<Void> emailTask = new Task<>() {
                 @Override
                 protected Void call() throws Exception {
