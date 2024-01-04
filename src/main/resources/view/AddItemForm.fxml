@@ -26,22 +26,22 @@
             </JFXTextField>
          </children>
       </StackPane>
-      <JFXTextField fx:id="txtItemName" layoutX="60.0" layoutY="257.0" prefHeight="32.0" prefWidth="246.0" promptText="Item Name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtItemName" layoutX="60.0" layoutY="257.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="32.0" prefWidth="246.0" promptText="Item Name" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtItemQuantity" layoutX="60.0" layoutY="317.0" prefHeight="32.0" prefWidth="246.0" promptText="Item Quantity" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtItemQuantity" layoutX="60.0" layoutY="317.0" onKeyReleased="#txtQuantityOnKeyReleased" prefHeight="32.0" prefWidth="246.0" promptText="Item Quantity" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtUnitSellingPrice" layoutX="95.0" layoutY="383.0" prefHeight="32.0" prefWidth="213.0" promptText="Unit Selling Price" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtUnitSellingPrice" layoutX="95.0" layoutY="383.0" onKeyReleased="#txtUnitSellingPriceOnKeyReleased" prefHeight="32.0" prefWidth="213.0" promptText="Unit Selling Price" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtUnitCost" layoutX="95.0" layoutY="444.0" prefHeight="32.0" prefWidth="213.0" promptText="Unit Cost" styleClass="PromtText" stylesheets="@../Style/CSS.css">
+      <JFXTextField fx:id="txtUnitCost" layoutX="95.0" layoutY="444.0" onKeyReleased="#txtUnitCostOnKeyReleased" prefHeight="32.0" prefWidth="213.0" promptText="Unit Cost" styleClass="PromtText" stylesheets="@../Style/CSS.css">
          <font>
             <Font size="16.0" />
          </font>

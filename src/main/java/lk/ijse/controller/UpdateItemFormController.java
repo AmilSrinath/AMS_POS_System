@@ -3,9 +3,12 @@ package lk.ijse.controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.bo.BOFactory;
 import lk.ijse.bo.Custom.Impl.DataRefreshListener;
 import lk.ijse.bo.Custom.ItemBO;
@@ -13,6 +16,9 @@ import lk.ijse.dao.Custom.ItemDAO;
 import lk.ijse.dao.DAOFactory;
 import lk.ijse.dto.ItemDTO;
 import lk.ijse.entity.OrderDetail;
+import lk.ijse.util.Regex;
+import lk.ijse.util.TextFilds;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,6 +53,17 @@ public class UpdateItemFormController {
     }
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException, IOException, ClassNotFoundException {
+        if (!isValidated()){
+            Notifications.create()
+                    .title("Not Successfully...!")
+                    .text("Please fill the TextFiled...!")
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.valueOf(HomeFormController.notify))
+                    .showError();
+
+            return;
+        }
+
         String itemID = txtItemID.getText();
         String itemName = txtItemName.getText();
         int itemQut = Integer.parseInt(txtItemQuantity.getText());
@@ -97,5 +114,29 @@ public class UpdateItemFormController {
         txtUnitCost.setText(String.valueOf(itemUnitCost));
         this.stage = stage;
         this.homeForm = homeForm;
+    }
+
+    public boolean isValidated(){
+        if (!Regex.setTextColor(TextFilds.NAME,txtItemName))return false;
+        if (!Regex.setTextColor(TextFilds.INT,txtItemQuantity))return false;
+        if (!Regex.setTextColor(TextFilds.DOUBLE,txtUnitCost))return false;
+        if (!Regex.setTextColor(TextFilds.DOUBLE,txtUnitSellingPrice))return false;
+        return true;
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFilds.NAME,txtItemName);
+    }
+
+    public void txtQuantityOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFilds.INT,txtItemQuantity);
+    }
+
+    public void txtUnitSellingPriceOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFilds.DOUBLE,txtUnitSellingPrice);
+    }
+
+    public void txtUnitCostOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFilds.DOUBLE,txtUnitCost);
     }
 }
