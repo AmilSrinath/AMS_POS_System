@@ -216,6 +216,7 @@ public class PlaceOrderFormController implements Initializable {
                 txtQuantity.setStyle("-fx-background-color: none;");
             }
         } catch (NumberFormatException e) {
+            
         }
     }
 
@@ -426,7 +427,7 @@ public class PlaceOrderFormController implements Initializable {
         }
     }
 
-    JasperDesign jasDesign = JRXmlLoader.load("src/main/resources/Reports/AMS.jrxml");
+    JasperDesign jasDesign = JRXmlLoader.load(this.getClass().getResourceAsStream("/Reports/AMS.jrxml"));
     JasperReport jasReport = JasperCompileManager.compileReport(jasDesign);
 
     public void CreateBill(String orderID) throws JRException, SQLException, IOException {
