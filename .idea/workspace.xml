@@ -10,11 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d262ec04-50ce-48d3-b3e0-6d712804c57b" name="Changes" comment="Inserting SQL Quary">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20/storage_v2/_src_/schema/AMS_POS_System.Upw00g.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cb48d637-0d5e-4397-920f-b0db4cb99c20/storage_v2/_src_/schema/AMS_POS_System.Upw00g.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/Custom/Impl/UserBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/bo/Custom/Impl/UserBOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/PlaceOrderFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserAddFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserAddFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/controller/UserFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lk/ijse/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/PlaceOrderForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/PlaceOrderForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +292,18 @@
       <workItem from="1707044484910" duration="596000" />
       <workItem from="1707108399162" duration="113000" />
       <workItem from="1707150491541" duration="215000" />
-      <workItem from="1707382764346" duration="794000" />
+      <workItem from="1707382764346" duration="1263000" />
+      <workItem from="1707565137566" duration="107000" />
+      <workItem from="1707635047473" duration="1665000" />
+      <workItem from="1707648613830" duration="70000" />
+      <workItem from="1707655423794" duration="14000" />
+      <workItem from="1707655741143" duration="1000" />
+      <workItem from="1707657467919" duration="1002000" />
+      <workItem from="1707705936401" duration="1414000" />
+      <workItem from="1707708743959" duration="5446000" />
+      <workItem from="1707809837128" duration="1875000" />
+      <workItem from="1708591701064" duration="105000" />
+      <workItem from="1708592536246" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="first Commit">
       <option name="closed" value="true" />
@@ -664,7 +681,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704376336289</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Inserting SQL Quary">
+      <option name="closed" value="true" />
+      <created>1707383872392</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1707383872392</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

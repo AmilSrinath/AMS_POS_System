@@ -20,6 +20,7 @@ public class User {
     private String displayUsername;
     private String email;
     private String contactNumber;
+    private String firstLoginDate;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "setting_id", referencedColumnName = "settingID")

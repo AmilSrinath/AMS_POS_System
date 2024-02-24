@@ -27,7 +27,7 @@ public class Demo extends Application {
     public void start(Stage primaryStage) {
         try {
             if (!isExpired()) {
-                Session session = null;
+                Session session;
                 try {
                     session = FactoryConfiguration.getInstance().getSession();
                 } catch (IOException e) {

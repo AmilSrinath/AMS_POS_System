@@ -37,10 +37,8 @@ import org.controlsfx.control.Notifications;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class UserFormController implements Initializable {
 
@@ -122,7 +120,7 @@ public class UserFormController implements Initializable {
         List<User> alluser = userBO.getAllUser();
 
         for (User user : alluser){
-            observableList.add(new User(user.getId(), user.getName(), user.getUsername(), user.getPassword(), user.getDisplayUsername(),user.getEmail(),user.getContactNumber(),new Setting()));
+            observableList.add(new User(user.getId(), user.getName(), user.getUsername(), user.getPassword(), user.getDisplayUsername(),user.getEmail(),user.getContactNumber(), user.getFirstLoginDate(),new Setting()));
         }
         tblUser.setItems(observableList);
     }
@@ -146,6 +144,7 @@ public class UserFormController implements Initializable {
             setting.setShowNotification("TOP_RIGHT");
             setting.setShowTime("ture");
             setting.setShowUsername("ture");
+            String date = String.valueOf(LocalDate.now());
 
             userDAO.add(new User(
                     txtUserID.getText(),
@@ -155,6 +154,7 @@ public class UserFormController implements Initializable {
                     txtDisplayName.getText(),
                     txtEmail.getText(),
                     txtContactNumber.getText(),
+                    date,
                     setting
             ));
             Notifications.create()

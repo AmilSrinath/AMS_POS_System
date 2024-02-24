@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -203,6 +204,7 @@ public class PlaceOrderFormController implements Initializable {
         for (String un : id) {
             obList.add(un);
         }
+
         TextFields.bindAutoCompletion(txtItemName, obList);
     }
 
@@ -215,9 +217,7 @@ public class PlaceOrderFormController implements Initializable {
             } else {
                 txtQuantity.setStyle("-fx-background-color: none;");
             }
-        } catch (NumberFormatException e) {
-            
-        }
+        } catch (NumberFormatException e) {}
     }
 
     public void addItem() throws IOException {
@@ -367,7 +367,7 @@ public class PlaceOrderFormController implements Initializable {
         if (isEnough() & !equals) {
             ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
-            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "ඔබට ඇනවුම විශ්වාසද?", yes, no).showAndWait();
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure this order?", yes, no).showAndWait();
 
             if (result.orElse(no) == yes) {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -421,9 +421,10 @@ public class PlaceOrderFormController implements Initializable {
                 lblItemQut.setText("0");
                 txtAmount.setText("");
                 lblBalance.setText("0.0");
+                lblItemUnitPrice.setText("0");
             }
         }else {
-            new Alert(Alert.AlertType.ERROR,"මුදල ප්‍රමාණවත් නැත!").show();
+            new Alert(Alert.AlertType.ERROR,"Not enough money").show();
         }
     }
 

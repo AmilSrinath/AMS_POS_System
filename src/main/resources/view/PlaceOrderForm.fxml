@@ -105,7 +105,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="86.0" layoutY="470.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="btnAdd" stylesheets="@../Style/CSS.css" text="Place Order" textFill="WHITE">
+            <Button contentDisplay="RIGHT" graphicTextGap="10.0" layoutX="86.0" layoutY="470.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="btnAdd" stylesheets="@../Style/Style.css" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font>
@@ -129,7 +129,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblItemUnitPrice" layoutX="466.0" layoutY="228.0">
+      <Label fx:id="lblItemUnitPrice" layoutX="466.0" layoutY="228.0" text="0">
          <font>
             <Font size="18.0" />
          </font>

@@ -1,3 +1,11 @@
 .alert {
     -fx-font-size: 16px; /* Change the font size to your desired value */
 }
+
+.btnAdd{
+    -fx-background-color:  #7b2cbf;
+}
+
+.btnAdd:hover{
+    -fx-background-color:  #9d4edd;
+}
