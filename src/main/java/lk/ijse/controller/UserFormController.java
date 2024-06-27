@@ -112,7 +112,7 @@ public class UserFormController implements Initializable {
 
     @FXML
     void OnMouseClicked(MouseEvent event) {
-
+        
     }
 
     private void getAll() throws SQLException, IOException, ClassNotFoundException {

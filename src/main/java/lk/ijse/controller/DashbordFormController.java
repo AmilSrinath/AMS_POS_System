@@ -40,6 +40,7 @@ public class DashbordFormController implements Initializable {
     HomeDAOImpl homeDAO = (HomeDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.HOME);
     ItemDAOImpl itemDAO = (ItemDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ITEM);
     String lblDate;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

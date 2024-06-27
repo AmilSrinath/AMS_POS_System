@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Demo extends Application {
-    private static final LocalDate EXPIRY_DATE = LocalDate.of(2024, 2, 28);
+    private static final LocalDate EXPIRY_DATE = LocalDate.of(2024, 6, 27);
     UserAddDAOImpl userDAO = (UserAddDAOImpl) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.USERADD);
     public static void main(String[] args) {
         launch(args);

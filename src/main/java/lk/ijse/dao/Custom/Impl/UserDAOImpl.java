@@ -15,57 +15,90 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getAll() throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM user");
-        nativeQuery.addEntity(User.class);
-        List<User> users = nativeQuery.getResultList();
-        transaction.commit();
-        session.close();
+        Transaction transaction = null;
+        List<User> users = null;
+        try {
+            transaction = session.beginTransaction();
+            NativeQuery<User> nativeQuery = session.createNativeQuery("SELECT * FROM user");
+            nativeQuery.addEntity(User.class);
+            users = nativeQuery.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
         return users;
     }
 
     @Override
     public boolean add(User entity) throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        session.persist(entity);
-        transaction.commit();
-        session.close();
-        return true;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.persist(entity);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public boolean update(User entity) throws SQLException, ClassNotFoundException, IOException {
+        // Implement similar to add method
         return false;
     }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        String sql = "DELETE FROM user WHERE id = :id";
-        NativeQuery<User> nativeQuery = session.createNativeQuery(sql);
-        nativeQuery.setParameter("id",id);
-        nativeQuery.executeUpdate();
-        transaction.commit();
-        session.close();
-        return true;
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            String sql = "DELETE FROM user WHERE id = :id";
+            NativeQuery<User> nativeQuery = session.createNativeQuery(sql);
+            nativeQuery.setParameter("id", id);
+            nativeQuery.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public String generateNewID() throws SQLException, ClassNotFoundException, IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM user ORDER BY CAST(SUBSTRING(id, 6) AS SIGNED) DESC LIMIT 1;");
-        String id = nativeQuery.uniqueResult();
-        transaction.commit();
-        session.close();
+        Transaction transaction = null;
+        String id = null;
+        try {
+            transaction = session.beginTransaction();
+            NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT id FROM user ORDER BY CAST(SUBSTRING(id, 6) AS SIGNED) DESC LIMIT 1;");
+            id = nativeQuery.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
 
         if (id != null) {
             String[] strings = id.split("U-");
             int newID = Integer.parseInt(strings[1]) + 1;
-            return "U-"+newID;
-        }else {
+            return "U-" + newID;
+        } else {
             return "U-100000";
         }
     }
@@ -73,11 +106,19 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<String> loadUserName() throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        NativeQuery nativeQuery = session.createNativeQuery("SELECT username FROM user");
-        List<String> usernames = nativeQuery.getResultList();
-        transaction.commit();
-        session.close();
+        Transaction transaction = null;
+        List<String> usernames = null;
+        try {
+            transaction = session.beginTransaction();
+            NativeQuery<String> nativeQuery = session.createNativeQuery("SELECT username FROM user");
+            usernames = nativeQuery.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
         return usernames;
     }
 
